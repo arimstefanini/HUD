@@ -11,6 +11,12 @@ if (typeof window !== "undefined") {
 export function ImpactSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const counterRef = useRef<HTMLSpanElement>(null)
+  const doctorsRef = useRef<HTMLSpanElement>(null)
+  const visitsRef = useRef<HTMLSpanElement>(null)
+  const oncologyRef = useRef<HTMLSpanElement>(null)
+  const hospitalizationsRef = useRef<HTMLSpanElement>(null)
+  const emergencyRef = useRef<HTMLSpanElement>(null)
+  const utiRef = useRef<HTMLSpanElement>(null)
 
   useEffect(() => {
     if (!sectionRef.current) return
@@ -55,6 +61,80 @@ export function ImpactSection() {
           }
         },
       })
+
+      /* SMALL COUNTERS */
+
+      const doctors = { value: 0 }
+      tl.to(doctors, {
+        value: 10,
+        duration: 1.5,
+        ease: "power2.out",
+        onUpdate: () => {
+          if (doctorsRef.current) {
+            doctorsRef.current.textContent = Math.floor(doctors.value).toString()
+          }
+        },
+      }, 0.5)
+
+      const visits = { value: 0 }
+      tl.to(visits, {
+        value: 88,
+        duration: 1.5,
+        ease: "power2.out",
+        onUpdate: () => {
+          if (visitsRef.current) {
+            visitsRef.current.textContent = Math.floor(visits.value).toString()
+          }
+        },
+      }, 0.7)
+
+      const oncology = { value: 0 }
+      tl.to(oncology, {
+        value: 38,
+        duration: 1.5,
+        ease: "power2.out",
+        onUpdate: () => {
+          if (oncologyRef.current) {
+            oncologyRef.current.textContent = Math.floor(oncology.value).toString() + "%"
+          }
+        },
+      }, 0.9)
+
+      const hospitalizations = { value: 0 }
+      tl.to(hospitalizations, {
+        value: 32,
+        duration: 1.5,
+        ease: "power2.out",
+        onUpdate: () => {
+          if (hospitalizationsRef.current) {
+            hospitalizationsRef.current.textContent = Math.floor(hospitalizations.value).toString() + "%"
+          }
+        },
+      }, 1.1)
+
+      const emergency = { value: 0 }
+      tl.to(emergency, {
+        value: 18,
+        duration: 1.5,
+        ease: "power2.out",
+        onUpdate: () => {
+          if (emergencyRef.current) {
+            emergencyRef.current.textContent = Math.floor(emergency.value).toString() + "%"
+          }
+        },
+      }, 1.3)
+
+      const uti = { value: 0 }
+      tl.to(uti, {
+        value: 12,
+        duration: 1.5,
+        ease: "power2.out",
+        onUpdate: () => {
+          if (utiRef.current) {
+            utiRef.current.textContent = Math.floor(uti.value).toString() + "%"
+          }
+        },
+      }, 1.5)
 
       /* TEXT ANIMATIONS */
 
@@ -154,13 +234,11 @@ export function ImpactSection() {
 
             {/* TITLE */}
             <h2 className="impact-title text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              sorrisos
+              sorrisos{" "}
+              <span className="font-caveat text-[#ff8a85] text-3xl md:text-5xl lg:text-6xl">
+                por ano!
+              </span>
             </h2>
-
-            {/* SUBTITLE */}
-            <p className="impact-subtitle text-xl md:text-3xl font-caveat text-[#ff8a85] mb-6">
-              por ano!
-            </p>
 
             {/* DESCRIPTION */}
             <p className="impact-description text-base md:text-lg text-white/90 leading-relaxed max-w-md ml-auto">
@@ -169,45 +247,85 @@ export function ImpactSection() {
               transformar o dia de alguém.
             </p>
 
-            {/* FLOATING SMILES */}
-            <div className="relative mt-10 h-16 flex justify-end gap-4">
+<div className="grid grid-cols-2 gap-6 w-full max-w-4xl mx-auto">
+  {/* Quadrante 1 */}
+<div className="flex flex-col items-end text-end p-0 m-0">
+  <span
+    ref={doctorsRef}
+    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
+  >
+    0
+  </span>
+  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
+    Doutores Palhaços 
+  </span>
+</div>
 
-              {[...Array(3)].map((_, i) => (
-                <div
-                  key={i}
-                  className="floating-smile w-8 h-8 md:w-10 md:h-10 bg-[#e44f4a]/20 backdrop-blur-sm rounded-full flex items-center justify-center"
-                >
+  {/* Quadrante 2 */}
+<div className="flex flex-col items-end text-end p-0 m-0">
+  <span
+    ref={visitsRef}
+    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
+  >
+    0
+  </span>
+  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
+    Visitas Anuais 
+  </span>
+</div>
 
-                  <svg
-                    viewBox="0 0 24 24"
-                    className="w-5 h-5 md:w-6 md:h-6 text-white"
-                    fill="currentColor"
-                  >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 
-                    10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 
-                    0-8-3.59-8-8s3.59-8 8-8 
-                    8 3.59 8 8-3.59 8-8 
-                    8zm3.5-9c.83 0 1.5-.67 
-                    1.5-1.5S16.33 8 
-                    15.5 8 14 8.67 
-                    14 9.5s.67 1.5 
-                    1.5 1.5zm-7 
-                    0c.83 0 1.5-.67 
-                    1.5-1.5S9.33 8 
-                    8.5 8 7 8.67 
-                    7 9.5 7.67 11 
-                    8.5 11zm3.5 
-                    6.5c2.33 0 
-                    4.31-1.46 
-                    5.11-3.5H6.89c.8 
-                    2.04 2.78 3.5 
-                    5.11 3.5z" />
-                  </svg>
+  {/* Quadrante 3 */}
+<div className="flex flex-col items-end text-end p-0 m-0">
+  <span
+    ref={oncologyRef}
+    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
+  >
+    0%
+  </span>
+  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
+    Oncologia Pediátrica
+  </span>
+</div>
 
-                </div>
-              ))}
+  {/* Quadrante 4 */}
+<div className="flex flex-col items-end text-end p-0 m-0">
+  <span
+    ref={hospitalizationsRef}
+    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
+  >
+    0%
+  </span>
+  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
+    Internações Pediátricas
+  </span>
+</div>
 
-            </div>
+  {/* Quadrante 5 */}
+<div className="flex flex-col items-end text-end p-0 m-0">
+  <span
+    ref={emergencyRef}
+    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
+  >
+    0%
+  </span>
+  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
+    Pronto Atendimento
+  </span>
+</div>
+
+  {/* Quadrante 6 */}
+<div className="flex flex-col items-end text-end p-0 m-0">
+  <span
+    ref={utiRef}
+    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
+  >
+    0%
+  </span>
+  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
+    UTI Pediátrica
+  </span>
+</div>
+</div>
 
           </div>
 

@@ -93,7 +93,7 @@ export function CTASection() {
   return (
     <section
       ref={sectionRef}
-      className="scroll-section relative bg-gradient-to-b from-[--terapia-cream] to-white py-20 md:py-32"
+      className="scroll-section relative bg-gradient-to-b from-[--terapia-cream] to-white py-8 md:py-12"
     >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -107,7 +107,7 @@ export function CTASection() {
             </h2>
 
             {/* Text */}
-            <p className="cta-text text-base md:text-lg text-[--terapia-gray]/80 max-w-2xl mb-10 leading-relaxed text-left">
+            <p className="cta-text text-base md:text-lg text-[--terapia-gray]/80 max-w-2xl mb-5 leading-relaxed text-left">
               Quer conhecer mais sobre nosso trabalho? Siga-nos nas redes sociais ou
               entre em contato. Estamos sempre prontos para levar alegria!
             </p>
@@ -131,12 +131,12 @@ export function CTASection() {
         </div>
 
 {/* CONNECT AREA */}
-<div className="mt-20 max-w-5xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
+<div className="mt-4 max-w-5xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
 
   {/* SOCIAL */}
   <div>
 
-    <h3 className="text-lg font-semibold text-[--terapia-gray] mb-6">
+    <h3 className="text-lg font-semibold text-[--terapia-gray] mb-3">
       Redes sociais
     </h3>
 
@@ -180,7 +180,7 @@ export function CTASection() {
   {/* CONTACT */}
   <div>
 
-    <h3 className="text-lg font-semibold text-[--terapia-gray] mb-6">
+    <h3 className="text-lg font-semibold text-[--terapia-gray] mb-3">
       Contato
     </h3>
 
@@ -221,7 +221,7 @@ export function CTASection() {
   {/* INFO */}
   <div>
 
-    <h3 className="text-lg font-semibold text-[--terapia-gray] mb-6">
+    <h3 className="text-lg font-semibold text-[--terapia-gray] mb-3">
       Institucional
     </h3>
 
@@ -246,7 +246,10 @@ export function CTASection() {
 </div>
 
       </div>
-
+  {/* Footer */}
+  <div className="mt-6 text-center text-sm text-[--terapia-gray]/70">
+    Terapia da Alegria © {new Date().getFullYear()}
+  </div>
     </section>
   )
 }

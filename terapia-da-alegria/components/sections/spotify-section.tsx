@@ -134,7 +134,7 @@ export function SpotifySection() {
                 alt="Spotify Terapia da Alegria"
                 width={420}
                 height={120}
-                className="spotify-image w-[220px] md:w-[320px] lg:w-[420px]"
+                className="spotify-image w-[220px] md:w-[320px] lg:w-[420px] py-10"
               />
 
               <h2 className="spotify-title text-2xl md:text-3xl lg:text-4xl font-semibold text-black md:text-white">

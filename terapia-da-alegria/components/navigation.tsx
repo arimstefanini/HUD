@@ -193,8 +193,16 @@ export function Navigation() {
               }}
               className="flex items-center gap-2 relative z-[60]"
             >
-              <Image src="/images/logo_official.png" alt="Terapia da Alegria" width={48} height={48} />
-              <span className="font-bold text-lg hidden sm:block text-white">Terapia da Alegria</span>
+<Image src="/images/logo_official.png" alt="Terapia da Alegria" width={48} height={48} />
+<span className="font-bold text-lg hidden sm:block text-black drop-shadow-lg">
+  Terapia
+</span>{" "}
+<span className="inline-block font-caveat text-[--terapia-red-light] drop-shadow-md">
+  da
+</span>{" "}
+<span className="font-bold text-[#e44f4a] text-lg hidden sm:block drop-shadow-lg">
+  Alegria
+</span>
             </button>
 
             <button onClick={toggleMenu} className="relative z-[60] p-3 rounded-full bg-white/10 text-white">
@@ -275,13 +283,13 @@ export function Navigation() {
     <a href="https://wa.me/5544999615892" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
       <SiWhatsapp size={18} color="#25D366" />
     </a>
-    <a href="https://www.instagram.com/terapiadaalegria_mga/" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+    <a href="https://www.instagram.com/terapiadaalegria/" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
       <SiInstagram size={18} color="#E4405F" />
     </a>
-    <a href="https://www.youtube.com/@terapiadaalegria3931" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+    <a href="https://www.youtube.com/terapiadaalegria" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
       <SiYoutube size={18} color="#FF0000" />
     </a>
-    <a href="#" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+    <a href="https://open.spotify.com/intl-pt/artist/4VMpU6tqRctpeVi3L06lX4" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
       <SiSpotify size={18} color="#1DB954" />
     </a>
   </div>
