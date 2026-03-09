@@ -10,6 +10,21 @@ if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
 }
 
+// Spotify Player Component
+function SpotifyPlayer({ uri }: { uri: string }) {
+  return (
+    <iframe
+      src={`https://open.spotify.com/embed/artist/${uri}?autoplay=1&utm_source=generator&theme=0`}
+      width="100%"
+      height="152"
+      frameBorder="0"
+      allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+      loading="lazy"
+      className="rounded-xl"
+    />
+  );
+}
+
 export function SpotifySection() {
   const sectionRef = useRef<HTMLElement>(null)
 
@@ -167,15 +182,9 @@ export function SpotifySection() {
             </div>
 
             {/* CTA */}
-            <a
-              href="https://open.spotify.com/intl-pt/artist/4VMpU6tqRctpeVi3L06lX4"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="spotify-cta inline-flex items-center gap-3 bg-white text-[#1DB954] font-bold px-8 py-4 rounded-full hover:scale-105 transition-transform duration-300 shadow-xl"
-            >
-              <Play className="w-6 h-6 fill-current" />
-              <span>Ouvir agora</span>
-            </a>
+            <div className="spotify-cta">
+              <SpotifyPlayer uri="4VMpU6tqRctpeVi3L06lX4" />
+            </div>
 
             {/* Features */}
             <div className="spotify-text flex flex-wrap gap-4 mt-8">

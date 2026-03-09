@@ -39,19 +39,15 @@ export function ImpactSection() {
       })
 
       // Counter animation
-      tl.to(".impact-counter", {
-        textContent: "10.000",
+      tl.to({ val: 0 }, {
+        val: 10000,
         duration: 2.5,
         ease: "power2.out",
-        snap: { textContent: 1 },
         onUpdate: function () {
           if (counterRef.current) {
-            const value = Math.round(
-              gsap.getProperty(this.targets()[0], "textContent") as number
-            )
-            counterRef.current.textContent = value.toLocaleString("pt-BR")
+            counterRef.current.textContent = Math.floor(this.targets()[0].val).toLocaleString("pt-BR")
           }
-        },
+        }
       })
 
       tl.from(
@@ -127,8 +123,8 @@ export function ImpactSection() {
         <div className="container mx-auto px-4 py-20">
           <div className="max-w-xl ml-auto text-right">
             {/* Counter */}
-            <div className="mb-6">
-              <span className="text-sm md:text-base text-white/80 block mb-2">
+            <div className="flex items-baseline justify-end gap-4 mb-6">
+              <span className="text-xl md:text-2xl text-white/80 font-medium">
                 + de
               </span>
               <span
