@@ -98,7 +98,7 @@ export function Since2003Section() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/since2003.jpg"
+          src="/images/img_since.jpg"
           alt="Desde 2003 - Transformando o ambiente hospitalar"
           fill
           className="since-image object-cover object-center scale-110"
@@ -113,14 +113,22 @@ export function Since2003Section() {
           <div className="max-w-xl">
             {/* Badge */}
             <div className="since-badge inline-flex items-center gap-2 bg-[--terapia-red] text-white px-4 py-2 rounded-full mb-6">
-              <span className="text-sm font-medium">Desde 2003</span>
+                            <Image
+                              src="/images/esc_desde.png"
+                              alt="Spotify Terapia da Alegria"
+                              width={420}
+                              height={120}
+                              className="w-[220px] md:w-[320px] lg:w-[420px] object-contain"
+                            />
             </div>
 
-            {/* Title */}
-            <h2 className="since-title text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
-              Transformando o{" "}
-              <span className="inline-block font-caveat text-[--terapia-red-light] text-5xl md:text-6xl lg:text-7xl">
-                ambiente hospitalar
+            <h2 className="since-title text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight text-black">
+              <span className="font-bold text-[#e44f4a]">
+                Transformando
+              </span>{" "}
+              o ambiente{" "}
+              <span className="font-caveat font-bold text-[#e44f4a] text-[1.15em]">
+                hospitalar
               </span>
             </h2>
 

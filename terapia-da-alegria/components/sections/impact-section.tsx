@@ -109,7 +109,7 @@ export function ImpactSection() {
       {/* Background Image */}
       <div className="absolute inset-0">
         <Image
-          src="/images/more_than_10k.jpg"
+          src="/images/img_more_than.jpg"
           alt="Mais de 10.000 sorrisos por ano"
           fill
           className="impact-image object-cover object-center scale-110"

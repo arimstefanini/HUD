@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { Copy, Check, Heart, Banknote, Landmark } from "lucide-react"
+import { Copy, Check, Heart, Banknote, Landmark, CreditCard } from "lucide-react"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
@@ -117,7 +117,7 @@ export function SupportSection() {
       {/* BACKGROUND IMAGE */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/support.jpg"
+          src="/images/img_suport.jpg"
           alt="Seja um apoiador mensal"
           fill
           className="support-bg object-cover object-center scale-110"
@@ -151,65 +151,65 @@ export function SupportSection() {
           </p>
         </div>
 
-        {/* CARD */}
-        <div className="flex justify-end">
-          <div className="support-card w-full max-w-lg bg-white rounded-3xl p-8 border border-stone-100 shadow-2xl text-right">
-            
-            {/* PIX */}
-            <div className="mb-8">
-              
-              <div className="flex justify-end mb-4">
-                <div className="w-10 h-10 bg-emerald-50 text-emerald-600 rounded-xl flex items-center justify-center">
-                  <Banknote className="w-5 h-5" />
-                </div>
-              </div>
+{/* CARD CLEAN E AMIGÁVEL */}
+<div className="flex justify-end">
+  <div className="support-card w-full max-w-lg bg-white rounded-3xl p-8 border border-[--terapia-red]/10 shadow-xl">
 
-              <h3 className="text-lg font-semibold text-stone-800">
-                Chave PIX (CNPJ)
-              </h3>
-
-              <button
-                onClick={copyToClipboard}
-                className="w-full flex items-center justify-between bg-stone-50 hover:bg-emerald-50 border border-stone-200 p-4 mt-3 rounded-xl font-mono text-lg text-stone-700 transition-colors"
-              >
-                {copied ? (
-                  <Check className="text-emerald-500" />
-                ) : (
-                  <Copy className="text-stone-400" />
-                )}
-                <span>{pixKey}</span>
-              </button>
-            </div>
-
-            {/* DIVIDER */}
-            <div className="border-t border-stone-100 my-6" />
-
-            {/* BANK DATA */}
-            <div>
-              
-              <div className="flex items-center justify-end gap-2 text-stone-600 mb-4">
-                <span className="text-sm font-medium">Dados Bancários</span>
-                <Landmark className="w-4 h-4" />
-              </div>
-
-              <div className="grid grid-cols-2 gap-4 text-sm bg-stone-50 p-4 rounded-xl">
-                <div>
-                  <p className="text-stone-400 text-xs uppercase">Agência</p>
-                  <p className="font-semibold text-stone-700">0352-2</p>
-                </div>
-
-                <div>
-                  <p className="text-stone-400 text-xs uppercase">Conta</p>
-                  <p className="font-semibold text-stone-700">122.563-4</p>
-                </div>
-              </div>
-            </div>
-
-            <p className="mt-8 font-caveat text-xl text-stone-500 italic">
-              "Sorrisos multiplicados, obrigado por fazer parte!"
-            </p>
-          </div>
+    {/* PIX */}
+    <div className="mb-6">
+      <div className="flex items-center gap-3 mb-3">
+        <div className="w-10 h-10 bg-[--terapia-red]/10 text-[--terapia-red] rounded-full flex items-center justify-center">
+          <Banknote className="w-5 h-5" />
         </div>
+        <h3 className="text-lg font-semibold text-[--terapia-gray]">
+          Chave PIX
+        </h3>
+        <span className="text-xs font-caveat text-[--terapia-red] text-lg">(CNPJ)</span>
+      </div>
+
+      <button
+        onClick={copyToClipboard}
+        className="w-full flex items-center justify-between bg-[--terapia-red]/5 hover:bg-[--terapia-red]/10 border border-[--terapia-red]/20 p-4 rounded-2xl font-mono text-sm text-[--terapia-gray] transition-all"
+      >
+        {copied ? (
+          <Check className="text-[--terapia-red]" />
+        ) : (
+          <Copy className="text-[--terapia-red]/60" />
+        )}
+        <span className="truncate ml-2">{pixKey}</span>
+      </button>
+    </div>
+
+    {/* DIVISOR */}
+    <div className="border-t border-[--terapia-gray]/10 my-6" />
+
+    {/* DADOS BANCÁRIOS */}
+    <div>
+      <div className="flex items-center gap-2 mb-3">
+        <CreditCard className="w-4 h-4 text-[--terapia-red]" />
+        <span className="text-sm font-semibold text-[--terapia-gray]">Dados Bancários</span>
+      </div>
+      <div className="grid grid-cols-2 gap-3 text-sm bg-[--terapia-cream] p-4 rounded-xl">
+        <div>
+          <p className="text-[--terapia-gray]/60 text-xs uppercase tracking-wide">Agência</p>
+          <p className="font-bold text-[--terapia-gray] text-base">0352-2</p>
+        </div>
+        <div>
+          <p className="text-[--terapia-gray]/60 text-xs uppercase tracking-wide">Conta</p>
+          <p className="font-bold text-[--terapia-gray] text-base">122.563-4</p>
+        </div>
+      </div>
+    </div>
+
+    {/* MENSAGEM FINAL */}
+    <p className="mt-6 text-center font-caveat text-2xl text-[--terapia-red] italic">
+      "Sorrisos multiplicados!"
+    </p>
+    <p className="text-center text-xs text-[--terapia-gray]/70 mt-2">
+      Obrigado por fazer parte dessa história
+    </p>
+  </div>
+</div>
       </div>
     </section>
   )
