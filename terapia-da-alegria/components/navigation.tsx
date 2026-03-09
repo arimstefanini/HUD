@@ -230,8 +230,9 @@ export function Navigation() {
         {/* Background */}
         <div
           ref={menuBgRef}
-          className="menu-bg absolute inset-0 bg-[--terapia-gray]"
-          style={{ clipPath: "circle(0% at 95% 5%)" }}
+
+          className="menu-bg absolute inset-0"
+          style={{ clipPath: "circle(0% at 95% 5%)", backgroundColor: "#e44f4a" }}
         />
 
         {/* Content Container */}
