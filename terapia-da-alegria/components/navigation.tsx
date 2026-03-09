@@ -5,7 +5,7 @@ import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Menu, X } from "lucide-react"
-import { SiInstagram, SiYoutube, SiSpotify } from "react-icons/si"
+import { SiInstagram, SiYoutube, SiSpotify, SiWhatsapp } from "react-icons/si"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
@@ -19,7 +19,6 @@ const navLinks = [
   { label: "Apoie", href: "#support-section" },
 ]
 
-// Imagens flutuantes do menu (estilo Iron Hill)
 const menuImages = [
   { src: "/images/cover_page.jpg", className: "card-menu-1" },
   { src: "/images/since2003.jpg", className: "card-menu-2" },
@@ -31,52 +30,61 @@ const menuImages = [
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+
   const menuRef = useRef<HTMLDivElement>(null)
   const menuBgRef = useRef<HTMLDivElement>(null)
-  const linksRef = useRef<HTMLDivElement>(null)
   const imagesRef = useRef<HTMLDivElement>(null)
   const tlRef = useRef<gsap.core.Timeline | null>(null)
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+  if (!menuRef.current || !menuBgRef.current) return
 
-  useEffect(() => {
-    if (!menuRef.current || !menuBgRef.current) return
+  const ctx = gsap.context(() => {
 
-    // Criar timeline para animacao do menu
+    // estado inicial escondido
+    gsap.set(".menu-link", {
+      y: 80,
+      opacity: 0,
+      rotateX: -90
+    })
+
+    gsap.set(".card-menu", {
+      scale: 0,
+      opacity: 0
+    })
+
+    gsap.set(".social-icon", {
+      y: 20,
+      opacity: 0
+    })
+
     tlRef.current = gsap.timeline({ paused: true })
 
     tlRef.current
-      // Background reveal
       .to(menuBgRef.current, {
         clipPath: "circle(150% at 95% 5%)",
         duration: 0.8,
         ease: "power4.inOut",
       })
-      // Links stagger
-      .from(
+
+      .to(
         ".menu-link",
         {
-          y: 80,
-          opacity: 0,
-          rotateX: -90,
+          y: 0,
+          opacity: 1,
+          rotateX: 0,
           stagger: 0.08,
           duration: 0.6,
           ease: "power3.out",
         },
         "-=0.4"
       )
-      // Floating images
-      .from(
+
+      .to(
         ".card-menu",
         {
-          scale: 0,
-          opacity: 0,
+          scale: 1,
+          opacity: 1,
           rotation: () => gsap.utils.random(-30, 30),
           stagger: {
             each: 0.1,
@@ -87,24 +95,26 @@ export function Navigation() {
         },
         "-=0.5"
       )
-      // Social icons
-      .from(
+
+      .to(
         ".social-icon",
         {
-          y: 20,
-          opacity: 0,
+          y: 0,
+          opacity: 1,
           stagger: 0.05,
           duration: 0.3,
+          ease: "power2.out",
         },
         "-=0.3"
       )
 
-    return () => {
-      tlRef.current?.kill()
-    }
-  }, [])
+  }, menuRef)
 
-  // Floating animation para as imagens
+  return () => ctx.revert()
+
+}, [])
+
+  // floating images
   useEffect(() => {
     if (!isMenuOpen || !imagesRef.current) return
 
@@ -122,12 +132,11 @@ export function Navigation() {
         repeat: -1,
         delay: i * 0.2,
       })
+
       animations.push(anim)
     })
 
-    return () => {
-      animations.forEach((a) => a.kill())
-    }
+    return () => animations.forEach((a) => a.kill())
   }, [isMenuOpen])
 
   const toggleMenu = () => {
@@ -135,20 +144,27 @@ export function Navigation() {
 
     if (isMenuOpen) {
       tlRef.current.reverse()
-      setTimeout(() => setIsMenuOpen(false), 800)
+
+      setTimeout(() => {
+        setIsMenuOpen(false)
+      }, 800)
     } else {
       setIsMenuOpen(true)
-      setTimeout(() => tlRef.current?.play(), 50)
+
+      requestAnimationFrame(() => {
+        tlRef.current?.play()
+      })
     }
   }
 
   const scrollToSection = (href: string) => {
-    if (tlRef.current) {
-      tlRef.current.reverse()
-    }
+    if (tlRef.current) tlRef.current.reverse()
+
     setTimeout(() => {
       setIsMenuOpen(false)
+
       const element = document.querySelector(href)
+
       if (element) {
         element.scrollIntoView({ behavior: "smooth" })
       }
@@ -157,7 +173,7 @@ export function Navigation() {
 
   return (
     <>
-      {/* Navigation Bar */}
+      {/* NAVBAR */}
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
           isScrolled && !isMenuOpen
@@ -167,12 +183,9 @@ export function Navigation() {
       >
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between">
-            {/* Logo */}
             <button
               onClick={() => {
-                if (isMenuOpen) {
-                  toggleMenu()
-                }
+                if (isMenuOpen) toggleMenu()
                 window.scrollTo({ top: 0, behavior: "smooth" })
               }}
               className="flex items-center gap-2 relative z-[60]"
@@ -182,109 +195,80 @@ export function Navigation() {
                 alt="Terapia da Alegria"
                 width={48}
                 height={48}
-                className={`transition-all duration-300 ${
-                  isScrolled && !isMenuOpen ? "w-10 h-10" : "w-12 h-12"
-                }`}
               />
-              <span
-                className={`font-bold text-lg hidden sm:block transition-colors duration-300 ${
-                  isScrolled && !isMenuOpen
-                    ? "text-[--terapia-gray]"
-                    : isMenuOpen
-                    ? "text-white"
-                    : "text-white"
-                }`}
-              >
+
+              <span className="font-bold text-lg hidden sm:block text-white">
                 Terapia da Alegria
               </span>
             </button>
 
-            {/* Menu Toggle Button */}
             <button
               onClick={toggleMenu}
-              className={`relative z-[60] p-3 rounded-full transition-all duration-300 ${
-                isMenuOpen
-                  ? "bg-white/20 text-white"
-                  : isScrolled
-                  ? "bg-[--terapia-red]/10 text-[--terapia-gray] hover:bg-[--terapia-red] hover:text-white"
-                  : "bg-white/10 text-white hover:bg-white/20"
-              }`}
-              aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
+              className="relative z-[60] p-3 rounded-full bg-white/10 text-white"
             >
-              {isMenuOpen ? (
-                <X className="w-6 h-6" />
-              ) : (
-                <Menu className="w-6 h-6" />
-              )}
+              {isMenuOpen ? <X /> : <Menu />}
             </button>
           </div>
         </div>
       </nav>
 
-      {/* Fullscreen Menu (Iron Hill Style) */}
+      {/* MENU FULLSCREEN */}
       <div
         ref={menuRef}
         className={`fixed inset-0 z-40 ${
           isMenuOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
-        {/* Background */}
+        {/* BACKGROUND */}
         <div
           ref={menuBgRef}
-
-          className="menu-bg absolute inset-0"
-          style={{ clipPath: "circle(0% at 95% 5%)", backgroundColor: "#e44f4a" }}
+          className="absolute inset-0 z-0"
+          style={{
+            clipPath: "circle(0% at 95% 5%)",
+            backgroundColor: "#e44f4a",
+          }}
         />
 
-        {/* Content Container */}
-        <div className="relative z-10 h-full flex flex-col justify-center">
+        {/* CONTENT */}
+        <div className="relative z-20 h-full flex flex-col justify-center">
           <div className="container mx-auto px-4 py-20">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Links */}
-              <div ref={linksRef} className="space-y-2">
+              {/* LINKS */}
+              <div className="space-y-2">
                 {navLinks.map((link, index) => (
                   <div key={link.href} className="overflow-hidden">
                     <button
                       onClick={() => scrollToSection(link.href)}
-                      className="menu-link block text-4xl md:text-5xl lg:text-6xl font-bold text-white hover:text-[--terapia-red-light] transition-colors duration-300 py-2 text-left"
-                      style={{ transformOrigin: "left center" }}
+                      className="menu-link block text-5xl font-bold text-white py-2"
                     >
-                      <span className="text-[--terapia-red] text-lg mr-3 font-normal">
-                        0{index + 1}
-                      </span>
+                      <span className="text-lg mr-3">0{index + 1}</span>
                       {link.label}
                     </button>
                   </div>
                 ))}
               </div>
 
-              {/* Floating Images (Iron Hill style) */}
+              {/* IMAGENS */}
               <div
                 ref={imagesRef}
                 className="hidden lg:block relative h-[500px]"
               >
                 {menuImages.map((img, i) => {
-                  // Posicoes aleatorias mas distribuidas
                   const positions = [
-                    { top: "5%", left: "10%", rotate: -8, size: "w-40 h-28" },
-                    { top: "15%", right: "5%", rotate: 12, size: "w-36 h-24" },
-                    { top: "45%", left: "25%", rotate: -5, size: "w-44 h-32" },
-                    { bottom: "20%", right: "15%", rotate: 8, size: "w-38 h-26" },
-                    { bottom: "5%", left: "5%", rotate: -10, size: "w-32 h-22" },
+                    { top: "5%", left: "10%" },
+                    { top: "15%", right: "5%" },
+                    { top: "45%", left: "25%" },
+                    { bottom: "20%", right: "15%" },
+                    { bottom: "5%", left: "5%" },
                   ]
+
                   const pos = positions[i]
 
                   return (
                     <div
                       key={img.className}
-                      className={`card-menu ${img.className} absolute ${pos.size} rounded-xl overflow-hidden shadow-2xl`}
-                      style={{
-                        top: pos.top,
-                        left: pos.left,
-                        right: pos.right,
-                        bottom: pos.bottom,
-                        transform: `rotate(${pos.rotate}deg)`,
-                      }}
+                      className="card-menu absolute w-40 h-28 rounded-xl overflow-hidden shadow-2xl"
+                      style={pos}
                     >
                       <Image
                         src={img.src}
@@ -299,77 +283,52 @@ export function Navigation() {
             </div>
           </div>
 
-          {/* Bottom Section */}
-          <div className="absolute bottom-0 left-0 right-0 p-6">
-            <div className="container mx-auto px-4">
-              <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-                {/* Social Links */}
-                <div className="flex items-center gap-4">
-                  <a
-                    href="https://www.instagram.com/terapiadaalegria_mga/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon p-3 rounded-full bg-white/10 text-white hover:bg-[--terapia-red] transition-all duration-300"
-                  >
-                  </a>
-                  <a
-                    href="https://www.facebook.com/terapiadaalegria.maringa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon p-3 rounded-full bg-white/10 text-white hover:bg-[--terapia-red] transition-all duration-300"
-                  >
-                  </a>
-                  <a
-                    href="https://www.youtube.com/@terapiadaalegria3931"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="social-icon p-3 rounded-full bg-white/10 text-white hover:bg-[--terapia-red] transition-all duration-300"
-                  >
-                  </a>
-                </div> 
+          {/* SOCIAL */}
+          <div className="absolute bottom-0 left-0 right-0 p-6 z-30">
+            <div className="container mx-auto flex justify-end items-center gap-4">
+              <div className="social-icon flex flex-col text-white/90 text-sm leading-tight">
+                <span className="text-white/90 uppercase text-xs tracking-wider">
+                  Email
+                </span>
 
-                {/* Contact */}
-                <div className="flex items-center gap-4">
-                  <div className="flex flex-col text-white/90 text-sm leading-tight">
-                    <span className="text-white/60 uppercase text-xs tracking-wider">
-                      Email
-                    </span>
-
-                    <a
-                      href="mailto:contato@terapiadaalegria.org.br"
-                      className="hover:text-white transition"
-                    >
-                      contato@terapiadaalegria.org.br
-                    </a>
-                  </div>
-                  <a
-                    className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition"
-                    href="https://www.instagram.com/terapiadaalegria_mga/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <SiSpotify size={20} color="#1DB954" />
-                  </a>
-
-                  <a
-                    className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition"
-                    href="https://www.facebook.com/terapiadaalegria.maringa"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <SiInstagram size={20} color="#E4405F" />
-                  </a>
-
-                  <a
-                    className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition"
-                    href="https://www.youtube.com/@terapiadaalegria3931"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <SiYoutube size={20} color="#FF0000" />
-                  </a>
-                </div>
+                <a
+                  href="mailto:contato@terapiadaalegria.org.br"
+                  className="hover:text-white transition"
+                >
+                  contato@terapiadaalegria.org.br
+                </a>
               </div>
+
+              <a
+                href="https://wa.me/5544999615892"
+                target="_blank"
+                className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition"
+              >
+                <SiWhatsapp size={18} color="#25D366" />
+              </a>
+
+              <a
+                href="https://www.instagram.com/terapiadaalegria_mga/"
+                target="_blank"
+                className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition"
+              >
+                <SiInstagram size={18} color="#E4405F" />
+              </a>
+
+              <a
+                href="https://www.youtube.com/@terapiadaalegria3931"
+                target="_blank"
+                className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition"
+              >
+                <SiYoutube size={18} color="#FF0000" />
+              </a>
+
+              <a
+                href="#"
+                className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition"
+              >
+                <SiSpotify size={18} color="#1DB954" />
+              </a>
             </div>
           </div>
         </div>
