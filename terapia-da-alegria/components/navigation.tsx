@@ -70,7 +70,7 @@ export function Navigation() {
           duration: 0.5,
           ease: "back.out(1.7)",
         }, "-=0.5")
-        .to(".social-icon", {
+        .to(".social-icon, .social-email",  {
           y: 0,
           opacity: 1,
           stagger: 0.05,
@@ -221,17 +221,17 @@ export function Navigation() {
                       onClick={() => scrollToSection(link.href)}
                       onMouseEnter={() => highlightImage(index)}
                       onMouseLeave={() => highlightImage(null)}
-                      className="menu-link block text-5xl font-bold text-white py-2"
+                      className="menu-link block text-4xl sm:text-5xl font-bold text-white py-2"
                     >
-                      <span className="text-lg mr-3">0{index + 1}</span>
+                      <span className="text-base sm:text-lg mr-3">0{index + 1}</span>
                       {link.label}
                     </button>
                   </div>
                 ))}
               </div>
 
-              {/* IMAGENS */}
-              <div ref={imagesRef} className="hidden lg:block relative h-[80vh]">
+              {/* IMAGENS - apenas no desktop */}
+              <div ref={imagesRef} className="hidden lg:block relative h-[60vh]">
                 {menuImages.map((img, i) => {
                   const positions = [
                     { top: "0%", left: "10%" },
@@ -242,14 +242,14 @@ export function Navigation() {
                   ]
                   const pos = positions[i]
                   return (
-                    <div key={img.className} className="card-menu absolute w-40 h-28 rounded-xl overflow-hidden shadow-2xl" style={pos}>
+                    <div key={img.className} className="card-menu absolute w-36 h-24 rounded-xl overflow-hidden shadow-2xl" style={pos}>
                       <Image
                         src={img.src}
                         alt=""
                         fill
                         className="object-cover"
                         quality={100}
-                        sizes="(min-width: 1024px) 800px, 100vw"
+                        sizes="(min-width: 1024px) 600px, 100vw"
                       />
                     </div>
                   )
@@ -259,30 +259,33 @@ export function Navigation() {
           </div>
 
           {/* SOCIAL */}
-          <div className="absolute bottom-0 left-0 right-0 p-6 z-30">
-            <div className="container mx-auto flex justify-end items-center gap-4">
-              <div className="social-icon flex flex-col text-white/90 text-sm leading-tight">
-                <span className="text-white/90 uppercase text-xs tracking-wider">Email</span>
-                <a href="mailto:contato@terapiadaalegria.org.br" className="hover:text-white transition">contato@terapiadaalegria.org.br</a>
-              </div>
+<div className="absolute bottom-0 left-0 right-0 p-6 z-30 flex flex-col lg:flex-row items-start lg:items-center lg:justify-end gap-4">
+  {/* Email */}
+  <div className="social-icon">
+    <a
+      href="mailto:contato@terapiadaalegria.org.br"
+      className="text-white/90 text-sm hover:text-white transition"
+    >
+      contato@terapiadaalegria.org.br
+    </a>
+  </div>
 
-              <a href="https://wa.me/5544999615892" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
-                <SiWhatsapp size={18} color="#25D366" />
-              </a>
-
-              <a href="https://www.instagram.com/terapiadaalegria_mga/" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
-                <SiInstagram size={18} color="#E4405F" />
-              </a>
-
-              <a href="https://www.youtube.com/@terapiadaalegria3931" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
-                <SiYoutube size={18} color="#FF0000" />
-              </a>
-
-              <a href="#" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
-                <SiSpotify size={18} color="#1DB954" />
-              </a>
-            </div>
-          </div>
+  {/* Redes sociais */}
+  <div className="flex gap-4 order-2 lg:order-2">
+    <a href="https://wa.me/5544999615892" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+      <SiWhatsapp size={18} color="#25D366" />
+    </a>
+    <a href="https://www.instagram.com/terapiadaalegria_mga/" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+      <SiInstagram size={18} color="#E4405F" />
+    </a>
+    <a href="https://www.youtube.com/@terapiadaalegria3931" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+      <SiYoutube size={18} color="#FF0000" />
+    </a>
+    <a href="#" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+      <SiSpotify size={18} color="#1DB954" />
+    </a>
+  </div>
+</div>
         </div>
       </div>
     </>
