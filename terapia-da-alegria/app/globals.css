@@ -220,3 +220,49 @@
 .font-caveat {
   font-family: var(--font-caveat);
 }
+
+/* Iron Hill Style Menu */
+.menu-bg {
+  will-change: clip-path;
+}
+
+.menu-link {
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.card-menu {
+  will-change: transform, opacity;
+  transform-style: preserve-3d;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4);
+}
+
+.card-menu::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%
+  );
+  pointer-events: none;
+}
+
+/* Menu hover effects */
+.menu-link::before {
+  content: '';
+  position: absolute;
+  left: -20px;
+  top: 50%;
+  width: 0;
+  height: 3px;
+  background: var(--terapia-red);
+  transform: translateY(-50%);
+  transition: width 0.3s ease;
+}
+
+.menu-link:hover::before {
+  width: 15px;
+}
