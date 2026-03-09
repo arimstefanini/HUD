@@ -13,7 +13,7 @@ if (typeof window !== "undefined") {
 function SpotifyPlayer({ uri }: { uri: string }) {
   return (
     <iframe
-      src={`https://open.spotify.com/embed/artist/${uri}?autoplay=1&utm_source=generator&theme=0`}
+      src={`https://open.spotify.com/embed/artist/${uri}?utm_source=generator&theme=0`}
       width="100%"
       height="152"
       frameBorder="0"
@@ -32,15 +32,79 @@ export function SpotifySection() {
 
     const ctx = gsap.context(() => {
 
-      gsap.to(".spotify-bg", {
-        yPercent: -10,
-        ease: "none",
+      gsap.from(".spotify-image", {
         scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
+          trigger: ".spotify-image",
+          start: "top 85%",
+          toggleActions: "play none none reverse",
         },
+        opacity: 0,
+        y: 60,
+        scale: 0.9,
+        duration: 1,
+        ease: "power3.out",
+      })
+
+      gsap.from(".spotify-title", {
+        scrollTrigger: {
+          trigger: ".spotify-title",
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        y: 40,
+        duration: 0.8,
+        ease: "power3.out",
+      })
+
+      gsap.to(".spotify-transform-word", {
+        scrollTrigger: {
+          trigger: ".spotify-title",
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+      })
+
+      gsap.from(".spotify-text p", {
+        scrollTrigger: {
+          trigger: ".spotify-text",
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        y: 30,
+        stagger: 0.2,
+        duration: 0.6,
+        ease: "power3.out",
+      })
+
+      gsap.from(".spotify-player", {
+        scrollTrigger: {
+          trigger: ".spotify-player",
+          start: "top 85%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        y: 30,
+        duration: 0.6,
+        ease: "power3.out",
+      })
+
+      gsap.from(".spotify-feature", {
+        scrollTrigger: {
+          trigger: ".spotify-feature",
+          start: "top 90%",
+          toggleActions: "play none none reverse",
+        },
+        opacity: 0,
+        y: 20,
+        stagger: 0.15,
+        duration: 0.5,
+        ease: "power3.out",
       })
 
     }, sectionRef)
@@ -51,101 +115,72 @@ export function SpotifySection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-[#37c4a2] md:bg-transparent"
+      className="relative min-h-screen overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/img_spotify.jpg')" }}
     >
 
-    {/* Background */}
-    <div className="absolute inset-0">
-      <Image
-        src="/images/img_spotify.jpg"
-        alt="Terapia da Alegria no Spotify"
-        fill
-        className="spotify-bg object-cover object-center md:scale-110"
-        sizes="100vw"
-        priority
-      />
-
       <div className="absolute inset-0 bg-gradient-to-t from-[#1DB954]/80 via-[#1DB954]/30 to-transparent" />
-    </div>
 
-      {/* FLOATING NOTES (somente desktop) */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden hidden md:block">
-        {[...Array(5)].map((_, i) => (
-          <div
-            key={i}
-            className="music-note absolute"
-            style={{
-              left: `${15 + i * 18}%`,
-              top: `${20 + (i % 3) * 25}%`,
-            }}
-          >
-            <Music2 className="w-10 h-10 text-white/20" />
-          </div>
-        ))}
-      </div>
+      <div className="relative z-10 min-h-screen flex items-center md:items-end pb-16 md:pb-24">
 
-      {/* CONTENT */}
-      <div className="relative z-10 min-h-screen flex items-center md:items-end pb-10 md:pb-24">
-
-        <div className="container mx-auto px-6 flex justify-center md:justify-end">
+        <div className="max-w-7xl mx-auto px-6 w-full flex justify-center md:justify-end">
 
           <div className="max-w-xl text-center md:text-right">
 
-            {/* TITLE + IMAGE */}
-            <div className="flex flex-col items-center md:items-end gap-1 mb-6">
+            <div className="flex flex-col items-center md:items-end gap-2 mb-6">
 
               <Image
                 src="/images/esc_spotify.png"
                 alt="Spotify Terapia da Alegria"
                 width={420}
                 height={120}
-                className="w-[220px] md:w-[320px] lg:w-[420px] object-contain"
+                className="spotify-image w-[220px] md:w-[320px] lg:w-[420px]"
               />
 
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-black md:text-white leading-tight">
+              <h2 className="spotify-title text-2xl md:text-3xl lg:text-4xl font-semibold text-black md:text-white">
                 Música que{" "}
-                <span className="font-caveat text-[#e44f4a] text-3xl md:text-4xl lg:text-5xl">
+                <span className="spotify-transform-word font-caveat text-[#e44f4a] text-3xl md:text-4xl lg:text-5xl opacity-0">
                   transforma
                 </span>
               </h2>
 
             </div>
 
-            {/* TEXT */}
-            <div className="space-y-4 mb-8">
+            <div className="spotify-text space-y-4 mb-8">
 
-              <p className="text-base md:text-lg text-black/90 md:text-white/90 leading-relaxed">
+              <p className="text-base md:text-lg text-black/90 md:text-black/90">
                 Em 2022, a trupe se arriscou nos estúdios e lançou seu
-                <strong> primeiro álbum musical</strong> nas principais
-                plataformas digitais.
+                <strong> primeiro álbum musical</strong>.
               </p>
 
-              <p className="text-base md:text-lg text-black/90 md:text-white/90 leading-relaxed">
+              <p className="text-base md:text-lg text-black/90 md:text-black/90">
                 Um lindo trabalho recheado de músicas autorais.
               </p>
 
-              <p className="text-lg md:text-xl font-semibold text-black md:text-white">
+              <p className="text-lg md:text-xl font-semibold text-black md:text-black">
                 E agora, em 2026, vem aí o segundo álbum...
               </p>
 
             </div>
 
-            {/* PLAYER */}
-            <div className="mb-8">
+            <div className="spotify-player mb-8">
               <SpotifyPlayer uri="4VMpU6tqRctpeVi3L06lX4" />
             </div>
 
-            {/* FEATURES */}
             <div className="flex flex-wrap gap-3 justify-center md:justify-end">
 
-              <div className="flex items-center gap-2 bg-white/20 md:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-                <Music2 className="w-4 h-4 text-white md:text-white" />
-                <span className="text-sm text-black md:text-white">Músicas autorais</span>
+              <div className="spotify-feature flex items-center gap-2 bg-white/20 md:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                <Music2 className="w-4 h-4 text-white" />
+                <span className="text-sm text-black md:text-white">
+                  Músicas autorais
+                </span>
               </div>
 
-              <div className="flex items-center gap-2 bg-white/20 md:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
-                <Headphones className="w-4 h-4 text-white md:text-white" />
-                <span className="text-sm text-black md:text-white">2 álbuns</span>
+              <div className="spotify-feature flex items-center gap-2 bg-white/20 md:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
+                <Headphones className="w-4 h-4 text-white" />
+                <span className="text-sm text-black md:text-white">
+                  2 álbuns
+                </span>
               </div>
 
             </div>

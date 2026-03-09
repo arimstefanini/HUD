@@ -19,56 +19,47 @@ if (typeof window !== "undefined") {
 
 export default function Home() {
   useEffect(() => {
-    // GSAP ScrollTrigger refresh on load
-    const handleLoad = () => {
-      ScrollTrigger.refresh()
-    }
 
-    // Refresh ScrollTrigger after images load
-    window.addEventListener("load", handleLoad)
+    const refresh = () => ScrollTrigger.refresh()
 
-    // Also refresh after a short delay to ensure all content is rendered
+    window.addEventListener("load", refresh)
+
     const timeout = setTimeout(() => {
       ScrollTrigger.refresh()
-    }, 500)
+    }, 300)
 
     return () => {
-      window.removeEventListener("load", handleLoad)
+      window.removeEventListener("load", refresh)
       clearTimeout(timeout)
     }
+
   }, [])
 
   return (
-    <main className="relative">
-      {/* Navigation */}
+    <main className="relative overflow-hidden">
+
       <Navigation />
 
-      {/* Hero Section */}
       <HeroSection />
 
-      {/* About Section */}
       <AboutSection />
 
-      {/* Since 2003 Section */}
-      <div id="since-section">
+      <section id="since-section">
         <Since2003Section />
-      </div>
+      </section>
 
-      {/* Impact Section */}
       <ImpactSection />
 
-      {/* Spotify Section */}
-      <div id="spotify-section">
+      <section id="spotify-section">
         <SpotifySection />
-      </div>
+      </section>
 
-      {/* Support Section */}
-      <div id="support-section">
+      <section id="support-section">
         <SupportSection />
-      </div>
+      </section>
 
-      {/* Final CTA Section */}
       <CTASection />
+
     </main>
   )
 }

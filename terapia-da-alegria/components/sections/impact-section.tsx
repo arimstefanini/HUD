@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -17,9 +16,11 @@ export function ImpactSection() {
     if (!sectionRef.current) return
 
     const ctx = gsap.context(() => {
-      // Image parallax
-      gsap.to(".impact-image", {
-        yPercent: -15,
+
+      /* PARALLAX BACKGROUND */
+
+      gsap.to(sectionRef.current, {
+        backgroundPosition: "50% 30%",
         ease: "none",
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -29,26 +30,33 @@ export function ImpactSection() {
         },
       })
 
-      // Content reveal
+      /* TIMELINE */
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 60%",
+          start: "top 65%",
           toggleActions: "play none none reverse",
         },
       })
 
-      // Counter animation
-      tl.to({ val: 0 }, {
-        val: 10000,
+      /* COUNTER */
+
+      const counter = { value: 0 }
+
+      tl.to(counter, {
+        value: 10000,
         duration: 2.5,
         ease: "power2.out",
-        onUpdate: function () {
+        onUpdate: () => {
           if (counterRef.current) {
-            counterRef.current.textContent = Math.floor(this.targets()[0].val).toLocaleString("pt-BR")
+            counterRef.current.textContent =
+              Math.floor(counter.value).toLocaleString("pt-BR")
           }
-        }
+        },
       })
+
+      /* TEXT ANIMATIONS */
 
       tl.from(
         ".impact-title",
@@ -83,7 +91,8 @@ export function ImpactSection() {
         0.5
       )
 
-      // Floating smiles animation
+      /* FLOATING SMILES */
+
       document.querySelectorAll(".floating-smile").forEach((smile, index) => {
         gsap.to(smile, {
           y: -15 - index * 5,
@@ -96,6 +105,7 @@ export function ImpactSection() {
           delay: index * 0.4,
         })
       })
+
     }, sectionRef)
 
     return () => ctx.revert()
@@ -104,78 +114,107 @@ export function ImpactSection() {
   return (
     <section
       ref={sectionRef}
-      className="scroll-section relative min-h-screen overflow-hidden"
+      className="relative min-h-screen w-full flex items-center overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/img_more_than.jpg')" }}
     >
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/img_more_than.jpg"
-          alt="Mais de 10.000 sorrisos por ano"
-          fill
-          className="impact-image object-cover object-center scale-110"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/50 to-transparent md:from-black/70 md:via-black/40" />
-      </div>
 
-      {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center">
-        <div className="container mx-auto px-4 py-20">
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/50 to-transparent md:from-black/70 md:via-black/40" />
+
+      {/* CONTENT */}
+      <div className="relative z-10 w-full">
+
+        <div className="max-w-6xl mx-auto px-6">
+
           <div className="max-w-xl ml-auto text-right">
-            {/* Counter */}
-            <div className="flex items-baseline justify-end gap-4 mb-6">
-              <div className="flex items-baseline justify-end mb-6 relative">
-                {/* de em branco, fonte caveat */}
-                <div className="flex items-baseline justify-end gap-0 mb-6">
-                  <span className="text-[6rem] md:text-[8rem] lg:text-[10rem] text-[#e44f4a] font-caveat -ml-2">+</span>
-                  <span className="text-[6rem] md:text-[8rem] lg:text-[10rem] text-white/80 font-caveat">de</span>
-                </div>
+
+            {/* COUNTER */}
+            <div className="flex items-end justify-end gap-2 mb-6 flex-wrap">
+
+              <div className="flex items-end gap-1">
+
+                <span className="text-[clamp(3rem,10vw,9rem)] text-[#e44f4a] font-caveat leading-none">
+                  +
+                </span>
+
+                <span className="text-[clamp(3rem,10vw,9rem)] text-white/80 font-caveat leading-none">
+                  de
+                </span>
+
               </div>
-            <span
-              ref={counterRef}
-              className="impact-counter block text-[6rem] md:text-[8rem] lg:text-[10rem] font-bold text-[--terapia-red-light]"
-            >
-              0
-            </span>
+
+              <span
+                ref={counterRef}
+                className="impact-counter text-[clamp(3rem,10vw,9rem)] font-bold text-[#ff8a85] leading-none"
+              >
+                0
+              </span>
+
             </div>
 
-            {/* Title */}
-            <h2 className="impact-title text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+            {/* TITLE */}
+            <h2 className="impact-title text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
               sorrisos
             </h2>
 
-            {/* Subtitle */}
-            <p className="impact-subtitle text-2xl md:text-3xl font-caveat text-[--terapia-red-light] mb-6">
+            {/* SUBTITLE */}
+            <p className="impact-subtitle text-xl md:text-3xl font-caveat text-[#ff8a85] mb-6">
               por ano!
             </p>
 
-            {/* Description */}
+            {/* DESCRIPTION */}
             <p className="impact-description text-base md:text-lg text-white/90 leading-relaxed max-w-md ml-auto">
               Anualmente, colecionamos mais de 10.000 encontros e sorrisos nas
               unidades que atendemos. Cada visita é uma oportunidade de
               transformar o dia de alguém.
             </p>
 
-            {/* Floating decorative smiles */}
-            <div className="relative mt-8 h-16 flex justify-end gap-4">
+            {/* FLOATING SMILES */}
+            <div className="relative mt-10 h-16 flex justify-end gap-4">
+
               {[...Array(3)].map((_, i) => (
                 <div
                   key={i}
-                  className="floating-smile w-8 h-8 md:w-10 md:h-10 bg-[--terapia-red]/20 backdrop-blur-sm rounded-full flex items-center justify-center"
+                  className="floating-smile w-8 h-8 md:w-10 md:h-10 bg-[#e44f4a]/20 backdrop-blur-sm rounded-full flex items-center justify-center"
                 >
+
                   <svg
                     viewBox="0 0 24 24"
                     className="w-5 h-5 md:w-6 md:h-6 text-white"
                     fill="currentColor"
                   >
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S16.33 8 15.5 8 14 8.67 14 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S9.33 8 8.5 8 7 8.67 7 9.5 7.67 11 8.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z" />
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 
+                    10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 
+                    0-8-3.59-8-8s3.59-8 8-8 
+                    8 3.59 8 8-3.59 8-8 
+                    8zm3.5-9c.83 0 1.5-.67 
+                    1.5-1.5S16.33 8 
+                    15.5 8 14 8.67 
+                    14 9.5s.67 1.5 
+                    1.5 1.5zm-7 
+                    0c.83 0 1.5-.67 
+                    1.5-1.5S9.33 8 
+                    8.5 8 7 8.67 
+                    7 9.5 7.67 11 
+                    8.5 11zm3.5 
+                    6.5c2.33 0 
+                    4.31-1.46 
+                    5.11-3.5H6.89c.8 
+                    2.04 2.78 3.5 
+                    5.11 3.5z" />
                   </svg>
+
                 </div>
               ))}
+
             </div>
+
           </div>
+
         </div>
+
       </div>
+
     </section>
   )
 }

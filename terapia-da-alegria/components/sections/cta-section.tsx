@@ -101,7 +101,7 @@ export function CTASection() {
             {/* Title */}
             <h2 className="cta-title text-3xl md:text-4xl lg:text-5xl font-bold text-[--terapia-gray] mb-4 text-left">
               Faça parte dessa{" "}
-              <span className="inline-block font-caveat text-[--terapia-red] text-4xl md:text-5xl lg:text-6xl">
+              <span className="inline-block font-caveat text-[#e44f4a] text-[--terapia-red] text-4xl md:text-5xl lg:text-6xl">
                 história
               </span>
             </h2>
@@ -115,7 +115,7 @@ export function CTASection() {
 
           <div className="text-center">
             {/* Logo */}
-            <div className="cta-logo">
+            <div>
               <video
                 src="/images/agorasimm.mp4"
                 className="mx-auto rounded-full"

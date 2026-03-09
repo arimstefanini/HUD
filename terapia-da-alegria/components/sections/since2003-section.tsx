@@ -16,19 +16,26 @@ export function Since2003Section() {
     if (!sectionRef.current) return
 
     const ctx = gsap.context(() => {
-      // Image parallax
-      gsap.to(".since-image", {
-        yPercent: -20,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
+
+      const mm = gsap.matchMedia()
+
+      /* PARALLAX BACKGROUND */
+
+      mm.add("(min-width: 768px)", () => {
+        gsap.to(sectionRef.current, {
+          backgroundPosition: "50% 30%",
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        })
       })
 
-      // Content reveal
+      /* TIMELINE ENTRADA */
+
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -66,22 +73,25 @@ export function Since2003Section() {
           "-=0.3"
         )
 
-      // Counter animation
-      const counterTrigger = {
+      /* CONTADOR */
+
+      const counter = { value: 0 }
+      const yearsActive = new Date().getFullYear() - 2003
+
+      gsap.to(counter, {
+        value: yearsActive,
+        duration: 2,
+        ease: "power2.out",
         scrollTrigger: {
           trigger: ".years-counter",
           start: "top 80%",
-          toggleActions: "play none none reverse",
         },
-      }
-
-      gsap.from(".years-number", {
-        textContent: 0,
-        duration: 2,
-        ease: "power2.out",
-        snap: { textContent: 1 },
-        ...counterTrigger,
+        onUpdate: () => {
+          const el = document.querySelector(".years-number")
+          if (el) el.textContent = Math.floor(counter.value).toString()
+        },
       })
+
     }, sectionRef)
 
     return () => ctx.revert()
@@ -93,36 +103,33 @@ export function Since2003Section() {
   return (
     <section
       ref={sectionRef}
-      className="scroll-section relative min-h-screen overflow-hidden"
+      className="relative min-h-screen w-full flex items-center overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: "url('/images/img_since.jpg')" }}
     >
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <Image
-          src="/images/img_since.jpg"
-          alt="Desde 2003 - Transformando o ambiente hospitalar"
-          fill
-          className="since-image object-cover object-center scale-110"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent md:from-black/60 md:via-black/30" />
-      </div>
 
-      {/* Content */}
-      <div className="relative z-10 min-h-screen flex items-center">
-        <div className="container mx-auto px-4 py-20">
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent md:from-black/60 md:via-black/30" />
+
+      {/* CONTENT */}
+      <div className="relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-6 py-24 md:py-32">
+
           <div className="max-w-xl">
-            {/* Badge */}
-            <div className="since-badge inline-flex items-center gap-2 bg-[--terapia-red] text-white px-4 py-2 rounded-full mb-6">
-                            <Image
-                              src="/images/esc_desde.png"
-                              alt="Spotify Terapia da Alegria"
-                              width={420}
-                              height={120}
-                              className="w-[220px] md:w-[320px] lg:w-[420px] object-contain"
-                            />
+
+            {/* BADGE */}
+            <div className="since-badge inline-flex items-center gap-2 mb-6">
+              <Image
+                src="/images/esc_desde.png"
+                alt="Desde 2003"
+                width={420}
+                height={120}
+                className="w-[220px] md:w-[320px] lg:w-[420px] object-contain"
+              />
             </div>
 
-            <h2 className="since-title text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight text-black">
+            {/* TITLE */}
+            <h2 className="since-title text-4xl md:text-5xl lg:text-6xl mb-6 leading-tight text-white">
+
               <span className="font-bold text-[#e44f4a]">
                 Transformando
               </span>{" "}
@@ -130,47 +137,63 @@ export function Since2003Section() {
               <span className="font-caveat font-bold text-[#e44f4a] text-[1.15em]">
                 hospitalar
               </span>
+
             </h2>
 
-            {/* Text */}
+            {/* TEXT */}
             <div className="space-y-4 mb-8">
+
               <p className="since-text text-base md:text-lg text-white/90 leading-relaxed">
                 Nosso trabalho se resume em visitas semanais em hospitais na
                 cidade de <strong>Maringá, Paraná</strong>.
               </p>
+
               <p className="since-text text-base md:text-lg text-white/90 leading-relaxed">
                 Atendemos o Hospital Municipal desde 2003 e o Hospital da
                 Criança desde 2023.
               </p>
+
               <p className="since-text text-base md:text-lg text-white/90 leading-relaxed">
                 A Prefeitura do Município de Maringá e a Câmara dos Vereadores
                 reconheceram a Associação Terapia da Alegria com o título de{" "}
-                <strong className="text-[--terapia-red-light]">
+                <strong className="text-[#ff8a85]">
                   Utilidade Pública
                 </strong>{" "}
                 em 2018.
               </p>
+
             </div>
 
-            {/* Years Counter */}
-            <div className="years-counter flex items-center gap-4 bg-white/10 backdrop-blur-sm rounded-2xl p-6 w-fit">
+            {/* COUNTER */}
+            <div className="years-counter flex items-center gap-6 bg-white/10 backdrop-blur-md rounded-2xl p-6 w-fit">
+
               <div className="text-center">
-                <span className="years-number text-5xl md:text-6xl font-bold text-[--terapia-red-light]">
+                <span className="years-number text-5xl md:text-6xl font-bold text-[#ff8a85]">
                   {yearsActive}
                 </span>
-                <p className="text-white/80 text-sm mt-1">anos de alegria</p>
+                <p className="text-white/80 text-sm mt-1">
+                  anos de alegria
+                </p>
               </div>
+
               <div className="w-px h-16 bg-white/30" />
+
               <div className="text-center">
                 <span className="text-5xl md:text-6xl font-bold text-white">
                   2
                 </span>
-                <p className="text-white/80 text-sm mt-1">hospitais</p>
+                <p className="text-white/80 text-sm mt-1">
+                  hospitais
+                </p>
               </div>
+
             </div>
+
           </div>
+
         </div>
       </div>
+
     </section>
   )
 }
