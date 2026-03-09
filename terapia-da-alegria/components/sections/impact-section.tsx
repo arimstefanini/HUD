@@ -124,15 +124,19 @@ export function ImpactSection() {
           <div className="max-w-xl ml-auto text-right">
             {/* Counter */}
             <div className="flex items-baseline justify-end gap-4 mb-6">
-              <span className="text-xl md:text-2xl text-white/80 font-medium">
-                + de
-              </span>
-              <span
-                ref={counterRef}
-                className="impact-counter text-6xl md:text-8xl lg:text-9xl font-bold text-[--terapia-red-light] block"
-              >
-                0
-              </span>
+              <div className="flex items-baseline justify-end mb-6 relative">
+                {/* de em branco, fonte caveat */}
+                <div className="flex items-baseline justify-end gap-0 mb-6">
+                  <span className="text-[6rem] md:text-[8rem] lg:text-[10rem] text-[#e44f4a] font-caveat -ml-2">+</span>
+                  <span className="text-[6rem] md:text-[8rem] lg:text-[10rem] text-white/80 font-caveat">de</span>
+                </div>
+              </div>
+            <span
+              ref={counterRef}
+              className="impact-counter block text-[6rem] md:text-[8rem] lg:text-[10rem] font-bold text-[--terapia-red-light]"
+            >
+              0
+            </span>
             </div>
 
             {/* Title */}
