@@ -101,7 +101,9 @@ export function CTASection() {
             {/* Title */}
             <h2 className="cta-title text-3xl md:text-4xl lg:text-5xl font-bold text-[--terapia-gray] mb-4 text-left">
               Faça parte dessa{" "}
-              <span className="text-[--terapia-red]">história</span>
+              <span className="inline-block font-caveat text-[--terapia-red] text-4xl md:text-5xl lg:text-6xl">
+                história
+              </span>
             </h2>
 
             {/* Text */}

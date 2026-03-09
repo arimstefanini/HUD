@@ -119,7 +119,9 @@ export function Since2003Section() {
             {/* Title */}
             <h2 className="since-title text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight">
               Transformando o{" "}
-              <span className="text-[--terapia-red-light]">ambiente hospitalar</span>
+              <span className="inline-block font-caveat text-[--terapia-red-light] text-5xl md:text-6xl lg:text-7xl">
+                ambiente hospitalar
+              </span>
             </h2>
 
             {/* Text */}

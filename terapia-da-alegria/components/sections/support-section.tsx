@@ -135,13 +135,15 @@ export function SupportSection() {
         {/* HEADER */}
         <div className="flex flex-col items-end text-right mb-16">
           
-          <span className="support-subtitle inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-red-500/20 text-red-300 font-medium text-sm mb-4">
+          <span className="support-subtitle inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[--terapia-red]/20 text-[--terapia-red] font-medium text-sm mb-4">
             Seja um transformador <Heart className="w-4 h-4 fill-current floating-heart" />
           </span>
 
           <h2 className="support-title text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
             Sua ajuda faz o <br />
-            <span className="text-[#e44f4a]">sorriso acontecer.</span>
+            <span className="inline-block font-caveat text-[#e44f4a] text-5xl md:text-7xl">
+              sorriso acontecer.
+            </span>
           </h2>
 
           <p className="support-text text-lg text-white/80 max-w-lg">

@@ -167,10 +167,7 @@ export function HeroSection() {
           <span className="inline-block">Alegria</span>
         </h1>
 
-        {/* Subtitle */}
-        <p className="hero-subtitle text-lg md:text-xl lg:text-2xl text-white/90 max-w-2xl mx-auto mb-8 md:mb-10 leading-relaxed px-4">
-          Levando sorrisos e bem-estar aos hospitais desde 2003
-        </p>
+
 
         {/* CTA Button */}
         <button
