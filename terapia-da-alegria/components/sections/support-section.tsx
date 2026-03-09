@@ -105,7 +105,7 @@ export function SupportSection() {
       </div>
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-transparent" />
+      <div className="absolute inset-0 bg-black/10" />
 
       {/* CONTENT */}
       <div className="relative z-10 w-full">
