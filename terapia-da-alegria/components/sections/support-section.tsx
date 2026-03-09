@@ -115,7 +115,7 @@ export function SupportSection() {
           <div className="w-full max-w-xl text-right space-y-8">
 
             {/* TEXTO */}
-            <div className="flex flex-col items-end">
+            <div className="flex flex-col items-end mb-2">
 
               <span className="support-subtitle inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[--terapia-red]/20 text-[--terapia-red] font-medium text-lg md:text-2xl mb-3">
                 Seja um transformador
@@ -134,7 +134,7 @@ export function SupportSection() {
             {/* CARD */}
             <div className="flex justify-end">
 
-              <div className="support-card w-full max-w-md bg-white rounded-3xl p-6 shadow-xl">
+              <div className="support-card w-full max-w-sm bg-white rounded-3xl p-4 shadow-xl">
 
                 {/* PIX */}
                 <div className="mb-5">
@@ -153,7 +153,7 @@ export function SupportSection() {
 
                   <button
                     onClick={copyToClipboard}
-                    className="w-full flex items-center justify-between bg-[--terapia-red]/5 hover:bg-[--terapia-red]/10 border border-[--terapia-red]/20 p-3 rounded-xl font-mono text-xs md:text-sm text-[--terapia-gray]"
+                    className="w-full flex items-center justify-between bg-[--terapia-red]/5 hover:bg-[--terapia-red]/10 border border-[--terapia-red]/20 p-3 rounded-xl font-bold text-xs md:text-sm text-[--terapia-gray]"
                   >
                     <span className="truncate">{pixKey}</span>
 
