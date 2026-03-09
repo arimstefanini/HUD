@@ -31,17 +31,20 @@ export function SupportSection() {
 
     const ctx = gsap.context(() => {
 
-      /* PARALLAX BACKGROUND */
-      gsap.to(".support-bg", {
-        yPercent: -10,
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      })
+/* PARALLAX BACKGROUND */
+gsap.fromTo(".support-bg", 
+  { yPercent: 0 }, // Começa na posição original
+  {
+    yPercent: -15, // Sobe 15%
+    ease: "none",
+    scrollTrigger: {
+      trigger: sectionRef.current,
+      start: "top bottom",
+      end: "bottom top",
+      scrub: true,
+    },
+  }
+)
 
       /* TIMELINE PRINCIPAL */
       const tl = gsap.timeline({
@@ -98,7 +101,7 @@ export function SupportSection() {
           src="/images/img_suport.jpg"
           alt="Seja um apoiador mensal"
           fill
-          className="support-bg object-cover object-center scale-110"
+          className="support-bg object-cover object-center scale-125"
           sizes="100vw"
           priority
         />

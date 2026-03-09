@@ -19,6 +19,8 @@ if (typeof window !== "undefined") {
 
 export default function Home() {
   useEffect(() => {
+    // Scroll to top on page load/refresh
+    window.scrollTo({ top: 0, behavior: 'smooth' })
 
     const refresh = () => ScrollTrigger.refresh()
 
