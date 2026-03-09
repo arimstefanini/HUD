@@ -5,6 +5,7 @@ import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Menu, X } from "lucide-react"
+import { SiInstagram, SiYoutube, SiSpotify } from "react-icons/si"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
@@ -310,7 +311,6 @@ export function Navigation() {
                     rel="noopener noreferrer"
                     className="social-icon p-3 rounded-full bg-white/10 text-white hover:bg-[--terapia-red] transition-all duration-300"
                   >
-                    {/*<Instagram className="w-5 h-5" />*/}
                   </a>
                   <a
                     href="https://www.facebook.com/terapiadaalegria.maringa"
@@ -318,7 +318,6 @@ export function Navigation() {
                     rel="noopener noreferrer"
                     className="social-icon p-3 rounded-full bg-white/10 text-white hover:bg-[--terapia-red] transition-all duration-300"
                   >
-                    {/*<Facebook className="w-5 h-5" />*/}
                   </a>
                   <a
                     href="https://www.youtube.com/@terapiadaalegria3931"
@@ -326,14 +325,50 @@ export function Navigation() {
                     rel="noopener noreferrer"
                     className="social-icon p-3 rounded-full bg-white/10 text-white hover:bg-[--terapia-red] transition-all duration-300"
                   >
-                    {/*<Youtube className="w-5 h-5" />*/}
                   </a>
                 </div> 
 
                 {/* Contact */}
-                <p className="social-icon text-white/60 text-sm">
-                  contato@terapiadaalegria.org.br
-                </p>
+                <div className="flex items-center gap-4">
+                  <div className="flex flex-col text-white/90 text-sm leading-tight">
+                    <span className="text-white/60 uppercase text-xs tracking-wider">
+                      Email
+                    </span>
+
+                    <a
+                      href="mailto:contato@terapiadaalegria.org.br"
+                      className="hover:text-white transition"
+                    >
+                      contato@terapiadaalegria.org.br
+                    </a>
+                  </div>
+                  <a
+                    className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition"
+                    href="https://www.instagram.com/terapiadaalegria_mga/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <SiSpotify size={20} color="#1DB954" />
+                  </a>
+
+                  <a
+                    className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition"
+                    href="https://www.facebook.com/terapiadaalegria.maringa"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <SiInstagram size={20} color="#E4405F" />
+                  </a>
+
+                  <a
+                    className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition"
+                    href="https://www.youtube.com/@terapiadaalegria3931"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <SiYoutube size={20} color="#FF0000" />
+                  </a>
+                </div>
               </div>
             </div>
           </div>

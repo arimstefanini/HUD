@@ -156,20 +156,7 @@ export function HeroSection() {
         ref={contentRef}
         className="hero-content relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center"
       >
-        {/* Logo */}
-        <div
-          ref={logoRef}
-          className="hero-logo mb-6 md:mb-8 floating-element"
-        >
-          <Image
-            src="/images/logo_official.png"
-            alt="Terapia da Alegria Logo"
-            width={180}
-            height={180}
-            className="w-32 h-32 md:w-44 md:h-44 lg:w-52 lg:h-52 drop-shadow-2xl"
-            priority
-          />
-        </div>
+
 
         {/* Title */}
         <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 overflow-hidden">
