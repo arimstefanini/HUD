@@ -119,7 +119,7 @@ export function SpotifySection() {
       style={{ backgroundImage: "url('/images/img_spotify.jpg')" }}
     >
 
-      <div className="absolute inset-0 bg-gradient-to-t from-[#1DB954]/80 via-[#1DB954]/30 to-transparent" />
+      <div className="absolute" />
 
       <div className="relative z-10 min-h-screen flex items-center md:items-end pb-16 md:pb-24">
 
