@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
+import Image from "next/image"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Heart, Music, Smile } from "lucide-react"
 
@@ -77,9 +78,41 @@ export function AboutSection() {
     <section
       ref={sectionRef}
       id="about-section"
-      className="scroll-section bg-[--terapia-cream] py-20 md:py-32"
-    >
-      <div className="container mx-auto px-4 max-w-5xl">
+      className="scroll-section relative isolate overflow-hidden bg-[--terapia-cream] py-20 md:py-32"
+      aria-labelledby="about-heading"
+      >
+      
+      {/* Decorative background imagery in zig-zag composition */}
+      <div
+        className="pointer-events-none absolute inset-0 z-0"
+        aria-hidden="true"
+      >
+{/* 1. Esquerda Superior */}
+<div className="absolute left-[-6.5rem] top-4 h-44 w-44 sm:left-[-4rem] sm:top-10 sm:h-60 sm:w-60 md:left-[-2.5rem] md:top-16 md:h-72 md:w-72 lg:h-80 lg:w-80 xl:left-[-1rem]">
+    <Image src="/images/24.png" alt="" fill sizes="320px" className="rounded-2xl object-cover" />
+  </div>
+
+  {/* 2. Direita - Logo abaixo da primeira */}
+<div className="absolute right-[-5rem] top-[15%] h-40 w-40 sm:h-52 sm:w-52 md:h-64 md:w-64 lg:right-[2%]">
+    <Image src="/images/12.png" alt="" fill sizes="280px" className="rounded-2xl object-cover" />
+  </div>
+
+  {/* 3. Esquerda - Meio */}
+<div className="absolute left-[-4rem] top-[30%] h-48 w-48 md:h-60 md:w-60 lg:left-[1%]">
+    <Image src="/images/20.png" alt="" fill sizes="280px" className="rounded-2xl object-cover" />
+  </div>
+
+
+</div>
+
+      {/* Screen reader descriptions for decorative context */}
+      <div className="sr-only" role="note" aria-label="Descrição das imagens de fundo da seção sobre nós">
+        Imagem superior esquerda: artistas da Terapia da Alegria em atuação com paciente no hospital.
+        Imagem central direita: interação lúdica com criança e familiar no ambiente hospitalar.
+        Imagem inferior esquerda: momento musical e afetivo de palhaçaria hospitalar.
+      </div>
+
+      <div className="container relative z-10 mx-auto max-w-5xl px-4">
         {/* Quote */}
         <blockquote className="about-quote text-center mb-16 md:mb-24">
           <p className="text-2xl md:text-4xl lg:text-5xl font-caveat text-[--terapia-gray] leading-relaxed">
@@ -122,7 +155,7 @@ export function AboutSection() {
 
         {/* Features */}
         <div className="about-features grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          <div className="about-feature bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div className="about-feature bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="feature-icon inline-flex items-center justify-center w-16 h-16 bg-[--terapia-red]/10 rounded-full mb-4">
               <Smile className="w-8 h-8 text-[--terapia-red]" />
             </div>
@@ -134,7 +167,7 @@ export function AboutSection() {
             </p>
           </div>
 
-          <div className="about-feature bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+        <div className="about-feature bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="feature-icon inline-flex items-center justify-center w-16 h-16 bg-[--terapia-teal]/20 rounded-full mb-4">
               <Heart className="w-8 h-8 text-[--terapia-teal]" />
             </div>
@@ -146,7 +179,7 @@ export function AboutSection() {
             </p>
           </div>
 
-          <div className="about-feature bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <div className="about-feature bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="feature-icon inline-flex items-center justify-center w-16 h-16 bg-[--terapia-red]/10 rounded-full mb-4">
               <Music className="w-8 h-8 text-[--terapia-red]" />
             </div>
