@@ -152,9 +152,6 @@ gsap.fromTo(".support-bg",
             <div className="flex justify-end">
 
               <div className="support-card w-full max-w-md rounded-3xl border border-[#8c1d1a]/20 bg-white/98 p-6 text-left shadow-[0_24px_55px_rgba(0,0,0,0.38)] backdrop-blur-sm md:p-7">
-                <p className="mb-2 inline-flex rounded-full bg-[#8c1d1a]/10 px-3 py-1 text-sm font-semibold tracking-wide text-[#8c1d1a] md:text-base">
-                  Ajude agora
-                </p>
                 <h3 className="mb-2 text-2xl font-extrabold leading-tight text-[#1d1d1d] md:text-3xl">
                   Faça sua contribuição em segundos
                 </h3>

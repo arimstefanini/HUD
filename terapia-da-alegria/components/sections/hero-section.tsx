@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -11,7 +10,6 @@ if (typeof window !== "undefined") {
 
 export function HeroSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const logoRef = useRef<HTMLDivElement>(null)
   const contentRef = useRef<HTMLDivElement>(null)
   const bgRef = useRef<HTMLDivElement>(null)
 
@@ -105,7 +103,7 @@ export function HeroSection() {
 
           gsap.to(".hero-content", {
             y: -progress * 150,
-            opacity: 1 - progress,
+            opacity: Math.max(0.25, 1 - progress * 0.85),
             duration: 0.1,
             overwrite: "auto",
           })
@@ -138,7 +136,7 @@ export function HeroSection() {
       {/* Background Image */}
       <div
         ref={bgRef}
-        className="hero-bg absolute inset-0 gpu-accelerated"
+        className="hero-bg absolute  z-0  inset-0 gpu-accelerated"
       >
         <picture className="absolute inset-0 block h-full w-full">
           <source media="(max-width: 767px)" srcSet="/images/cover_page_cel.jpg" />
@@ -151,24 +149,15 @@ export function HeroSection() {
             decoding="async"
           />
         </picture>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/55" />
+        <div className="absolute inset-0 z-10  bg-gradient-to-b from-black/30 via-black/10 to-black/55" />
       </div>
 
       {/* Content */}
       <div
         ref={contentRef}
-        className="hero-content relative z-10 flex min-h-screen flex-col items-center justify-end px-4 pb-10 text-center md:pb-12"
-      >
-
- {/* CTA Button */}
-          <button
-            onClick={scrollToNext}
-            aria-label="Ir para a seção sobre a história da Terapia da Alegria"
-            className="hero-cta rounded-full bg-[--terapia-red] px-9 py-4 font-caveat text-3xl font-bold leading-none text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-105 hover:bg-[--terapia-red-light] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/90 focus-visible:ring-offset-2 focus-visible:ring-offset-black active:scale-95"
-          >
-            Conheça nossa história
-          </button>
-
+        className="hero-content relative z-20 flex min-h-screen flex-col items-center justify-end gap-6 px-4 pb-10 text-center md:pb-12"
+        >
+          
           {/* Scroll Indicator */}
           <div
             className="scroll-indicator flex flex-col items-center gap-2 text-white"
