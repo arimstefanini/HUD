@@ -1,10 +1,8 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { MessageCircle } from "lucide-react"
 import { SiInstagram, SiYoutube, SiSpotify, SiWhatsapp } from "react-icons/si"
 
 if (typeof window !== "undefined") {
@@ -93,7 +91,7 @@ export function CTASection() {
   return (
     <section
       ref={sectionRef}
-      className="scroll-section relative bg-gradient-to-b from-[--terapia-cream] to-white py-8 md:py-12"
+      className="scroll-section relative bg-gradient-to-b from-[--terapia-cream] to-white py-8 md:pt-10 pb-2"
     >
       <div className="container mx-auto px-4">
         <div className="grid md:grid-cols-2 gap-8 items-center">
@@ -121,6 +119,7 @@ export function CTASection() {
                 className="mx-auto rounded-full"
                 width={600}
                 height={600}
+                aria-label="Vídeo institucional da Terapia da Alegria"
                 autoPlay
                 muted
                 loop
@@ -146,7 +145,8 @@ export function CTASection() {
         href="https://www.instagram.com/terapiadaalegria/"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3 text-[--terapia-gray] hover:text-pink-500 transition"
+        aria-label="Instagram da Terapia da Alegria (abre em nova aba)"
+        className="flex items-center gap-3 text-[--terapia-gray] hover:text-pink-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 rounded-sm transition"
       >
         <SiInstagram size={20} color="#E4405F" />
         <span className="text-sm font-medium">Instagram</span>
@@ -156,7 +156,8 @@ export function CTASection() {
         href="https://www.youtube.com/terapiadaalegria"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3 text-[--terapia-gray] hover:text-red-500 transition"
+        aria-label="YouTube da Terapia da Alegria (abre em nova aba)"
+        className="flex items-center gap-3 text-[--terapia-gray] hover:text-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 rounded-sm transition"
       >
         <SiYoutube size={20} color="#FF0000" />
         <span className="text-sm font-medium">YouTube</span>
@@ -166,7 +167,8 @@ export function CTASection() {
         href="https://open.spotify.com/intl-pt/artist/4VMpU6tqRctpeVi3L06lX4"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#1DB954] transition"
+        aria-label="Spotify da Terapia da Alegria (abre em nova aba)"
+        className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#1DB954] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1DB954] focus-visible:ring-offset-2 rounded-sm transition"
       > 
         <SiSpotify size={20} color="#1DB954" />
         <span className="text-sm font-medium">Spotify</span>
@@ -190,7 +192,8 @@ export function CTASection() {
         href="https://wa.me/5544999615892"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#25D366] transition"
+        aria-label="Contato WhatsApp número 44 99961-5892 (abre em nova aba)"
+        className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#25D366] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 rounded-sm transition"
       >
         <SiWhatsapp size={20} color="#1DB954" />
         <span className="text-sm font-medium">(44) 99961-5892</span>
@@ -200,7 +203,8 @@ export function CTASection() {
         href="https://wa.me/5544999307230"
         target="_blank"
         rel="noopener noreferrer"
-        className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#25D366] transition"
+        aria-label="Contato WhatsApp número 44 99930-7230 (abre em nova aba)"
+        className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#25D366] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 rounded-sm transition"
       >
         <SiWhatsapp size={20} color="#1DB954" />
         <span className="text-sm font-medium">(44) 99930-7230</span>
@@ -240,7 +244,7 @@ export function CTASection() {
 
       </div>
   {/* Footer */}
-  <div className="mt-6 text-center text-sm text-[--terapia-gray]/70">
+  <div className="mt-20 pb-2 text-center text-sm text-[--terapia-gray]/80">
     Terapia da Alegria © {new Date().getFullYear()}
   </div>
     </section>

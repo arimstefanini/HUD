@@ -84,7 +84,7 @@ export function AboutSection() {
       
       {/* Decorative background imagery in zig-zag composition */}
       <div
-        className="pointer-events-none absolute inset-0 z-0"
+        className="pointer-events-none absolute inset-0 z-0 hidden md:block"
         aria-hidden="true"
       >
 {/* 1. Esquerda Superior */}

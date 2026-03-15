@@ -232,7 +232,7 @@ export function Navigation() {
               }}
               className="flex items-center gap-2 relative z-[60]"
             >
-<Image src="/images/logo_official.png" alt="Terapia da Alegria" width={48} height={48} />
+<Image src="/images/s_logo.png" alt="Terapia da Alegria" width={48} height={48} />
 
             </button>
 
