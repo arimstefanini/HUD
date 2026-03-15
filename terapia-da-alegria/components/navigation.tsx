@@ -231,15 +231,7 @@ export function Navigation() {
               className="flex items-center gap-2 relative z-[60]"
             >
 <Image src="/images/logo_official.png" alt="Terapia da Alegria" width={48} height={48} />
-<span className="font-bold text-lg hidden sm:block text-black drop-shadow-lg">
-  Terapia
-</span>{" "}
-<span className="inline-block font-caveat text-[--terapia-red-light] drop-shadow-md">
-  da
-</span>{" "}
-<span className="font-bold text-[#e44f4a] text-lg hidden sm:block drop-shadow-lg">
-  Alegria
-</span>
+
             </button>
 
             <button onClick={toggleMenu} className="relative z-[60] p-3 rounded-full bg-white/10 text-white">

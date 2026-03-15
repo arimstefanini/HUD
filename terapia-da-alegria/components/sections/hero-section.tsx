@@ -140,50 +140,45 @@ export function HeroSection() {
         ref={bgRef}
         className="hero-bg absolute inset-0 gpu-accelerated"
       >
-        <Image
-          src="/images/cover_page.jpg"
-          alt="Equipe Terapia da Alegria"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+        <picture className="absolute inset-0 block h-full w-full">
+          <source media="(max-width: 767px)" srcSet="/images/cover_page_cel.jpg" />
+          <img
+            src="/images/cover_page.jpg"
+            alt="Voluntários da Terapia da Alegria sorrindo e levando afeto no hospital"
+            className="h-full w-full object-cover object-center"
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/55" />
       </div>
 
       {/* Content */}
       <div
         ref={contentRef}
-        className="hero-content relative z-10 flex flex-col items-center justify-center min-h-screen px-4 text-center"
+        className="hero-content relative z-10 flex min-h-screen flex-col items-center justify-end px-4 pb-10 text-center md:pb-12"
       >
 
+ {/* CTA Button */}
+          <button
+            onClick={scrollToNext}
+            aria-label="Ir para a seção sobre a história da Terapia da Alegria"
+            className="hero-cta rounded-full bg-[--terapia-red] px-9 py-4 font-caveat text-3xl font-bold leading-none text-white shadow-[0_8px_24px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-105 hover:bg-[--terapia-red-light] hover:shadow-xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/90 focus-visible:ring-offset-2 focus-visible:ring-offset-black active:scale-95"
+          >
+            Conheça nossa história
+          </button>
 
-        {/* Title */}
-        <h1 className="hero-title text-4xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 overflow-hidden">
-          <span className="inline-block">Terapia</span>{" "}
-          <span className="inline-block font-caveat text-[--terapia-red-light]">
-            da
-          </span>{" "}
-          <span className="inline-block">Alegria</span>
-        </h1>
-
-
-
-        {/* CTA Button */}
-        <button
-          onClick={scrollToNext}
-          className="hero-cta bg-[--terapia-red] hover:bg-[--terapia-red-light] text-white font-semibold px-8 py-4 rounded-full transition-all duration-300 hover:scale-105 hover:shadow-xl active:scale-95"
-        >
-          Conheça nossa história
-        </button>
-
-        {/* Scroll Indicator */}
-        <div className="scroll-indicator absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-white/80">
-          <span className="text-sm">Role para descobrir</span>
-          <div className="w-6 h-10 border-2 border-white/50 rounded-full flex items-start justify-center p-1">
-            <div className="w-1.5 h-3 bg-white/80 rounded-full animate-bounce" />
+          {/* Scroll Indicator */}
+          <div
+            className="scroll-indicator flex flex-col items-center gap-2 text-white"
+            aria-hidden="true"
+          >
+            <span className="text-sm font-medium tracking-wide">Role para descobrir</span>
+            <div className="flex h-10 w-6 items-start justify-center rounded-full border-2 border-white/70 p-1">
+              <div className="h-3 w-1.5 animate-bounce rounded-full bg-white" />
+            </div>
           </div>
-        </div>
       </div>
     </section>
   )
