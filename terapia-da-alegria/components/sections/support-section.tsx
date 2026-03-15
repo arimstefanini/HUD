@@ -92,14 +92,15 @@ gsap.fromTo(".support-bg",
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden flex items-center"
+      className="relative flex min-h-screen items-center overflow-hidden"
+      aria-labelledby="support-section-title"
     >
 
       {/* BACKGROUND */}
       <div className="absolute inset-0">
         <Image
           src="/images/img_suport.jpg"
-          alt="Seja um apoiador mensal"
+          alt="Voluntária com nariz de palhaço sorrindo com uma criança em atividade hospitalar da Terapia da Alegria"
           fill
           className="support-bg object-cover object-center scale-125"
           sizes="100vw"
@@ -108,96 +109,119 @@ gsap.fromTo(".support-bg",
       </div>
 
       {/* OVERLAY */}
-      <div className="absolute inset-0 bg-black/10" />
+      <div className="absolute inset-0 " />
 
       {/* CONTENT */}
       <div className="relative z-10 w-full">
 
         <div className="max-w-7xl mx-auto px-6 flex justify-end">
 
-          <div className="w-full max-w-xl text-right space-y-8">
+          <div className="w-full max-w-xl space-y-8 text-right">
 
             {/* TEXTO */}
-            <div className="flex flex-col items-end mb-2">
+          <div className="flex flex-col items-end mb-2 text-right"> 
+            {/* Adicionei text-right para alinhar o texto à direita já que o container é items-end */}
 
-              <span className="support-subtitle inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[--terapia-red]/20 text-[--terapia-red] font-medium text-lg md:text-2xl mb-3">
-                Seja um transformador
-                <Heart className="w-6 h-6 fill-current floating-heart" />
+            <h2 className="support-title text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
+              <span className="font-caveat text-[#ff8f87] text-5xl md:text-7xl">
+                Seja um Cooperador
               </span>
+            </h2>
 
-              <h2 className="support-title text-3xl md:text-5xl font-bold text-white mb-4 leading-tight">
-                Sua ajuda faz o <br />
-                <span className="font-caveat text-[#e44f4a] text-4xl md:text-6xl">
-                  sorriso acontecer
-                </span>
-              </h2>
+            <div className="space-y-4 text-black"> 
+              
+              <p className="text-lg md:text-xl">
+                Gostaríamos de convidar você a caminhar conosco nessa jornada de transformação.
+              </p>
 
+              <p className="text-lg md:text-xl">
+                O apoio financeiro vai muito além do investimento financeiro; é um gesto de confiança, sensibilidade e compromisso com o cuidado ao próximo.
+              </p>
+
+              <p className="text-lg md:text-xl">
+                Torne-se um{" "}
+                <span className="font-caveat text-[#ff8f87] text-5xl md:text-7xl block md:inline">
+                  apoiador mensal
+                </span>{" "}
+                deste projeto.
+              </p>
             </div>
+          </div>
 
             {/* CARD */}
             <div className="flex justify-end">
 
-              <div className="support-card w-full max-w-sm bg-white rounded-3xl p-4 shadow-xl">
+              <div className="support-card w-full max-w-md rounded-3xl border border-[#8c1d1a]/20 bg-white/98 p-6 text-left shadow-[0_24px_55px_rgba(0,0,0,0.38)] backdrop-blur-sm md:p-7">
+                <p className="mb-2 inline-flex rounded-full bg-[#8c1d1a]/10 px-3 py-1 text-sm font-semibold tracking-wide text-[#8c1d1a] md:text-base">
+                  Ajude agora
+                </p>
+                <h3 className="mb-2 text-2xl font-extrabold leading-tight text-[#1d1d1d] md:text-3xl">
+                  Faça sua contribuição em segundos
+                </h3>
+                <p className="mb-6 text-sm leading-relaxed text-[#2d2d2d] md:text-base">
+                  Realize uma transferência programada ou agende um PIX recorrente.
+                </p>
 
                 {/* PIX */}
                 <div className="mb-5">
 
-                  <div className="flex items-center justify-end gap-3 mb-2">
+                  <div className="mb-2 flex items-center justify-between gap-3">
+                  <div className="h-10 w-10 rounded-full bg-[#8c1d1a]/10 text-[#8c1d1a] flex items-center justify-center">
+                    <Banknote className="h-5 w-5" aria-hidden="true" />
+                  </div>
 
-                    <h3 className="text-base font-semibold text-[--terapia-gray]">
+                    <h4 className="text-lg font-bold text-[#1d1d1d] md:text-xl">
                       Chave PIX
-                    </h3>
-
-                    <div className="w-9 h-9 bg-[--terapia-red]/10 text-[--terapia-red] rounded-full flex items-center justify-center">
-                      <Banknote className="w-4 h-4" />
-                    </div>
+                    </h4>
 
                   </div>
 
                   <button
                     onClick={copyToClipboard}
-                    className="w-full flex items-center justify-between bg-[--terapia-red]/5 hover:bg-[--terapia-red]/10 border border-[--terapia-red]/20 p-3 rounded-xl font-bold text-xs md:text-sm text-[--terapia-gray]"
+                    aria-label="Copiar chave PIX para área de transferência"
+                    aria-describedby="pix-key-value pix-copy-status"
+                    className="w-full flex items-center justify-between rounded-xl border border-[#8c1d1a]/25 bg-[#fff4f3] p-4 text-sm font-bold text-[#1d1d1d] transition-colors hover:bg-[#ffe8e6] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#8c1d1a]/35 md:text-base"
                   >
-                    <span className="truncate">{pixKey}</span>
+                    <span id="pix-key-value" className="truncate tracking-wide">{pixKey}</span>
 
                     {copied ? (
-                      <Check className="text-[--terapia-red]" />
+                      <Check className="text-[#8c1d1a]" aria-hidden="true" />
                     ) : (
-                      <Copy className="text-[--terapia-red]/60" />
+                      <Copy className="text-[#8c1d1a]/75" aria-hidden="true" />
                     )}
 
                   </button>
-
+                  <p id="pix-copy-status" aria-live="polite" className="mt-2 min-h-6 text-sm font-medium text-[#8c1d1a]">
+                    {copied ? "Chave PIX copiada com sucesso." : "Toque ou pressione Enter para copiar."}
+                  </p>
                 </div>
 
-                <div className="border-t border-[--terapia-gray]/10 my-5" />
+                <div className="my-5 border-t border-[#1d1d1d]/15" />
 
                 {/* DADOS BANCÁRIOS */}
-                <div>
-
-                  <div className="flex justify-end items-center gap-2 mb-3">
-                    <span className="text-sm font-semibold text-[--terapia-gray]">
+                <div aria-label="Dados bancários para transferência" role="group">
+                  <div className="mb-3 flex items-center justify-between gap-2">
+                    <CreditCard className="h-5 w-5 text-[#8c1d1a]" aria-hidden="true" />
+                    <span className="text-base font-bold text-[#1d1d1d] md:text-lg">
                       Dados Bancários
                     </span>
-                    <CreditCard className="w-4 h-4 text-[--terapia-red]" />
                   </div>
 
-                  <div className="grid grid-cols-2 gap-3 text-xs md:text-sm bg-[--terapia-cream] p-3 rounded-xl">
-
-                    <div className="text-right">
-                      <p className="text-[--terapia-gray]/60 uppercase text-[10px]">
+                  <div className="grid grid-cols-2 gap-3 rounded-xl bg-[#f8f5ef] p-4 text-sm md:text-base">
+                    <div>
+                      <p className="text-xs uppercase tracking-wide text-[#444]">
                         Agência
                       </p>
-                      <p className="font-bold text-[--terapia-gray]">
+                      <p className="font-extrabold text-[#1d1d1d]">
                         0352-2
                       </p>
                     </div>
 
-                    <div className="text-right">
-                      <p className="text-[--terapia-gray]/60 uppercase text-[10px]">
+                    <div>
+                      <p className="text-xs uppercase tracking-wide text-[#444]">
                         Conta
                       </p>
-                      <p className="font-bold text-[--terapia-gray]">
+                      <p className="font-extrabold text-[#1d1d1d]">
                         122.563-4
                       </p>
                     </div>
@@ -206,12 +230,8 @@ gsap.fromTo(".support-bg",
 
                 </div>
 
-                <p className="mt-5 text-right font-caveat text-xl text-[--terapia-red] italic">
-                  "Sorrisos multiplicados!"
-                </p>
-
-                <p className="text-right text-xs text-[--terapia-gray]/70 mt-1">
-                  Obrigado por fazer parte dessa história
+                <p className="mt-5 text-right font-caveat text-2xl italic text-[#8c1d1a] md:text-3xl">
+                  Nossa gratidão é tão GRANDE quanto um sapato de palhaço! 
                 </p>
 
               </div>

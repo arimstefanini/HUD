@@ -93,8 +93,8 @@ export function AboutSection() {
         {/* Main Text */}
         <div className="about-text space-y-6 md:space-y-8 text-center mb-16 md:mb-24">
           <p className="about-paragraph text-base md:text-lg text-[--terapia-gray] leading-relaxed max-w-3xl mx-auto">
-            Nós somos muitas histórias, muitos sonhos e um só anseio. No reflexo
-            da vida somos meros artistas ou voluntários.
+            Nós somos muitas histórias, muitos sonhos e um só anseio.
+            No reflexo da vida somos meros artistas ou voluntários.
           </p>
           <p className="about-paragraph text-base md:text-lg text-[--terapia-gray] leading-relaxed max-w-3xl mx-auto">
             Com o nariz vermelho, somos o que queremos ser:{" "}
@@ -115,7 +115,7 @@ export function AboutSection() {
             <span className="font-bold text-[--terapia-red]">2003</span>, a
             Terapia da Alegria é uma associação sem fins lucrativos que tem a
             proposta de levar alegria e bem-estar aos pacientes internados em
-            hospitais, por meio da linguagem do palhaço, usando a paródia do{" "}
+            hospitais, por meio da palhaçaria, usando a paródia do{" "}
             {'"doutor palhaço"'}.
           </p>
         </div>
@@ -151,10 +151,10 @@ export function AboutSection() {
               <Music className="w-8 h-8 text-[--terapia-red]" />
             </div>
             <h3 className="text-lg font-bold text-[--terapia-gray] mb-2">
-              Arte & Música
+              Arte & Encontros
             </h3>
             <p className="text-sm text-[--terapia-gray]/80">
-              Usando a linguagem universal da alegria
+              Usando a linguagem universal do palhaço
             </p>
           </div>
         </div>

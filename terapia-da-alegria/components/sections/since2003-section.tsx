@@ -150,7 +150,7 @@ export function Since2003Section() {
 
               <p className="since-text text-base md:text-lg text-white/90 leading-relaxed">
                 Atendemos o Hospital Municipal desde 2003 e o Hospital da
-                Criança desde 2023.
+                Criança desde 2003.
               </p>
 
               <p className="since-text text-base md:text-lg text-white/90 leading-relaxed">
@@ -172,7 +172,7 @@ export function Since2003Section() {
                   {yearsActive}
                 </span>
                 <p className="text-white/80 text-sm mt-1">
-                  anos de alegria
+                  anos
                 </p>
               </div>
 

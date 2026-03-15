@@ -154,7 +154,7 @@ export function SpotifySection() {
               </p>
 
               <p className="text-base md:text-lg text-black/90 md:text-black/90">
-                Um lindo trabalho recheado de músicas autorais.
+                Um lindo trabalho recheado de músicas autorais, nascidas das visitas, dos encontros e das gargalhadas ao logo desses anos.
               </p>
 
               <p className="text-lg md:text-xl font-semibold text-black md:text-black">

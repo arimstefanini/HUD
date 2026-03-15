@@ -16,6 +16,7 @@ const navLinks = [
   { label: "Nossa história", href: "#since-section" },
   { label: "Impacto", href: "#impact-section" },
   { label: "Mídia", href: "#spotify-section" },
+  { label: "Cursos", href: "#courses-section" },
   { label: "Apoie", href: "#support-section" },
 ]
 
@@ -24,7 +25,8 @@ const menuImages = [
   { src: "/images/since2003.jpg", className: "card-menu-2" },
   { src: "/images/more_than_10k.jpg", className: "card-menu-3" },
   { src: "/images/spotify.jpg", className: "card-menu-4" },
-  { src: "/images/support.jpg", className: "card-menu-5" },
+  { src: "/images/cover_page.jpg", className: "card-menu-5" },
+  { src: "/images/support.jpg", className: "card-menu-6" },
 ]
 
 export function Navigation() {
@@ -275,7 +277,8 @@ export function Navigation() {
                     { top: "5%", right: "5%" },
                     { top: "30%", left: "25%" },
                     { bottom: "30%", right: "15%" },
-                    { bottom: "15%", left: "5%" },
+                    { bottom: "25%", left: "5%" },
+                    { bottom: "5%", right: "5%" },
                   ]
                   const pos = positions[i]
                   return (
