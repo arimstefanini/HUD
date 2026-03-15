@@ -206,13 +206,6 @@ export function CTASection() {
         <span className="text-sm font-medium">(44) 99930-7230</span>
       </a>
 
-      <a
-        href="mailto:contato@terapiadaalegria.org.br"
-        className="text-sm text-[--terapia-gray]/70 hover:text-[--terapia-red] transition"
-      >
-        contato@terapiadaalegria.org.br
-      </a>
-
     </div>
 
   </div>

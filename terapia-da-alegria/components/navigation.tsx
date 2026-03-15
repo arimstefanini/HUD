@@ -36,6 +36,7 @@ export function Navigation() {
   const imagesRef = useRef<HTMLDivElement>(null)
   const tlRef = useRef<gsap.core.Timeline | null>(null)
   const floatingTweensRef = useRef<gsap.core.Tween[]>([])
+  const isClosingRef = useRef(false)
 
   // === GSAP inicialização do menu ===
   useEffect(() => {
@@ -84,7 +85,7 @@ export function Navigation() {
 
   // === Imagens flutuantes ===
   const startFloating = () => {
-    if (!imagesRef.current) return
+    if (!imagesRef.current || !isMenuOpen || isClosingRef.current) return
     const images = imagesRef.current.querySelectorAll(".card-menu")
     const animations: gsap.core.Tween[] = []
 
@@ -109,6 +110,42 @@ export function Navigation() {
     floatingTweensRef.current.forEach((tween) => tween.kill())
     floatingTweensRef.current = []
   }
+  const resetHoveredImages = () => {
+    if (!imagesRef.current) return
+
+    const images = imagesRef.current.querySelectorAll<HTMLDivElement>(".card-menu")
+
+    images.forEach((img) => {
+      gsap.to(img, {
+        scale: 1,
+        opacity: 1,
+        zIndex: 1,
+        duration: 0.2,
+        ease: "power2.out",
+        overwrite: "auto",
+      })
+    })
+  }
+
+  const closeMenu = (onComplete?: () => void) => {
+    if (!tlRef.current || !isMenuOpen) {
+      onComplete?.()
+      return
+    }
+
+    isClosingRef.current = true
+    stopFloating()
+    resetHoveredImages()
+
+    tlRef.current.eventCallback("onReverseComplete", () => {
+      setIsMenuOpen(false)
+      isClosingRef.current = false
+      tlRef.current?.eventCallback("onReverseComplete", null)
+      onComplete?.()
+    })
+
+    tlRef.current.reverse()
+  }
 
   useEffect(() => {
     if (isMenuOpen) startFloating()
@@ -120,8 +157,7 @@ export function Navigation() {
     if (!tlRef.current) return
 
     if (isMenuOpen) {
-      tlRef.current.reverse()
-      setTimeout(() => setIsMenuOpen(false), 800)
+      closeMenu()
     } else {
       setIsMenuOpen(true)
       requestAnimationFrame(() => tlRef.current?.play())
@@ -130,17 +166,15 @@ export function Navigation() {
 
   // === Scroll para seção ===
   const scrollToSection = (href: string) => {
-    if (tlRef.current) tlRef.current.reverse()
-    setTimeout(() => {
-      setIsMenuOpen(false)
+    closeMenu(() => {
       const element = document.querySelector(href)
       if (element) element.scrollIntoView({ behavior: "smooth" })
-    }, 600)
+    })
   }
 
   // === Hover nas imagens ===
   const highlightImage = (index: number | null) => {
-    if (!imagesRef.current) return
+    if (!imagesRef.current || !isMenuOpen || isClosingRef.current) return
     const images = imagesRef.current.querySelectorAll<HTMLDivElement>(".card-menu")
     stopFloating()
 
@@ -176,7 +210,10 @@ export function Navigation() {
           ease: "power3.out"
         })
       })
-      startFloating()
+
+      if (isMenuOpen && !isClosingRef.current) {
+        startFloating()
+      }
     }
   }
 
@@ -268,15 +305,6 @@ export function Navigation() {
 
           {/* SOCIAL */}
 <div className="absolute bottom-0 left-0 right-0 p-6 z-30 flex flex-col lg:flex-row items-start lg:items-center lg:justify-end gap-4">
-  {/* Email */}
-  <div className="social-icon">
-    <a
-      href="mailto:contato@terapiadaalegria.org.br"
-      className="text-white/90 text-sm hover:text-white transition"
-    >
-      contato@terapiadaalegria.org.br
-    </a>
-  </div>
 
   {/* Redes sociais */}
   <div className="flex gap-4 order-2 lg:order-2">
