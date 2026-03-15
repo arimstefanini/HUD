@@ -51,6 +51,7 @@ export function AboutSection() {
           start: "top 85%",
           toggleActions: "play none none reverse",
         },
+        immediateRender: false,
         y: 80,
         opacity: 0,
         stagger: 0.15,
@@ -144,18 +145,17 @@ export function AboutSection() {
         {/* Description Card */}
         <div className="about-paragraph bg-white rounded-3xl p-8 md:p-12 shadow-xl mb-16 md:mb-24">
           <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed">
-            Fundada em{" "}
-            <span className="font-bold text-[--terapia-red]">2003</span>, a
-            Terapia da Alegria é uma associação sem fins lucrativos que tem a
-            proposta de levar alegria e bem-estar aos pacientes internados em
-            hospitais, por meio da palhaçaria, usando a paródia do{" "}
-            {'"doutor palhaço"'}.
+            Para entrar no ambiente hospitalar, a trupe transformou o conhecido uniforme branco 
+            em uma roupa divertida: os jalecos receberam bolsos coloridos e apetrechos por todos os lados, 
+            os sapatos clássicos foram trocados por sapatos de palhaço, calças largas 
+            e adereços lúdicos completam o figurino, e o nariz vermelho é o ingrediente final 
+            dessa receita que não possui contraindicação.
           </p>
         </div>
 
         {/* Features */}
-        <div className="about-features grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-          <div className="about-feature bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+          <div className="bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="feature-icon inline-flex items-center justify-center w-16 h-16 bg-[--terapia-red]/10 rounded-full mb-4">
               <Smile className="w-8 h-8 text-[--terapia-red]" />
             </div>
@@ -167,7 +167,7 @@ export function AboutSection() {
             </p>
           </div>
 
-        <div className="about-feature bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+        <div className="bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="feature-icon inline-flex items-center justify-center w-16 h-16 bg-[--terapia-teal]/20 rounded-full mb-4">
               <Heart className="w-8 h-8 text-[--terapia-teal]" />
             </div>
@@ -179,7 +179,7 @@ export function AboutSection() {
             </p>
           </div>
 
-          <div className="about-feature bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+          <div className="bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
             <div className="feature-icon inline-flex items-center justify-center w-16 h-16 bg-[--terapia-red]/10 rounded-full mb-4">
               <Music className="w-8 h-8 text-[--terapia-red]" />
             </div>

@@ -148,15 +148,22 @@ export function Since2003Section() {
                 cidade de <strong>Maringá, Paraná</strong>.
               </p>
 
+            <p className="text-base md:text-lg text-white/90 leading-relaxed">
+              Fundada em{" "}
+              <span className="font-bold text-[--terapia-red]">2003</span>, a
+              Terapia da Alegria é uma associação sem fins lucrativos que tem a
+              proposta de levar alegria e bem-estar aos pacientes internados em
+              hospitais, por meio da palhaçaria, usando a paródia do{" "}
+              {'"doutor palhaço"'}.
+            </p>
               <p className="since-text text-base md:text-lg text-white/90 leading-relaxed">
-                Atendemos o Hospital Municipal desde 2003 e o Hospital da
-                Criança desde 2003.
+                Atendemos o Hospital Municipal e o Hospital da Criança.
               </p>
 
               <p className="since-text text-base md:text-lg text-white/90 leading-relaxed">
                 A Prefeitura do Município de Maringá e a Câmara dos Vereadores
                 reconheceram a Associação Terapia da Alegria com o título de{" "}
-                <strong className="text-[#ff8a85]">
+                <strong className="font-bold">
                   Utilidade Pública
                 </strong>{" "}
                 em 2018.
