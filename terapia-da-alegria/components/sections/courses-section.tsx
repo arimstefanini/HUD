@@ -1,31 +1,120 @@
 "use client"
 
+import { useEffect, useRef } from "react"
 import Image from "next/image"
+import gsap from "gsap"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { MessageCircle, Youtube } from "lucide-react"
 
+if (typeof window !== "undefined") {
+  gsap.registerPlugin(ScrollTrigger)
+}
+
 export function CoursesSection() {
+  const sectionRef = useRef<HTMLElement>(null)
+
+  useEffect(() => {
+    if (!sectionRef.current) return
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".courses-bg-glow",
+        { yPercent: 0 },
+        {
+          yPercent: -12,
+          ease: "none",
+          scrollTrigger: {
+            trigger: sectionRef.current,
+            start: "top bottom",
+            end: "bottom top",
+            scrub: true,
+          },
+        }
+      )
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 70%",
+          toggleActions: "play none none reverse",
+        },
+      })
+
+      tl.from(".courses-subtitle", {
+        y: 30,
+        opacity: 0,
+        duration: 0.5,
+      })
+        .from(
+          ".courses-title",
+          {
+            y: 40,
+            opacity: 0,
+            duration: 0.7,
+          },
+          "-=0.2"
+        )
+        .from(
+          ".courses-text p",
+          {
+            y: 24,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 0.5,
+          },
+          "-=0.3"
+        )
+        .from(
+          ".courses-cta",
+          {
+            y: 24,
+            opacity: 0,
+            stagger: 0.1,
+            duration: 0.45,
+          },
+          "-=0.2"
+        )
+        .from(
+          ".courses-media",
+          {
+            y: 36,
+            opacity: 0,
+            stagger: 0.15,
+            duration: 0.6,
+          },
+          "-=0.35"
+        )
+    }, sectionRef)
+
+    return () => ctx.revert()
+  }, [])
+
   return (
     <section
+      ref={sectionRef}
       id="courses-section"
       aria-labelledby="courses-title"
-      className="relative bg-black text-white py-20 md:py-28"
+      className="relative overflow-hidden bg-black text-white py-5 md:py-5"
     >
-      <div className="max-w-7xl mx-auto px-6">
-        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 items-start">
+      <div className="courses-bg-glow pointer-events-none absolute inset-0 opacity-60" aria-hidden="true">
+        <div className="absolute -left-20 top-24 h-52 w-52 rounded-full bg-[#ff6b66]/20 blur-3xl" />
+        <div className="absolute -right-16 bottom-10 h-72 w-72 rounded-full bg-red-500/10 blur-3xl" />
+      </div>
+
+      <div className="relative max-w-7xl mx-auto px-6">
+        <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 items-center">
           <div className="space-y-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-1 text-sm font-semibold tracking-wide">
+            <span className="courses-subtitle inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-1 text-sm font-semibold tracking-wide">
               <Youtube aria-hidden="true" className="h-4 w-4 text-red-400" />
               CURSOS
             </span>
 
-            <h2 id="courses-title" className="text-3xl md:text-5xl font-bold leading-tight">
+            <h2 id="courses-title" className="courses-title text-3xl md:text-5xl font-bold leading-tight">
               Vivências e oficinas de
-              <span className="block font-caveat text-[#ff6b66] text-4xl md:text-6xl mt-2">
-                palhaçaria
-              </span>
+              <span className="block font-caveat text-[#ff6b66] text-4xl md:text-6xl mt-2">palhaçaria</span>
             </h2>
 
-            <div className="space-y-4 text-base md:text-lg leading-relaxed text-white/95">
+            <div className="courses-text space-y-4 text-base md:text-lg leading-relaxed text-white/95">
               <p>
                 A Terapia da Alegria oferece cursos de palhaçaria para novos grupos e oficinas avançadas para
                 projetos já existentes.
@@ -51,7 +140,7 @@ export function CoursesSection() {
                 href="https://wa.me/5544999615892"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl bg-[#ff6b66] px-5 py-3 font-semibold text-black transition hover:bg-[#ff8b87] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ff6b66]/60"
+                className="courses-cta inline-flex items-center gap-2 rounded-xl bg-[#ff6b66] px-5 py-3 font-semibold text-black transition hover:bg-[#ff8b87] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ff6b66]/60"
                 aria-label="Enviar mensagem no WhatsApp para saber mais sobre os cursos"
               >
                 <MessageCircle aria-hidden="true" className="h-5 w-5" />
@@ -62,7 +151,7 @@ export function CoursesSection() {
                 href="https://www.youtube.com/@terapiadaalegria"
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/60 bg-transparent px-5 py-3 font-semibold text-white transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/70"
+                className="courses-cta inline-flex items-center gap-2 rounded-xl border border-white/60 bg-transparent px-5 py-3 font-semibold text-white transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/70"
               >
                 <Youtube aria-hidden="true" className="h-5 w-5" />
                 Ver canal no YouTube
@@ -71,28 +160,15 @@ export function CoursesSection() {
           </div>
 
           <div className="space-y-5">
-            <figure className="rounded-2xl border border-white/30 bg-zinc-900 p-3">
-              <Image
-                src="/images/cover_page.jpg"
-                alt="Integrantes da Terapia da Alegria em uma cena de interação com o público durante apresentação de palhaçaria"
-                width={960}
-                height={540}
-                className="h-auto w-full rounded-xl object-cover"
-                sizes="(min-width: 1024px) 50vw, 100vw"
-              />
-              <figcaption className="mt-3 text-sm text-white/85">
-                Imagem ilustrativa da linguagem da palhaçaria desenvolvida pela Terapia da Alegria.
-              </figcaption>
-            </figure>
 
-            <div className="rounded-2xl border border-white/30 bg-zinc-900 p-3">
+            <div className="courses-media rounded-2xl border border-white/30 bg-zinc-900 p-3 ">
               <h3 className="mb-3 text-lg font-semibold">Vídeos no YouTube</h3>
               <p className="mb-4 text-sm text-white/80">
-                Conteúdo incorporado com título descritivo para leitor de tela e suporte à navegação por teclado.
+                Com figurinos coloridos e o icônico nariz vermelho, a trupe transforma o ambiente clínico em espaços de bem-estar para pacientes e idosos.
               </p>
               <iframe
                 className="w-full aspect-video rounded-xl"
-                src="https://www.youtube-nocookie.com/embed?listType=user_uploads&list=terapiadaalegria"
+                src="https://www.youtube-nocookie.com/embed/bqko4cKSeRY"
                 title="Lista de vídeos do canal Terapia da Alegria no YouTube"
                 loading="lazy"
                 referrerPolicy="strict-origin-when-cross-origin"
