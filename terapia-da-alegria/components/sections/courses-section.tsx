@@ -1,7 +1,6 @@
 "use client"
 
 import { useEffect, useRef } from "react"
-import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { MessageCircle, Youtube } from "lucide-react"
@@ -94,7 +93,7 @@ export function CoursesSection() {
       ref={sectionRef}
       id="courses-section"
       aria-labelledby="courses-title"
-      className="relative overflow-hidden bg-black text-white py-5 md:py-5"
+       className="relative overflow-hidden bg-gradient-to-b from-zinc-800 via-zinc-900 to-zinc-950 text-white py-10"
     >
       <div className="courses-bg-glow pointer-events-none absolute inset-0 opacity-60" aria-hidden="true">
         <div className="absolute -left-20 top-24 h-52 w-52 rounded-full bg-[#ff6b66]/20 blur-3xl" />
@@ -103,7 +102,7 @@ export function CoursesSection() {
 
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 items-center">
-          <div className="space-y-6">
+            <div className="space-y-6 text-center lg:text-left">
             <span className="courses-subtitle inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-1 text-sm font-semibold tracking-wide">
               <Youtube aria-hidden="true" className="h-4 w-4 text-red-400" />
               CURSOS
@@ -114,7 +113,7 @@ export function CoursesSection() {
               <span className="block font-caveat text-[#ff6b66] text-4xl md:text-6xl mt-2">palhaçaria</span>
             </h2>
 
-            <div className="courses-text space-y-4 text-base md:text-lg leading-relaxed text-white/95">
+            <div className="courses-text space-y-4 text-base leading-relaxed text-white/95 md:text-lg">
               <p>
                 A Terapia da Alegria oferece cursos de palhaçaria para novos grupos e oficinas avançadas para
                 projetos já existentes.
@@ -135,12 +134,12 @@ export function CoursesSection() {
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-4 pt-2">
+            <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap lg:justify-start">
               <a
                 href="https://wa.me/5544999615892"
                 target="_blank"
                 rel="noreferrer"
-                className="courses-cta inline-flex items-center gap-2 rounded-xl bg-[#ff6b66] px-5 py-3 font-semibold text-black transition hover:bg-[#ff8b87] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ff6b66]/60"
+                className="courses-cta inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#ff6b66] px-5 py-3 font-semibold text-black transition hover:bg-[#ff8b87] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ff6b66]/60 sm:w-auto"
                 aria-label="Enviar mensagem no WhatsApp para saber mais sobre os cursos"
               >
                 <MessageCircle aria-hidden="true" className="h-5 w-5" />
@@ -151,7 +150,7 @@ export function CoursesSection() {
                 href="https://www.youtube.com/@terapiadaalegria"
                 target="_blank"
                 rel="noreferrer"
-                className="courses-cta inline-flex items-center gap-2 rounded-xl border border-white/60 bg-transparent px-5 py-3 font-semibold text-white transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/70"
+                className="courses-cta inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/60 bg-transparent px-5 py-3 font-semibold text-white transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/70 sm:w-auto"
               >
                 <Youtube aria-hidden="true" className="h-5 w-5" />
                 Ver canal no YouTube
@@ -161,7 +160,7 @@ export function CoursesSection() {
 
           <div className="space-y-5">
 
-            <div className="courses-media rounded-2xl border border-white/30 bg-zinc-900 p-3 ">
+            <div className="courses-media rounded-2xl border border-white/25 bg-zinc-800/80 p-3 shadow-xl backdrop-blur-sm sm:p-4">
               <h3 className="mb-3 text-lg font-semibold">Vídeos no YouTube</h3>
               <p className="mb-4 text-sm text-white/80">
                 Com figurinos coloridos e o icônico nariz vermelho, a trupe transforma o ambiente clínico em espaços de bem-estar para pacientes e idosos.

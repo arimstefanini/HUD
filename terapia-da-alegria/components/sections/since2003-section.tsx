@@ -157,7 +157,7 @@ export function Since2003Section() {
               {'"doutor palhaço"'}.
             </p>
               <p className="since-text text-base md:text-lg text-white/90 leading-relaxed">
-                Atendemos o Hospital Municipal e o Hospital da Criança.
+                Atendemos o Atendemos o Hospital Municipal desde 2003 e o Hospital da Criança desde 2023.
               </p>
 
               <p className="since-text text-base md:text-lg text-white/90 leading-relaxed">
