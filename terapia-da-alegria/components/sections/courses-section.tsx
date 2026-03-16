@@ -103,10 +103,7 @@ export function CoursesSection() {
       <div className="relative max-w-7xl mx-auto px-6">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 items-center">
             <div className="space-y-6 text-center lg:text-left">
-            <span className="courses-subtitle inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/10 px-4 py-1 text-sm font-semibold tracking-wide">
-              <Youtube aria-hidden="true" className="h-4 w-4 text-red-400" />
-              CURSOS
-            </span>
+
 
             <h2 id="courses-title" className="courses-title text-3xl md:text-5xl font-bold leading-tight">
               Vivências e oficinas de
