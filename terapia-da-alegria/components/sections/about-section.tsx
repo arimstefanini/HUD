@@ -79,7 +79,7 @@ export function AboutSection() {
 <section
   ref={sectionRef}
   id="about-section"
-  className="scroll-section relative isolate overflow-hidden bg-[--terapia-cream] py-10 md:py-12"
+  className="scroll-section relative bg-gradient-to-b from-[--terapia-cream] to-white py-10 md:py-12"
 >
 
   {/* BLOCO 1 — COM IMAGENS */}

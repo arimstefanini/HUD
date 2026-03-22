@@ -94,7 +94,7 @@ export function CoursesSection() {
       ref={sectionRef}
       id="courses-section"
       aria-labelledby="courses-title"
-       className="relative overflow-hidden bg-gradient-to-b from-zinc-800 via-zinc-900 to-zinc-950 text-white py-10"
+       className="relative overflow-hidden bg-[linear-gradient(180deg,#branch_0%,#fffbfb_100%)] text-black py-10"
     >
       <div className="courses-bg-glow pointer-events-none absolute inset-0 z-0 opacity-60" aria-hidden="true">
         <div className="absolute -left-20 top-24 h-52 w-52 rounded-full bg-[#ff6b66]/20 blur-3xl" />
@@ -111,13 +111,13 @@ export function CoursesSection() {
               <span className="block font-caveat text-[#ff6b66] text-4xl md:text-6xl mt-2">palhaçaria</span>
             </h2>
 
-            <div className="courses-text space-y-4 text-base leading-relaxed text-white/95 md:text-lg">
+            <div className="courses-text space-y-4 text-base leading-relaxed text-black/95 md:text-lg">
               <p>
                 <span className="inline-block font-bold text-[#e44f4a] ">A Terapia da Alegria </span> oferece cursos de palhaçaria para novos grupos e oficinas avançadas para
                 projetos já existentes.
               </p>
 
-              <p className="inline-block font-caveat text-white text-4xl md:text-4xl lg:text-5xl underline decoration-[#e44f4a] underline-offset-4">
+              <p className="inline-block font-caveat text-black text-4xl md:text-4xl lg:text-5xl underline decoration-[#e44f4a] underline-offset-4">
                 Em busca do seu Palhaço Perdido.
               </p>
               <p>

@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SiInstagram, SiYoutube, SiSpotify, SiWhatsapp } from "react-icons/si"
+import {  Play } from "lucide-react"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
@@ -121,8 +122,21 @@ export function CTASection() {
         </div>
 
         {/* VÍDEO */}
-        <div className="flex justify-center md:justify-end">
-          <div className="w-full max-w-[300px] aspect-square overflow-hidden rounded-2xl shadow-lg">
+        <a
+          href="https://www.youtube.com/watch?v=5hrpIFUuky4&list=PLNRmOenBwX7LiIdutWcuRygDoJXdGmt2g"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Assistir visita virtual da Terapia da Alegria no YouTube"
+          title="Clique para assistir a visita virtual"
+          className="group flex flex-col items-center gap-3 focus:outline-none"
+        >
+          {/* TEXTO ACIMA DO VÍDEO, CENTRALIZADO */}
+          <p className="text-base font-semibold text-[--terapia-gray] text-center">
+            Receba uma visita virtual
+          </p>
+
+          {/* VÍDEO LIMPO */}
+          <div className="relative w-full max-w-[320px] sm:max-w-[360px] aspect-square overflow-hidden rounded-2xl shadow-lg transition-all duration-300 group-hover:scale-[1.03]">
             <video
               src="/images/agorasimm.mp4"
               className="w-full h-full object-cover"
@@ -130,9 +144,15 @@ export function CTASection() {
               muted
               loop
               playsInline
+              aria-hidden="true"
             />
+
+            {/* BOTÃO PLAY DISCRETO */}
+            <div className="absolute bottom-3 right-3 bg-white/90 rounded-full p-2 shadow-md group-hover:scale-110 transition">
+              <Play className="size-5 text-black" aria-hidden="true" />
+            </div>
           </div>
-        </div>
+        </a>
 
       </div>
 
