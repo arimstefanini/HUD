@@ -104,17 +104,17 @@ export function CTASection() {
         {/* TEXTO */}
         <div>
 
-          <h2 className="cta-title text-3xl md:text-4xl lg:text-5xl font-bold text-[--terapia-gray] my-4 text-left">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[--terapia-gray] my-4 text-left">
             Acompanhe nossa{" "}
             <span className="inline-block font-caveat text-[#e44f4a] text-4xl md:text-5xl lg:text-6xl">
               jornada
             </span>
           </h2>
 
-          <p className="cta-text text-base md:text-lg text-[--terapia-gray]/80 max-w-xl mb-5 leading-relaxed text-left">
+          <p className=" text-base md:text-lg text-[--terapia-gray]/80 max-w-xl mb-5 leading-relaxed text-left">
             Quer conhecer mais sobre nosso trabalho? 
           </p>
-          <p className="cta-text text-base md:text-lg text-[--terapia-gray]/80 max-w-xl mb-5 leading-relaxed text-left">
+          <p className=" text-base md:text-lg text-[--terapia-gray]/80 max-w-xl mb-5 leading-relaxed text-left">
             Siga-nos nas redes sociais ou entre em contato.
           </p>
 

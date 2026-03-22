@@ -130,15 +130,15 @@ gsap.fromTo(".support-bg",
 
             <div className="space-y-4 text-black"> 
               
-              <p className="text-lg md:text-xl">
+              <p className="support-title text-lg md:text-xl">
                 Gostaríamos de convidar você a caminhar conosco nessa jornada de transformação.
               </p>
 
-              <p className="text-lg md:text-xl">
+              <p className="support-title text-lg md:text-xl">
                 O apoio vai muito além do investimento financeiro; é um gesto de confiança, sensibilidade e compromisso com o cuidado ao próximo.
               </p>
 
-              <p className="text-lg md:text-xl">
+              <p className="support-title text-lg md:text-xl">
                 Torne-se um{" "}
                 <span className="font-caveat text-[#ff8f87] text-3xl md:text-5xl block md:inline">
                   mantenedor

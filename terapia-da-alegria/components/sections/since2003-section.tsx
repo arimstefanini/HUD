@@ -148,7 +148,7 @@ export function Since2003Section() {
                 cidade de <strong>Maringá, Paraná</strong>.
               </p>
 
-            <p className="text-base md:text-lg text-white/90 leading-relaxed">
+            <p className="since-text text-base md:text-lg text-white/90 leading-relaxed">
               Fundada em{" "}
               <span className="font-bold text-[--terapia-red]">2003</span>, a
               Terapia da Alegria é uma associação sem fins lucrativos que tem a
