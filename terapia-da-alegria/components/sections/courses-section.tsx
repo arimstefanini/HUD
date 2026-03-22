@@ -138,7 +138,7 @@ export function CoursesSection() {
                 href="https://wa.me/5544999615892"
                 target="_blank"
                 rel="noreferrer"
-                className="courses-cta inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#ff6b66] px-5 py-3 font-semibold text-black transition hover:bg-[#ff8b87] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ff6b66]/60 sm:w-auto"
+                className="courses-cta inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#DCF8C6] px-5 py-3 font-semibold text-black transition hover:bg-[#ff8b87] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ff6b66]/60 sm:w-auto"
                 aria-label="Enviar mensagem no WhatsApp para saber mais sobre os cursos"
               >
                 <MessageCircle aria-hidden="true" className="h-5 w-5" />
