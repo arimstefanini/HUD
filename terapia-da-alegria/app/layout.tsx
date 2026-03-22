@@ -16,19 +16,18 @@ const caveat = Caveat({
 })
 
 export const metadata: Metadata = {
-  title: 'Terapia da Alegria | Levando sorrisos aos hospitais desde 2003',
+  title: 'Terapia da Alegria',
   description: 'A Terapia da Alegria é uma associação sem fins lucrativos que leva alegria e bem-estar aos pacientes internados em hospitais através da linguagem do palhaço.',
   keywords: ['terapia da alegria', 'doutores palhaços', 'hospital', 'voluntariado', 'maringá', 'palhaçaria'],
   authors: [{ name: 'Terapia da Alegria' }],
   openGraph: {
     title: 'Terapia da Alegria',
-    description: 'Levando sorrisos aos hospitais desde 2003',
     type: 'website',
     locale: 'pt_BR',
   },
   icons: {
-    icon: '/images/logo_official.png',
-    apple: '/images/logo_official.png',
+    icon: '/images/s_logo.png',
+    apple: '/images/s_logo.png',
   },
 }
 

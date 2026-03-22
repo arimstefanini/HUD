@@ -92,7 +92,7 @@ gsap.fromTo(".support-bg",
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-screen items-center overflow-hidden"
+      className="relative flex min-h-screen items-center overflow-hidden py-10"
       aria-labelledby="support-section-title"
     >
 
@@ -135,15 +135,15 @@ gsap.fromTo(".support-bg",
               </p>
 
               <p className="text-lg md:text-xl">
-                O apoio financeiro vai muito além do investimento financeiro; é um gesto de confiança, sensibilidade e compromisso com o cuidado ao próximo.
+                O apoio vai muito além do investimento financeiro; é um gesto de confiança, sensibilidade e compromisso com o cuidado ao próximo.
               </p>
 
               <p className="text-lg md:text-xl">
                 Torne-se um{" "}
-                <span className="font-caveat text-[#ff8f87] text-5xl md:text-7xl block md:inline">
-                  apoiador mensal
+                <span className="font-caveat text-[#ff8f87] text-3xl md:text-5xl block md:inline">
+                  mantenedor
                 </span>{" "}
-                deste projeto.
+                .
               </p>
             </div>
           </div>

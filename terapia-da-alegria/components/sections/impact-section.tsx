@@ -192,147 +192,101 @@ export function ImpactSection() {
   }, [])
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen w-full flex items-center overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/img_more_than.jpg')" }}
-    >
+<section
+  ref={sectionRef}
+  className="relative min-h-screen w-full flex items-center overflow-hidden bg-cover bg-center"
+  style={{ backgroundImage: "url('/images/img_more_than.jpg')" }}
+>
 
-      {/* OVERLAY */}
-      <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/50 to-transparent md:from-black/70 md:via-black/40" />
+  {/* OVERLAY */}
+  <div className="absolute inset-0 bg-gradient-to-l from-black/80 via-black/50 to-transparent md:from-black/70 md:via-black/40" />
 
-      {/* CONTENT */}
-      <div className="relative z-10 w-full">
+  {/* CONTENT */}
+  <div className="relative z-10 w-full">
+    <div className="max-w-6xl mx-auto px-6">
 
-        <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-xl ml-auto text-right">
 
-          <div className="max-w-xl ml-auto text-right">
+        {/* COUNTER */}
+        <div className="pt-5">
 
-            {/* COUNTER */}
-            <div className="flex items-end justify-end gap-2 mb-6 flex-wrap">
+          {/* + DE */}
+          <div className="flex justify-end items-end gap-1 leading-none mb-2">
+            <span className="text-[clamp(3rem,10vw,9rem)] text-[#e44f4a] font-caveat">
+              +
+            </span>
+            <span className="text-[clamp(3rem,10vw,9rem)] text-white/80 font-caveat">
+              de
+            </span>
+          </div>
 
-              <div className="flex items-end gap-1">
+          {/* CONTADOR */}
+          <span
+            ref={counterRef}
+            className="block text-[clamp(3rem,10vw,9rem)] font-bold text-[#ff8a85] leading-none tabular-nums"
+          >
+            0
+          </span>
 
-                <span className="text-[clamp(3rem,10vw,9rem)] text-[#e44f4a] font-caveat leading-none">
-                  +
-                </span>
+        </div>
 
-                <span className="text-[clamp(3rem,10vw,9rem)] text-white/80 font-caveat leading-none">
-                  de
-                </span>
+        {/* TITLE */}
+        <p className="impact-title text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
+          sorrisos{" "}
+          <span className="font-caveat text-[#ff8a85]">
+            por ano!
+          </span>
+        </p>
 
-              </div>
+        {/* DESCRIPTION */}
+        <p className="impact-description text-base md:text-lg text-white/90 leading-relaxed max-w-md ml-auto">
+          Anualmente, colecionamos mais de 10.000 encontros e sorrisos nas
+          unidades que atendemos. 
+        </p>
+        <p className="impact-description text-base md:text-lg text-white/90 leading-relaxed max-w-md ml-auto">
+          Cada visita é uma oportunidade de
+          transformar o dia de alguém.
+        </p>
 
-              <span
-                ref={counterRef}
-                className="impact-counter text-[clamp(3rem,10vw,9rem)] font-bold text-[#ff8a85] leading-none"
-              >
-                0
-              </span>
+        {/* GRID */}
+        <div className="grid grid-cols-2 gap-6 w-full max-w-4xl ml-auto pb-20">
 
-            </div>
+          <div className="text-right">
+            <span ref={doctorsRef} className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85]">0</span>
+            <p className="text-white/90 font-bold">Doutores Palhaços</p>
+          </div>
 
-            {/* TITLE */}
-            <h2 className="impact-title text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-4">
-              sorrisos{" "}
-              <span className="font-caveat text-[#ff8a85] text-3xl md:text-5xl lg:text-6xl">
-                por ano!
-              </span>
-            </h2>
+          <div className="text-right">
+            <span ref={visitsRef} className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85]">0</span>
+            <p className="text-white/90 font-bold">Visitas Anuais</p>
+          </div>
 
-            {/* DESCRIPTION */}
-            <p className="impact-description text-base md:text-lg text-white/90 leading-relaxed max-w-md ml-auto">
-              Anualmente, colecionamos mais de 10.000 encontros e sorrisos nas
-              unidades que atendemos. Cada visita é uma oportunidade de
-              transformar o dia de alguém.
-            </p>
+          <div className="text-right">
+            <span ref={oncologyRef} className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85]">0%</span>
+            <p className="text-white/90 font-bold">Oncologia Pediátrica</p>
+          </div>
 
-<div className="grid grid-cols-2 gap-6 w-full max-w-4xl mx-auto">
-  {/* Quadrante 1 */}
-<div className="flex flex-col items-end text-end p-0 m-0">
-  <span
-    ref={doctorsRef}
-    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
-  >
-    0
-  </span>
-  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
-    Doutores Palhaços 
-  </span>
-</div>
+          <div className="text-right">
+            <span ref={hospitalizationsRef} className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85]">0%</span>
+            <p className="text-white/90 font-bold">Internações Pediátricas</p>
+          </div>
 
-  {/* Quadrante 2 */}
-<div className="flex flex-col items-end text-end p-0 m-0">
-  <span
-    ref={visitsRef}
-    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
-  >
-    0
-  </span>
-  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
-    Visitas Anuais 
-  </span>
-</div>
+          <div className="text-right">
+            <span ref={emergencyRef} className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85]">0%</span>
+            <p className="text-white/90 font-bold">Pronto Atendimento</p>
+          </div>
 
-  {/* Quadrante 3 */}
-<div className="flex flex-col items-end text-end p-0 m-0">
-  <span
-    ref={oncologyRef}
-    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
-  >
-    0%
-  </span>
-  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
-    Oncologia Pediátrica
-  </span>
-</div>
-
-  {/* Quadrante 4 */}
-<div className="flex flex-col items-end text-end p-0 m-0">
-  <span
-    ref={hospitalizationsRef}
-    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
-  >
-    0%
-  </span>
-  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
-    Internações Pediátricas
-  </span>
-</div>
-
-  {/* Quadrante 5 */}
-<div className="flex flex-col items-end text-end p-0 m-0">
-  <span
-    ref={emergencyRef}
-    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
-  >
-    0%
-  </span>
-  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
-    Pronto Atendimento
-  </span>
-</div>
-
-  {/* Quadrante 6 */}
-<div className="flex flex-col items-end text-end p-0 m-0">
-  <span
-    ref={utiRef}
-    className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85] leading-none"
-  >
-    0%
-  </span>
-  <span className="text-sm md:text-base text-[--terapia-gray] text-white/90 font-bold mt-0 leading-tight">
-    UTI Pediátrica
-  </span>
-</div>
-</div>
-
+          <div className="text-right">
+            <span ref={utiRef} className="text-[clamp(1.5rem,5vw,3rem)] font-bold text-[#ff8a85]">0%</span>
+            <p className="text-white/90 font-bold">UTI Pediátrica</p>
           </div>
 
         </div>
 
       </div>
+    </div>
+  </div>
 
-    </section>
+</section>
   )
 }

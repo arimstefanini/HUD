@@ -138,9 +138,9 @@ export function SpotifySection() {
               />
 
               <h2 className="spotify-title text-2xl md:text-3xl lg:text-4xl font-semibold text-black md:text-white">
-                Música que{" "}
+                Aperte o play e{" "}
                 <span className="spotify-transform-word font-caveat text-[#e44f4a] text-3xl md:text-4xl lg:text-5xl opacity-0">
-                  transforma
+                  sorria
                 </span>
               </h2>
 
@@ -150,6 +150,8 @@ export function SpotifySection() {
 
               <p className="text-base md:text-lg text-black/90 md:text-black/90">
                 Em 2022, a trupe se arriscou nos estúdios e lançou seu
+              </p>
+              <p className="text-base md:text-lg text-black/90 md:text-black/90">
                 <strong> primeiro álbum musical</strong>.
               </p>
 

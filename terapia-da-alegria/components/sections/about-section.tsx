@@ -128,17 +128,21 @@ export function AboutSection() {
         <div className="about-text space-y-6 md:space-y-8 text-center mb-16 md:mb-24">
           <p className="about-paragraph text-base md:text-lg text-[--terapia-gray] leading-relaxed max-w-3xl mx-auto">
             Nós somos muitas histórias, muitos sonhos e um só anseio.
+          </p><p className="about-paragraph text-base md:text-lg text-[--terapia-gray] leading-relaxed max-w-3xl mx-auto">
             No reflexo da vida somos meros artistas ou voluntários.
           </p>
           <p className="about-paragraph text-base md:text-lg text-[--terapia-gray] leading-relaxed max-w-3xl mx-auto">
             Com o nariz vermelho, somos o que queremos ser:{" "}
             <span className="text-[--terapia-red] font-semibold">
-              poetas, músicos, bailarinas, malabaristas, especialistas
-            </span>{" "}
-            e até {'"doutores"'}. Somos o inverso, o avesso e o desconcerto.
+              poetas, músicos, bailarinas, malabaristas, especialistas, e até doutores
+            </span>
+          </p>
+          <p className="about-paragraph text-base md:text-lg text-[--terapia-gray] leading-relaxed max-w-3xl mx-auto">
+            Somos o inverso, o avesso e o desconcerto. 
           </p>
           <p className="about-paragraph text-xl md:text-2xl font-semibold text-[--terapia-red]">
-            Somos agentes transformadores.
+            {" "}
+           Somos agentes transformadores.
           </p>
         </div>
 
@@ -163,7 +167,7 @@ export function AboutSection() {
               Nariz Vermelho
             </h3>
             <p className="text-sm text-[--terapia-gray]/80">
-              O ingrediente final de uma receita sem contraindicação
+              O ingrediente final de uma receita sem contraindicação.
             </p>
           </div>
 
@@ -175,7 +179,7 @@ export function AboutSection() {
               Amor & Cuidado
             </h3>
             <p className="text-sm text-[--terapia-gray]/80">
-              Transformando o ambiente hospitalar com alegria
+              Transformando o ambiente hospitalar.
             </p>
           </div>
 
@@ -187,7 +191,7 @@ export function AboutSection() {
               Arte & Encontros
             </h3>
             <p className="text-sm text-[--terapia-gray]/80">
-              Usando a linguagem universal do palhaço
+              Usando a linguagem universal do palhaço.
             </p>
           </div>
         </div>

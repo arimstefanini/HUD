@@ -51,7 +51,9 @@ export default function Home() {
         <Since2003Section />
       </section>
 
-      <ImpactSection />
+      <section id="impact-section">
+        <ImpactSection />
+      </section>
 
       <section id="spotify-section">
         <SpotifySection />
@@ -63,7 +65,9 @@ export default function Home() {
         <SupportSection />
       </section>
 
-      <CTASection />
+      <section id="contact-section">
+        <CTASection />
+      </section>
 
     </main>
   )

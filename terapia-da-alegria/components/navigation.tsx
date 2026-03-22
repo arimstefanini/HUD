@@ -18,6 +18,7 @@ const navLinks = [
   { label: "Mídia", href: "#spotify-section" },
   { label: "Cursos", href: "#courses-section" },
   { label: "Apoie", href: "#support-section" },
+  { label: "Contato", href: "#contact-section" },
 ]
 
 const menuImages = [
@@ -27,6 +28,7 @@ const menuImages = [
   { src: "/images/spotify.jpg", className: "card-menu-4" },
   { src: "/images/cover_page.jpg", className: "card-menu-5" },
   { src: "/images/support.jpg", className: "card-menu-6" },
+  { src: "/images/esc_spotify.png", className: "card-menu-7" },
 ]
 
 export function Navigation() {
@@ -286,6 +288,7 @@ export function Navigation() {
                     { bottom: "30%", right: "15%" },
                     { bottom: "25%", left: "5%" },
                     { bottom: "5%", right: "5%" },
+                    { bottom: "1%", right: "50%" },
                   ]
                   const pos = positions[i]
                   return (

@@ -89,164 +89,126 @@ export function CTASection() {
   }, [])
 
   return (
-    <section
-      ref={sectionRef}
-      className="scroll-section relative bg-gradient-to-b from-[--terapia-cream] to-white py-8 md:pt-10 pb-2"
-    >
-      <div className="container mx-auto px-4">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            {/* Title */}
-            <h2 className="cta-title text-3xl md:text-4xl lg:text-5xl font-bold text-[--terapia-gray] mb-4 text-left">
-              Faça parte dessa{" "}
-              <span className="inline-block font-caveat text-[#e44f4a] text-[--terapia-red] text-4xl md:text-5xl lg:text-6xl">
-                história
-              </span>
-            </h2>
+<section
+  ref={sectionRef}
+  className="scroll-section relative bg-gradient-to-b from-[--terapia-cream] to-white md:pt-10"
+>
+  <div className="container mx-auto px-4">
 
-            {/* Text */}
-            <p className="cta-text text-base md:text-lg text-[--terapia-gray]/80 max-w-2xl mb-5 leading-relaxed text-left">
-              Quer conhecer mais sobre nosso trabalho? Siga-nos nas redes sociais ou
-              entre em contato. Estamos sempre prontos para levar alegria!
-            </p>
-          </div>
+    {/* CONTAINER CENTRAL (BASE DE TUDO) */}
+    <div className="max-w-5xl mx-auto">
 
-          <div className="text-center">
-            {/* Logo */}
-            <div>
-              <video
-                src="/images/agorasimm.mp4"
-                className="mx-auto rounded-full"
-                width={600}
-                height={600}
-                aria-label="Vídeo institucional da Terapia da Alegria"
-                autoPlay
-                muted
-                loop
-                playsInline
-              />
-            </div>
+      {/* BLOCO PRINCIPAL */}
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+
+        {/* TEXTO */}
+        <div>
+
+          <h2 className="cta-title text-3xl md:text-4xl lg:text-5xl font-bold text-[--terapia-gray] my-4 text-left">
+            Acompanhe nossa{" "}
+            <span className="inline-block font-caveat text-[#e44f4a] text-4xl md:text-5xl lg:text-6xl">
+              jornada
+            </span>
+          </h2>
+
+          <p className="cta-text text-base md:text-lg text-[--terapia-gray]/80 max-w-xl mb-5 leading-relaxed text-left">
+            Quer conhecer mais sobre nosso trabalho? 
+          </p>
+          <p className="cta-text text-base md:text-lg text-[--terapia-gray]/80 max-w-xl mb-5 leading-relaxed text-left">
+            Siga-nos nas redes sociais ou entre em contato.
+          </p>
+
+        </div>
+
+        {/* VÍDEO */}
+        <div className="flex justify-center md:justify-end">
+          <div className="w-full max-w-[300px] aspect-square overflow-hidden rounded-2xl shadow-lg">
+            <video
+              src="/images/agorasimm.mp4"
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+            />
           </div>
         </div>
 
-{/* CONNECT AREA */}
-<div className="mt-4 max-w-5xl mx-auto grid md:grid-cols-3 gap-12 text-center md:text-left">
+      </div>
 
-  {/* SOCIAL */}
-  <div>
+      {/* CONNECT AREA */}
+      <div className="mt-12 grid md:grid-cols-3 gap-12 text-center md:text-left">
 
-    <h3 className="text-lg font-semibold text-[--terapia-gray] mb-3">
-      Redes sociais
-    </h3>
+        {/* SOCIAL */}
+        <div>
+          <h3 className="text-lg font-semibold text-[--terapia-gray] mb-3">
+            Redes sociais
+          </h3>
 
-    <div className="flex flex-col gap-3 items-center md:items-start">
+          <div className="flex flex-col gap-3 items-center md:items-start">
+            <a href="https://www.instagram.com/terapiadaalegria/" target="_blank" className="flex items-center gap-3 text-[--terapia-gray] hover:text-pink-500 transition">
+              <SiInstagram size={20} color="#E4405F" />
+              <span className="text-sm font-medium">Instagram</span>
+            </a>
 
-      <a
-        href="https://www.instagram.com/terapiadaalegria/"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Instagram da Terapia da Alegria (abre em nova aba)"
-        className="flex items-center gap-3 text-[--terapia-gray] hover:text-pink-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-pink-500 focus-visible:ring-offset-2 rounded-sm transition"
-      >
-        <SiInstagram size={20} color="#E4405F" />
-        <span className="text-sm font-medium">Instagram</span>
-      </a>
+            <a href="https://www.youtube.com/terapiadaalegria" target="_blank" className="flex items-center gap-3 text-[--terapia-gray] hover:text-red-500 transition">
+              <SiYoutube size={20} color="#FF0000" />
+              <span className="text-sm font-medium">YouTube</span>
+            </a>
 
-      <a
-        href="https://www.youtube.com/terapiadaalegria"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="YouTube da Terapia da Alegria (abre em nova aba)"
-        className="flex items-center gap-3 text-[--terapia-gray] hover:text-red-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2 rounded-sm transition"
-      >
-        <SiYoutube size={20} color="#FF0000" />
-        <span className="text-sm font-medium">YouTube</span>
-      </a>
+            <a href="https://open.spotify.com/intl-pt/artist/4VMpU6tqRctpeVi3L06lX4" target="_blank" className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#1DB954] transition">
+              <SiSpotify size={20} color="#1DB954" />
+              <span className="text-sm font-medium">Spotify</span>
+            </a>
+          </div>
+        </div>
 
-      <a
-        href="https://open.spotify.com/intl-pt/artist/4VMpU6tqRctpeVi3L06lX4"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Spotify da Terapia da Alegria (abre em nova aba)"
-        className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#1DB954] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#1DB954] focus-visible:ring-offset-2 rounded-sm transition"
-      > 
-        <SiSpotify size={20} color="#1DB954" />
-        <span className="text-sm font-medium">Spotify</span>
-      </a>
+        {/* CONTACT */}
+        <div>
+          <h3 className="text-lg font-semibold text-[--terapia-gray] mb-3">
+            Contato
+          </h3>
 
-    </div>
+          <div className="flex flex-col gap-3 items-center md:items-start">
+            <a href="https://wa.me/5544999615892" target="_blank" className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#25D366] transition">
+              <SiWhatsapp size={20} color="#1DB954" />
+              <span className="text-sm font-medium">(44) 99961-5892</span>
+            </a>
 
-  </div>
+            <a href="https://wa.me/5544999307230" target="_blank" className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#25D366] transition">
+              <SiWhatsapp size={20} color="#1DB954" />
+              <span className="text-sm font-medium">(44) 99930-7230</span>
+            </a>
+          </div>
+        </div>
 
+        {/* INFO */}
+        <div>
+          <h3 className="text-lg font-semibold text-[--terapia-gray] mb-3">
+            Institucional
+          </h3>
 
-  {/* CONTACT */}
-  <div>
-
-    <h3 className="text-lg font-semibold text-[--terapia-gray] mb-3">
-      Contato
-    </h3>
-
-    <div className="flex flex-col gap-3 items-center md:items-start">
-
-      <a
-        href="https://wa.me/5544999615892"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Contato WhatsApp número 44 99961-5892 (abre em nova aba)"
-        className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#25D366] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 rounded-sm transition"
-      >
-        <SiWhatsapp size={20} color="#1DB954" />
-        <span className="text-sm font-medium">(44) 99961-5892</span>
-      </a>
-
-      <a
-        href="https://wa.me/5544999307230"
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Contato WhatsApp número 44 99930-7230 (abre em nova aba)"
-        className="flex items-center gap-3 text-[--terapia-gray] hover:text-[#25D366] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366] focus-visible:ring-offset-2 rounded-sm transition"
-      >
-        <SiWhatsapp size={20} color="#1DB954" />
-        <span className="text-sm font-medium">(44) 99930-7230</span>
-      </a>
-
-    </div>
-
-  </div>
-
-
-  {/* INFO */}
-  <div>
-
-    <h3 className="text-lg font-semibold text-[--terapia-gray] mb-3">
-      Institucional
-    </h3>
-
-    <div className="text-sm text-[--terapia-gray]/60 space-y-1">
-
-      <p className="font-medium text-[--terapia-gray]">
-        Associação Terapia da Alegria
-      </p>
-
-      <p>CNPJ: 26.277.755/0001-21</p>
-
-      <p>Maringá • Paraná • Brasil</p>
-
-      <p className="text-xs text-[--terapia-gray]/40 mt-2">
-        Título de Utilidade Pública Municipal desde 2018
-      </p>
-
-    </div>
-
-  </div>
-
-</div>
+          <div className="text-sm text-[--terapia-gray]/60 space-y-1">
+            <p className="font-medium text-[--terapia-gray]">
+              Associação Terapia da Alegria
+            </p>
+            <p>CNPJ: 26.277.755/0001-21</p>
+            <p>Maringá • Paraná • Brasil</p>
+            <p className="text-xs text-[--terapia-gray]/40 mt-2">
+              Título de Utilidade Pública Municipal desde 2018
+            </p>
+          </div>
+        </div>
 
       </div>
+
+    </div>
+  </div>
+
   {/* Footer */}
-  <div className="mt-20 pb-2 text-center text-sm text-[--terapia-gray]/80">
+  <div className="mt-20 pt-4 border-t border-[--terapia-gray]/20 text-center text-sm text-[--terapia-gray]/80">
     Terapia da Alegria © {new Date().getFullYear()}
   </div>
-    </section>
+</section>
   )
 }

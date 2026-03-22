@@ -112,12 +112,13 @@ export function CoursesSection() {
 
             <div className="courses-text space-y-4 text-base leading-relaxed text-white/95 md:text-lg">
               <p>
-                A Terapia da Alegria oferece cursos de palhaçaria para novos grupos e oficinas avançadas para
+                <span className="inline-block font-bold text-[#e44f4a] ">A Terapia da Alegria </span> oferece cursos de palhaçaria para novos grupos e oficinas avançadas para
                 projetos já existentes.
               </p>
 
-              <p className="font-semibold text-white">Em busca do seu Palhaço Perdido.</p>
-
+              <p className="inline-block font-caveat text-white text-4xl md:text-4xl lg:text-5xl underline decoration-[#e44f4a] underline-offset-4">
+                Em busca do seu Palhaço Perdido.
+              </p>
               <p>
                 É muito mais que uma oficina, é uma vivência na linguagem da palhaçaria, a partir de conteúdo
                 teórico, mas também por meio de exercícios, jogos de improviso, escuta, olhar, presença,
@@ -158,10 +159,6 @@ export function CoursesSection() {
           <div className="space-y-5">
 
             <div className="courses-media rounded-2xl border border-white/25 bg-zinc-800/80 p-3 shadow-xl backdrop-blur-sm sm:p-4">
-              <h3 className="mb-3 text-lg font-semibold">Vídeos no YouTube</h3>
-              <p className="mb-4 text-sm text-white/80">
-                Com figurinos coloridos e o icônico nariz vermelho, a trupe transforma o ambiente clínico em espaços de bem-estar para pacientes e idosos.
-              </p>
               <iframe
                 className="w-full aspect-video rounded-xl"
                 src="https://www.youtube-nocookie.com/embed/bqko4cKSeRY"
