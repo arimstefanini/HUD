@@ -34,7 +34,7 @@ export function CoursesSection() {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 70%",
+          start: "top bottom",
           toggleActions: "play none none reverse",
         },
       })
@@ -70,6 +70,7 @@ export function CoursesSection() {
             opacity: 0,
             stagger: 0.1,
             duration: 0.45,
+            immediateRender: false,
           },
           "-=0.2"
         )
@@ -95,12 +96,12 @@ export function CoursesSection() {
       aria-labelledby="courses-title"
        className="relative overflow-hidden bg-gradient-to-b from-zinc-800 via-zinc-900 to-zinc-950 text-white py-10"
     >
-      <div className="courses-bg-glow pointer-events-none absolute inset-0 opacity-60" aria-hidden="true">
+      <div className="courses-bg-glow pointer-events-none absolute inset-0 z-0 opacity-60" aria-hidden="true">
         <div className="absolute -left-20 top-24 h-52 w-52 rounded-full bg-[#ff6b66]/20 blur-3xl" />
         <div className="absolute -right-16 bottom-10 h-72 w-72 rounded-full bg-red-500/10 blur-3xl" />
       </div>
 
-      <div className="relative max-w-7xl mx-auto px-6">
+      <div className="relative z-20 max-w-7xl mx-auto px-6">
         <div className="grid gap-10 lg:grid-cols-2 lg:gap-14 items-center">
             <div className="space-y-6 text-center lg:text-left">
 

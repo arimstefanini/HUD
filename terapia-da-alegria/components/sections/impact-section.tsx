@@ -194,6 +194,7 @@ export function ImpactSection() {
   return (
 <section
   ref={sectionRef}
+  id="impact-section"
   className="relative min-h-screen w-full flex items-center overflow-hidden bg-cover bg-center"
   style={{ backgroundImage: "url('/images/img_more_than.jpg')" }}
 >

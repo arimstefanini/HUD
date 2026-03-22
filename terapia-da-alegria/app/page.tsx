@@ -11,6 +11,7 @@ import { Since2003Section } from "@/components/sections/since2003-section"
 import { ImpactSection } from "@/components/sections/impact-section"
 import { SpotifySection } from "@/components/sections/spotify-section"
 import { CoursesSection } from "@/components/sections/courses-section"
+import { DepoimentosSection } from "@/components/sections/depoimento-section"
 import { SupportSection } from "@/components/sections/support-section"
 import { CTASection } from "@/components/sections/cta-section"
 
@@ -60,6 +61,10 @@ export default function Home() {
       </section>
 
        <CoursesSection />
+    
+      <section id="depoimentos-section">
+        <DepoimentosSection />
+      </section>
 
       <section id="support-section">
         <SupportSection />

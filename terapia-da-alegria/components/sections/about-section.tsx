@@ -99,12 +99,12 @@ export function AboutSection() {
 </div>
 
 {/* BOTTOM LEFT */}
-<div className="absolute bottom-24 left-2 sm:left-4 md:left-8 w-[20vw] max-w-[240px] aspect-square">
+<div className="absolute bottom-4 left-2 sm:left-4 md:left-8 w-[20vw] max-w-[240px] aspect-square">
   <Image src="/images/20.png" alt="" fill className="rounded-2xl object-cover" />
 </div>
 
 {/* BOTTOM RIGHT */}
-<div className="absolute bottom-24 right-2 sm:right-4 md:right-8 w-[20vw] max-w-[240px] aspect-square">
+<div className="absolute bottom-4 right-2 sm:right-4 md:right-8 w-[20vw] max-w-[240px] aspect-square">
   <Image src="/images/8.png" alt="" fill className="rounded-2xl object-cover" />
 </div>
 

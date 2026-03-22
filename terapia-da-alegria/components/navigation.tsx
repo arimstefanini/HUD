@@ -17,6 +17,7 @@ const navLinks = [
   { label: "Impacto", href: "#impact-section" },
   { label: "Mídia", href: "#spotify-section" },
   { label: "Cursos", href: "#courses-section" },
+  { label: "Depoimentos", href: "#depoimentos-section" },
   { label: "Apoie", href: "#support-section" },
   { label: "Contato", href: "#contact-section" },
 ]
@@ -27,8 +28,9 @@ const menuImages = [
   { src: "/images/more_than_10k.jpg", className: "card-menu-3" },
   { src: "/images/spotify.jpg", className: "card-menu-4" },
   { src: "/images/cover_page.jpg", className: "card-menu-5" },
-  { src: "/images/support.jpg", className: "card-menu-6" },
-  { src: "/images/esc_spotify.png", className: "card-menu-7" },
+  { src: "/images/s_logo.png", className: "card-menu-6" },
+  { src: "/images/support.jpg", className: "card-menu-7" },
+  { src: "/images/esc_spotify.png", className: "card-menu-8" },
 ]
 
 export function Navigation() {
@@ -94,16 +96,17 @@ export function Navigation() {
     const animations: gsap.core.Tween[] = []
 
     images.forEach((img, i) => {
+      const depth = i % 2 === 0 ? 1 : 0.5
       const anim = gsap.to(img, {
-        y: `+=${gsap.utils.random(5, 15)}`,
-        x: `+=${gsap.utils.random(-10, 10)}`,
-        rotation: `+=${gsap.utils.random(-5, 5)}`,
-        duration: gsap.utils.random(2, 4),
-        ease: "sine.inOut",
-        yoyo: true,
-        repeat: -1,
-        delay: i * 0.2,
-      })
+      y: `+=${gsap.utils.random(5, 10) * depth}`,
+      x: `+=${gsap.utils.random(-5, 5) * depth}`,
+      rotation: `+=${gsap.utils.random(-2, 2)}`,
+      duration: gsap.utils.random(3, 5),
+      ease: "sine.inOut",
+      yoyo: true,
+      repeat: -1,
+      delay: i * 0.15,
+    })
       animations.push(anim)
     })
 
@@ -259,8 +262,8 @@ export function Navigation() {
 
         {/* CONTENT */}
         <div className="relative z-20 h-full flex flex-col justify-center">
-          <div className="container mx-auto px-4 py-20">
-            <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="container mx-auto px-20 py-20">
+            <div className="grid lg:grid-cols-2 gap-1 items-center">
               {/* LINKS */}
               <div className="space-y-2">
                 {navLinks.map((link, index) => (
@@ -269,9 +272,9 @@ export function Navigation() {
                       onClick={() => scrollToSection(link.href)}
                       onMouseEnter={() => highlightImage(index)}
                       onMouseLeave={() => highlightImage(null)}
-                      className="menu-link block text-4xl sm:text-5xl font-bold text-white py-2"
+                      className="menu-link block text-2xl sm:text-3xl font-bold text-white py-2"
                     >
-                      <span className="text-base sm:text-lg mr-3">0{index + 1}</span>
+                      <span className="text-base sm:text-base mr-3">0{index + 1}</span>
                       {link.label}
                     </button>
                   </div>
@@ -279,20 +282,33 @@ export function Navigation() {
               </div>
 
               {/* IMAGENS - apenas no desktop */}
-              <div ref={imagesRef} className="hidden lg:block relative h-[60vh]">
+              <div ref={imagesRef} className="hidden lg:block relative h-[70vh] w-full">
                 {menuImages.map((img, i) => {
                   const positions = [
-                    { top: "0%", left: "10%" },
-                    { top: "5%", right: "5%" },
-                    { top: "30%", left: "25%" },
-                    { bottom: "30%", right: "15%" },
+                    { top: "0%", left: "5%" },
+                    { top: "0%", right: "5%" },
+
+                    { top: "25%", left: "15%" },
+                    { top: "25%", right: "18%" },
+
                     { bottom: "25%", left: "5%" },
-                    { bottom: "5%", right: "5%" },
-                    { bottom: "1%", right: "50%" },
+                    { bottom: "25%", right: "5%" },
+
+                    { bottom: "0%", left: "15%" },
+                    { bottom: "0%", right: "18%" },
                   ]
                   const pos = positions[i]
                   return (
-                    <div key={img.className} className="card-menu absolute w-36 h-24 rounded-xl overflow-hidden shadow-2xl" style={pos}>
+                    <div
+  key={img.className}
+  className={`
+    card-menu absolute rounded-xl overflow-hidden shadow-2xl
+    ${i % 3 === 0 ? "w-40 h-28" : ""}
+    ${i % 3 === 1 ? "w-32 h-24" : ""}
+    ${i % 3 === 2 ? "w-36 h-28" : ""}
+  `}
+  style={pos}
+>
                       <Image
                         src={img.src}
                         alt=""
