@@ -142,18 +142,9 @@ export function CoursesSection() {
                 aria-label="Enviar mensagem no WhatsApp para saber mais sobre os cursos"
               >
                 <MessageCircle aria-hidden="true" className="h-5 w-5" />
-                Ficou curioso? Mande um zap!
+                Para mais informações. Mande um zap!
               </a>
 
-              <a
-                href="https://www.youtube.com/@terapiadaalegria"
-                target="_blank"
-                rel="noreferrer"
-                className="courses-cta inline-flex w-full items-center justify-center gap-2 rounded-xl border border-white/60 bg-transparent px-5 py-3 font-semibold text-white transition hover:bg-white hover:text-black focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-white/70 sm:w-auto"
-              >
-                <Youtube aria-hidden="true" className="h-5 w-5" />
-                Ver canal no YouTube
-              </a>
             </div>
           </div>
 
