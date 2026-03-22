@@ -229,8 +229,6 @@ export function DepoimentosSection() {
               ref={emblaRef}
               aria-label="Carrossel de depoimentos"
               aria-roledescription="carousel"
-              onMouseEnter={() => setAutoplayEnabled(false)}
-              onMouseLeave={() => !isReducedMotion && setAutoplayEnabled(true)}
               onFocusCapture={() => setAutoplayEnabled(false)}
               onBlurCapture={() => !isReducedMotion && setAutoplayEnabled(true)}
             >
