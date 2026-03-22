@@ -132,7 +132,7 @@ export function CTASection() {
         >
           {/* TEXTO ACIMA DO VÍDEO, CENTRALIZADO */}
           <p className="text-base font-semibold text-[--terapia-gray] text-center">
-            Receba uma visita virtual
+            Receba uma visita virtual (clique aqui!)
           </p>
 
           {/* VÍDEO LIMPO */}
