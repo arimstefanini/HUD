@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import Image from "next/image"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -12,6 +12,7 @@ if (typeof window !== "undefined") {
 
 export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const [isDarkMode, setIsDarkMode] = useState(false)
 
   useEffect(() => {
     if (!sectionRef.current) return
@@ -75,6 +76,24 @@ export function AboutSection() {
     return () => ctx.revert()
   }, [])
 
+  useEffect(() => {
+    if (typeof window === "undefined") return
+
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    const handleChange = () => setIsDarkMode(mediaQuery.matches)
+
+    handleChange()
+    mediaQuery.addEventListener("change", handleChange)
+
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [])
+
+  const outlinedTextStyle = {
+    textShadow: isDarkMode
+      ? "0 0 3px black, 0 0 6px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black"
+      : "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white",
+  }
+
   return (
 <section
   ref={sectionRef}
@@ -114,40 +133,40 @@ export function AboutSection() {
     <div className="container relative z-10 mx-auto max-w-4xl px-6">
 
       <blockquote className="text-center mb-10">
-        <p className="text-2xl md:text-4xl lg:text-5xl font-caveat text-[--terapia-gray]">
+        <p className="text-2xl md:text-4xl lg:text-5xl font-caveat text-[--terapia-gray]" style={outlinedTextStyle}>
           {'"De médico e louco, todo mundo tem um pouco..."'}
         </p>
-        <p className="text-xl md:text-3xl lg:text-4xl font-caveat text-[--terapia-red]">
+        <p className="text-xl md:text-3xl lg:text-4xl font-caveat text-[--terapia-red]" style={outlinedTextStyle}>
           Nós temos bastante!
         </p>
       </blockquote>
 
     {/* Texto */}
     <div className="space-y-6 text-center">
-      <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed">
+      <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed" style={outlinedTextStyle}>
         Nós somos muitas histórias, muitos sonhos e um só anseio.
       </p>
 
-      <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed">
+      <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed" style={outlinedTextStyle}>
         No reflexo da vida somos meros artistas ou voluntários.
       </p>
 
-      <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed">
+      <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed" style={outlinedTextStyle}>
         Com o nariz vermelho, somos o que queremos ser:{" "}
-        <span className="text-[--terapia-red] font-semibold">
+        <span className="text-[--terapia-red] font-semibold" style={outlinedTextStyle}>
           poetas, músicos, bailarinas, malabaristas, especialistas, e até doutores
         </span>
       </p>
 
-      <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed">
+      <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed" style={outlinedTextStyle}>
         Somos o inverso, o avesso e o desconcerto.
       </p>
 
-        <p className="text-xl md:text-2xl font-semibold text-[--terapia-red]">
-          Somos agentes transformadores.
-        </p>
+      <p className="text-xl md:text-2xl font-semibold text-[--terapia-red]" style={outlinedTextStyle}>
+        Somos agentes transformadores.
+      </p>
 
-      <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed mx-12">
+      <p className="text-base md:text-lg text-[--terapia-gray] leading-relaxed mx-12" style={outlinedTextStyle}>
         Para entrar no ambiente hospitalar, a trupe transformou o conhecido uniforme branco 
         em uma roupa divertida: os jalecos receberam bolsos coloridos e apetrechos por todos os lados, 
         os sapatos clássicos foram trocados por sapatos de palhaço, calças largas 
