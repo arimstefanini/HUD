@@ -139,7 +139,7 @@ export function HeroSection() {
         className="hero-bg absolute  z-0  inset-0 gpu-accelerated"
       >
         <picture className="absolute inset-0 block h-full w-full">
-          <source media="(max-width: 767px)" srcSet="/images/cover_page_cel.jpg" />
+          <source media="(max-width: 767px)" srcSet="/images/capa_mobile.jpg" />
           <img
             src="/images/cover_page.jpg"
             alt="Voluntários da Terapia da Alegria sorrindo e levando afeto no hospital"

@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 
@@ -17,24 +17,20 @@ export function ImpactSection() {
   const hospitalizationsRef = useRef<HTMLSpanElement>(null)
   const emergencyRef = useRef<HTMLSpanElement>(null)
   const utiRef = useRef<HTMLSpanElement>(null)
+  const [backgroundPosition, setBackgroundPosition] = useState("50% 30%")
 
   useEffect(() => {
     if (!sectionRef.current) return
 
+    const mediaQuery = window.matchMedia("(max-width: 767px)")
+    const updateBgPosition = () => {
+      setBackgroundPosition(mediaQuery.matches ? "35% 30%" : "50% 30%")
+    }
+
+    updateBgPosition()
+    mediaQuery.addEventListener("change", updateBgPosition)
+
     const ctx = gsap.context(() => {
-
-      /* PARALLAX BACKGROUND */
-
-      gsap.to(sectionRef.current, {
-        backgroundPosition: "50% 30%",
-        ease: "none",
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      })
 
       /* TIMELINE */
 
@@ -188,15 +184,21 @@ export function ImpactSection() {
 
     }, sectionRef)
 
-    return () => ctx.revert()
+    return () => {
+      mediaQuery.removeEventListener("change", updateBgPosition)
+      ctx.revert()
+    }
   }, [])
 
   return (
 <section
   ref={sectionRef}
   id="impact-section"
-  className="relative min-h-screen w-full flex items-center overflow-hidden bg-cover bg-center"
-  style={{ backgroundImage: "url('/images/img_more_than.jpg')" }}
+  className="relative min-h-screen w-full flex items-center overflow-hidden bg-cover"
+  style={{
+    backgroundImage: "url('/images/corte_impact.png')",
+    backgroundPosition,
+  }}
 >
 
   {/* OVERLAY */}

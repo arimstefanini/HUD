@@ -167,7 +167,13 @@ export function AboutSection() {
 
     <div className="bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
       <div className="inline-flex items-center justify-center w-16 h-16 bg-[--terapia-red]/10 rounded-full mb-4">
-        <Smile className="w-8 h-8 text-[--terapia-red]" />
+        <Image
+          src="/images/icones_nariz.png"
+          alt="Nariz vermelho"
+          width={120}
+          height={120}
+          className="object-contain"
+        />
       </div>
       <h3 className="text-lg font-bold text-[--terapia-gray] mb-2">
         Nariz Vermelho
@@ -178,8 +184,14 @@ export function AboutSection() {
     </div>
 
     <div className="bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
-      <div className="inline-flex items-center justify-center w-16 h-16 bg-[--terapia-teal]/20 rounded-full mb-4">
-        <Heart className="w-8 h-8 text-[--terapia-teal]" />
+      <div className="inline-flex items-center justify-center w-16 h-16 bg-[--terapia-red]/10 rounded-full mb-4">
+        <Image
+          src="/images/icone_maos.png"
+          alt="Nariz vermelho"
+          width={100}
+          height={100}
+          className="object-contain"
+        />
       </div>
       <h3 className="text-lg font-bold text-[--terapia-gray] mb-2">
         Amor & Cuidado
@@ -191,7 +203,13 @@ export function AboutSection() {
 
     <div className="bg-white rounded-2xl p-6 md:p-8 text-center shadow-lg border-2 border-[#e44f4a] hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
       <div className="inline-flex items-center justify-center w-16 h-16 bg-[--terapia-red]/10 rounded-full mb-4">
-        <Music className="w-8 h-8 text-[--terapia-red]" />
+        <Image
+          src="/images/icone_coracao.png"
+          alt="Nariz vermelho"
+          width={100}
+          height={100}
+          className="object-contain"
+        />
       </div>
       <h3 className="text-lg font-bold text-[--terapia-gray] mb-2">
         Arte & Encontros

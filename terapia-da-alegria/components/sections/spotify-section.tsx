@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef } from "react"
+import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -26,6 +26,21 @@ function SpotifyPlayer({ uri }: { uri: string }) {
 
 export function SpotifySection() {
   const sectionRef = useRef<HTMLElement>(null)
+  const [backgroundPosition, setBackgroundPosition] = useState("50% center")
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)")
+    const updateBgPosition = () => {
+      setBackgroundPosition(mediaQuery.matches ? "15% center" : "50% center")
+    }
+
+    updateBgPosition()
+    mediaQuery.addEventListener("change", updateBgPosition)
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateBgPosition)
+    }
+  }, [])
 
   useEffect(() => {
     if (!sectionRef.current) return
@@ -115,8 +130,11 @@ export function SpotifySection() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-cover bg-center"
-      style={{ backgroundImage: "url('/images/img_spotify.jpg')" }}
+      className="relative min-h-screen overflow-hidden bg-cover"
+      style={{
+        backgroundImage: "url('/images/img_spotify.jpg')",
+        backgroundPosition,
+      }}
     >
 
       <div className="absolute" />
@@ -137,9 +155,9 @@ export function SpotifySection() {
                 className="spotify-image w-[220px] md:w-[320px] lg:w-[420px] py-10"
               />
 
-              <h2 className="spotify-title text-2xl md:text-3xl lg:text-4xl font-semibold text-black md:text-white">
+              <h2 className="spotify-title text-2xl md:text-3xl lg:text-4xl  text-black font-semibold" style={{ textShadow: "0 0 6px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                 Aperte o play e{" "}
-                <span className="spotify-transform-word font-caveat text-[#e44f4a] text-3xl md:text-4xl lg:text-5xl opacity-0">
+                <span className="spotify-transform-word font-caveat text-[#e44f4a] text-3xl md:text-4xl lg:text-5xl opacity-0" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                   sorria
                 </span>
               </h2>
@@ -148,18 +166,18 @@ export function SpotifySection() {
 
             <div className="spotify-text space-y-4 mb-8">
 
-              <p className="text-base md:text-lg text-black/90 md:text-black/90">
+              <p className="text-base md:text-lg text-black font-semibold" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                 Em 2022, a trupe se arriscou nos estúdios e lançou seu
               </p>
-              <p className="text-base md:text-lg text-black/90 md:text-black/90">
+              <p className="text-base md:text-lg text-black font-semibold" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                 <strong> primeiro álbum musical</strong>.
               </p>
 
-              <p className="text-base md:text-lg text-black/90 md:text-black/90">
+              <p className="text-base md:text-lg text-black font-semibold" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                 Um lindo trabalho recheado de músicas autorais, nascidas das visitas, dos encontros e das gargalhadas ao logo desses anos.
               </p>
 
-              <p className="text-lg md:text-xl font-semibold text-black md:text-black">
+              <p className="text-lg md:text-xl font-semibold text-black md:text-black" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                 E agora, em 2026, vem aí o segundo álbum...
               </p>
 
@@ -173,14 +191,14 @@ export function SpotifySection() {
 
               <div className="spotify-feature flex items-center gap-2 bg-white/20 md:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                 <Music2 className="w-4 h-4 text-white" />
-                <span className="text-sm text-black md:text-white">
+                <span className="text-sm text-black md:text-white font-semibold" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                   Músicas autorais
                 </span>
               </div>
 
               <div className="spotify-feature flex items-center gap-2 bg-white/20 md:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                 <Headphones className="w-4 h-4 text-white" />
-                <span className="text-sm text-black md:text-white">
+                <span className="text-sm text-black md:text-white font-semibold" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                   2 álbuns
                 </span>
               </div>

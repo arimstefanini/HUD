@@ -2,19 +2,28 @@
 
 import { useEffect, useRef, useState } from "react"
 import Image from "next/image"
-import gsap from "gsap"
-import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { Copy, Check, Heart, Banknote, CreditCard } from "lucide-react"
-
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger)
-}
 
 export function SupportSection() {
   const sectionRef = useRef<HTMLElement>(null)
   const [copied, setCopied] = useState(false)
+  const [backgroundImage, setBackgroundImage] = useState("/images/img_suport.jpg")
 
   const pixKey = "26277755000121"
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(max-width: 767px)")
+    const updateBgImage = () => {
+      setBackgroundImage(mediaQuery.matches ? "/images/suporte_celular.jpeg" : "/images/img_suport.jpg")
+    }
+
+    updateBgImage()
+    mediaQuery.addEventListener("change", updateBgImage)
+
+    return () => {
+      mediaQuery.removeEventListener("change", updateBgImage)
+    }
+  }, [])
 
   const copyToClipboard = async () => {
     try {
@@ -26,69 +35,6 @@ export function SupportSection() {
     }
   }
 
-  useEffect(() => {
-    if (!sectionRef.current) return
-
-    const ctx = gsap.context(() => {
-
-/* PARALLAX BACKGROUND */
-gsap.fromTo(".support-bg", 
-  { yPercent: 0 }, // Começa na posição original
-  {
-    yPercent: -15, // Sobe 15%
-    ease: "none",
-    scrollTrigger: {
-      trigger: sectionRef.current,
-      start: "top bottom",
-      end: "bottom top",
-      scrub: true,
-    },
-  }
-)
-
-      /* TIMELINE PRINCIPAL */
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-          toggleActions: "play none none reverse",
-        },
-      })
-
-      tl.from(".support-subtitle", {
-        y: 40,
-        opacity: 0,
-        duration: 0.6,
-      })
-      .from(".support-title", {
-        y: 60,
-        opacity: 0,
-        duration: 0.8,
-      }, "-=0.3")
-      .from(".support-card", {
-        y: 40,
-        opacity: 0,
-        duration: 0.6,
-      }, "-=0.4")
-
-      /* CORAÇÃO FLUTUANDO */
-      gsap.utils.toArray(".floating-heart").forEach((heart: any, index) => {
-        gsap.to(heart, {
-          y: -15 - index * 8,
-          x: Math.sin(index * 1.5) * 10,
-          duration: 2.5 + index * 0.4,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-        })
-      })
-
-    }, sectionRef)
-
-    return () => ctx.revert()
-
-  }, [])
-
   return (
     <section
       ref={sectionRef}
@@ -99,7 +45,7 @@ gsap.fromTo(".support-bg",
       {/* BACKGROUND */}
       <div className="absolute inset-0">
         <Image
-          src="/images/img_suport.jpg"
+          src={backgroundImage}
           alt="Voluntária com nariz de palhaço sorrindo com uma criança em atividade hospitalar da Terapia da Alegria"
           fill
           className="support-bg object-cover object-center scale-125"
@@ -122,25 +68,25 @@ gsap.fromTo(".support-bg",
           <div className="flex flex-col items-end mb-2 text-right"> 
             {/* Adicionei text-right para alinhar o texto à direita já que o container é items-end */}
 
-            <h2 className="support-title text-3xl md:text-5xl font-bold text-black mb-4 leading-tight">
-              <span className="font-caveat text-[#ff8f87] text-5xl md:text-7xl">
+            <h2 className="support-title text-3xl md:text-5xl font-bold text-black mb-4 leading-tight" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
+              <span className="font-caveat text-[#ff8f87] text-5xl md:text-7xl" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                 Seja um Cooperador
               </span>
             </h2>
 
             <div className="space-y-4 text-black"> 
               
-              <p className="support-title text-lg md:text-xl">
+              <p className="support-title text-lg md:text-xl" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                 Gostaríamos de convidar você a caminhar conosco nessa jornada de transformação.
               </p>
 
-              <p className="support-title text-lg md:text-xl">
+              <p className="support-title text-lg md:text-xl" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                 O apoio vai muito além do investimento financeiro; é um gesto de confiança, sensibilidade e compromisso com o cuidado ao próximo.
               </p>
 
-              <p className="support-title text-lg md:text-xl">
+              <p className="support-title text-lg md:text-xl" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                 Torne-se um{" "}
-                <span className="font-caveat text-[#ff8f87] text-3xl md:text-5xl block md:inline">
+                <span className="font-caveat text-[#ff8f87] text-3xl md:text-5xl block md:inline" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                   mantenedor
                 </span>{" "}
                 .
