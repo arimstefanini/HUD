@@ -86,10 +86,9 @@ export function SupportSection() {
 
               <p className="support-title text-lg md:text-xl" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                 Torne-se um{" "}
-                <span className="font-caveat text-[#ff8f87] text-3xl md:text-5xl block md:inline" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
+                <span className="font-caveat text-[#ff8f87] text-3xl md:text-5xl inline" style={{ textShadow: "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
                   mantenedor
-                </span>{" "}
-                .
+                </span>{" "}!
               </p>
             </div>
           </div>
