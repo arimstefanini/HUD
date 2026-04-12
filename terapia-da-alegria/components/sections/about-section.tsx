@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import Image from "next/image"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
@@ -12,7 +12,6 @@ if (typeof window !== "undefined") {
 
 export function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null)
-  const [isDarkMode, setIsDarkMode] = useState(false)
 
   useEffect(() => {
     if (!sectionRef.current) return
@@ -76,29 +75,17 @@ export function AboutSection() {
     return () => ctx.revert()
   }, [])
 
-  useEffect(() => {
-    if (typeof window === "undefined") return
-
-    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
-    const handleChange = () => setIsDarkMode(mediaQuery.matches)
-
-    handleChange()
-    mediaQuery.addEventListener("change", handleChange)
-
-    return () => mediaQuery.removeEventListener("change", handleChange)
-  }, [])
-
   const outlinedTextStyle = {
-    textShadow: isDarkMode
-      ? "0 0 3px black, 0 0 6px black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black"
-      : "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white",
+    textShadow:
+      "0 0 3px white, 0 0 6px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white",
   }
 
   return (
 <section
   ref={sectionRef}
   id="about-section"
-  className="scroll-section relative bg-gradient-to-b from-[--terapia-cream] to-white py-10 md:py-12"
+  className="scroll-section relative bg-gradient-to-b from-[#f6f8fb] to-white py-10 md:py-12"
+  style={{ backgroundColor: "#f6f8fb" }}
 >
 
   {/* BLOCO 1 — COM IMAGENS */}
