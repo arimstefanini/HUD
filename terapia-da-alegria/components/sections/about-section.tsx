@@ -84,8 +84,11 @@ export function AboutSection() {
 <section
   ref={sectionRef}
   id="about-section"
-  className="scroll-section relative bg-gradient-to-b from-[#f6f8fb] to-white py-10 md:py-12"
-  style={{ backgroundColor: "#f6f8fb" }}
+  className="scroll-section relative py-10 md:py-12"
+  style={{
+    background: "linear-gradient(to bottom, #f6f8fb, white)",
+    backgroundColor: "#f6f8fb"
+  }}
 >
 
   {/* BLOCO 1 — COM IMAGENS */}
