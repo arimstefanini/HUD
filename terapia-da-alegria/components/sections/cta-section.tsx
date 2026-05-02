@@ -94,49 +94,41 @@ export function CTASection() {
   return (
 <section
   ref={sectionRef}
-  className="scroll-section relative bg-gradient-to-b from-[--terapia-cream] to-white md:pt-10"
+  className="scroll-section relative bg-gradient-to-b from-[--terapia-cream] to-white md:pt-3"
 >
-  <div className="container mx-auto px-4">
+  <div className="container mx-auto px-2">
 
     {/* CONTAINER CENTRAL (BASE DE TUDO) */}
     <div className="max-w-5xl mx-auto">
+<div className="text-center mb-3">
+  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[--terapia-gray] my-4">
+    Acompanhe nossa{" "}
+    <span className="inline-block font-caveat text-[#e44f4a] text-4xl md:text-5xl lg:text-6xl">
+      jornada
+    </span>
+  </h2>
 
+  <p className="text-base md:text-lg text-[--terapia-gray]/80 max-w-xl mx-auto leading-relaxed">
+    Siga-nos nas redes sociais ou entre em contato.
+  </p>
+</div>
       {/* BLOCO PRINCIPAL */}
       <div className="grid md:grid-cols-2 gap-12 items-center">
 
         {/* TEXTO */}
         <div>
 
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[--terapia-gray] my-4 text-left">
-            Acompanhe nossa{" "}
-            <span className="inline-block font-caveat text-[#e44f4a] text-4xl md:text-5xl lg:text-6xl">
-              jornada
-            </span>
-          </h2>
-
-          <p className=" text-base md:text-lg text-[--terapia-gray]/80 max-w-xl mb-5 leading-relaxed text-left">
-            Quer conhecer mais sobre nosso trabalho? 
-          </p>
-          <p className=" text-base md:text-lg text-[--terapia-gray]/80 max-w-xl mb-5 leading-relaxed text-left">
-            Siga-nos nas redes sociais ou entre em contato.
-          </p>
-
-        </div>
-
-        {/* VÍDEO */}
-        <Link
+          <Link
           href="/diario"
           className="group focus:outline-none"
         >
           {/* TEXTO ACIMA DO VÍDEO, CENTRALIZADO */}
           <div className="text-center">
             <p className="inline-block font-caveat text-black text-2xl md:text-2xl lg:text-3xl underline decoration-[#e44f4a] underline-offset-2">
-              Receba uma visita virtual
-            </p>
-            <p className="mt-2 text-sm text-[--terapia-gray]/70 group-hover:text-[--terapia-gray] transition-colors">
-              Clique para ler nosso diário interativo
+              Clique para ler nosso diário
             </p>
           </div>
+          <div className="relative w-full max-w-[160px] sm:max-w-[200px] aspect-square overflow-hidden rounded-2xl shadow-lg transition-all duration-300 group-hover:scale-[1.03] mx-auto">
           <Image
             src="/images/livro.jpeg"
             alt="Abrir Diário Interativo"
@@ -144,9 +136,46 @@ export function CTASection() {
             height={150}
             className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 mx-auto"
           />
-
-
+            {/* BOTÃO PLAY DISCRETO */}
+            <div className="absolute bottom-3 right-3 bg-white/90 rounded-full p-2 shadow-md group-hover:scale-110 transition">
+              <Play className="size-5 text-black" aria-hidden="true" />
+            </div>
+        </div>
         </Link>
+        </div>
+
+        {/* VÍDEO */}
+        <a
+          href="https://www.youtube.com/watch?v=5hrpIFUuky4&list=PLNRmOenBwX7LiIdutWcuRygDoJXdGmt2g"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Assistir visita virtual da Terapia da Alegria no YouTube"
+          title="Clique para assistir a visita virtual"
+          className="group flex flex-col items-center gap-3 focus:outline-none"
+        >
+          {/* TEXTO ACIMA DO VÍDEO, CENTRALIZADO */}
+            <p className="inline-block font-caveat text-black text-2xl md:text-2xl lg:text-3xl underline decoration-[#e44f4a] underline-offset-2">
+              Clique para receba uma visita virtual 
+            </p>
+
+          {/* VÍDEO LIMPO */}
+          <div className="relative w-full max-w-[160px] sm:max-w-[200px] aspect-square overflow-hidden rounded-2xl shadow-lg transition-all duration-300 group-hover:scale-[1.03]">
+            <video
+              src="/images/agorasimm.mp4"
+              className="w-full h-full object-cover"
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-hidden="true"
+            />
+
+            {/* BOTÃO PLAY DISCRETO */}
+            <div className="absolute bottom-3 right-3 bg-white/90 rounded-full p-2 shadow-md group-hover:scale-110 transition">
+              <Play className="size-5 text-black" aria-hidden="true" />
+            </div>
+          </div>
+        </a>
 
       </div>
 
