@@ -212,11 +212,10 @@ export function DepoimentosSection() {
 
       <div className="relative mx-auto flex max-w-7xl flex-col gap-10 px-4 sm:px-6 lg:px-8">
         <div className="mx-auto max-w-3xl text-center">
-
-          <h2 id="depoimentos-title" className="text-3xl font-bold tracking-tight">
-            Depoimentos
-          </h2>
-
+              <span className="font-caveat text-white text-5xl md:text-7xl" >
+                Depoimentos
+              </span>
+  
 
         </div>
 
