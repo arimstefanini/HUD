@@ -115,7 +115,7 @@ export function Navigation() {
                 className={`hidden lg:block transition-all duration-500 ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
               >
                 <Image
-                  src="/images/imagem_navibar.png"
+                  src="/images/navBranco.jpg"
                   alt="Ilustração do menu Terapia da Alegria"
                   width={300}
                   height={420}
