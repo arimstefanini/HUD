@@ -155,7 +155,7 @@ export function CTASection() {
         >
           {/* TEXTO ACIMA DO VÍDEO, CENTRALIZADO */}
             <p className="inline-block font-caveat text-black text-2xl md:text-2xl lg:text-3xl underline decoration-[#e44f4a] underline-offset-2">
-              Clique para receba uma visita virtual 
+              Clique para receber uma visita virtual 
             </p>
 
           {/* VÍDEO LIMPO */}

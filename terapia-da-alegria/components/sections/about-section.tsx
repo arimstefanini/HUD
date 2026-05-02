@@ -188,7 +188,10 @@ export function AboutSection() {
         NARIZ VERMELHO
       </h3>
       <p className="text-sm text-[--terapia-gray]/80">
-        A menor das máscaras. A verdade sem disfarce...
+        A menor das máscaras.
+        </p>
+       <p className="text-sm text-[--terapia-gray]/80">
+         A verdade sem disfarce...
       </p>
     </div>
 

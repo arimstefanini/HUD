@@ -16,7 +16,7 @@ const navLinks = [
   { label: "Nossa história", href: "#since-section" },
   { label: "Impacto", href: "#impact-section" },
   { label: "Depoimentos", href: "#depoimentos-section" },
-  { label: "Música", href: "#spotify-section" },
+  { label: "Spotify", href: "#spotify-section" },
   { label: "Cursos", href: "#courses-section" },
   { label: "Apoie", href: "#support-section" },
   { label: "Contato", href: "#contact-section" },
@@ -102,7 +102,7 @@ export function Navigation() {
                 <button
                   key={link.href}
                   onClick={() => scrollToSection(link.href)}
-                  className="block text-2xl sm:text-3xl font-bold text-white py-2"
+                  className="block text-left text-2xl sm:text-3xl font-bold text-white py-2"
                 >
                   <span className="text-base sm:text-base mr-3">0{index + 1}</span>
                   {link.label}
@@ -124,7 +124,7 @@ export function Navigation() {
     <a href="https://www.youtube.com/terapiadaalegria" target="_blank" className="flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
       <SiYoutube size={18} color="#FF0000" />
     </a>
-    <a href="https://open.spotify.com/intl-pt/artist/4VMpU6tqRctpeVi3L06lX4" className="flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+    <a href="https://open.spotify.com/intl-pt/artist/4VMpU6tqRctpeVi3L06lX4" target="_blank" className="flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
       <SiSpotify size={18} color="#1DB954" />
     </a>
   </div>

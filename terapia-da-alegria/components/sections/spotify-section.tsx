@@ -155,9 +155,9 @@ export function SpotifySection() {
                 className="spotify-image w-[220px] md:w-[320px] lg:w-[420px] py-10"
               />
 
-              <h2 className="spotify-title text-2xl md:text-3xl lg:text-4xl  text-black font-semibold" style={{ textShadow: "0 0 1px white, 0 0 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
+              <h2 className="spotify-title text-2xl md:text-3xl lg:text-4xl  text-black font-semibold" >
                 Aperte o play e{" "}
-                <span className="spotify-transform-word font-caveat text-[#e44f4a] text-3xl md:text-4xl lg:text-5xl opacity-0" style={{ textShadow: "0 0 1px white, 0 0 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
+                <span className="spotify-transform-word font-caveat text-[#e44f4a] text-3xl md:text-4xl lg:text-5xl opacity-0" >
                   sorria
                 </span>
               </h2>
@@ -166,18 +166,18 @@ export function SpotifySection() {
 
             <div className="spotify-text space-y-4 mb-8">
 
-              <p className="text-base md:text-lg text-black font-semibold" style={{ textShadow: "0 0 1px white, 0 0 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
+              <p className="text-base md:text-lg text-black font-semibold" >
                 Em 2022, a trupe se arriscou nos estúdios e lançou seu
               </p>
-              <p className="text-base md:text-lg text-black font-semibold" style={{ textShadow: "0 0 1px white, 0 0 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
+              <p className="text-base md:text-lg text-black font-semibold" >
                 <strong> primeiro álbum musical</strong>.
               </p>
 
-              <p className="text-base md:text-lg text-black font-semibold" style={{ textShadow: "0 0 1px white, 0 0 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
+              <p className="text-base md:text-lg text-black font-semibold" >
                 Um lindo trabalho recheado de músicas autorais, nascidas das visitas, dos encontros e das gargalhadas ao logo desses anos.
               </p>
 
-              <p className="text-lg md:text-xl font-semibold text-black md:text-black" style={{ textShadow: "0 0 1px white, 0 0 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
+              <p className="text-lg md:text-xl font-semibold text-black md:text-black" >
                 E agora, em 2026, vem aí o segundo álbum...
               </p>
 
