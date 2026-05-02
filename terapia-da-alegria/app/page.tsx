@@ -56,15 +56,15 @@ export default function Home() {
         <ImpactSection />
       </section>
 
+      <section id="depoimentos-section">
+        <DepoimentosSection />
+      </section>
+
       <section id="spotify-section">
         <SpotifySection />
       </section>
 
        <CoursesSection />
-    
-      <section id="depoimentos-section">
-        <DepoimentosSection />
-      </section>
 
       <section id="support-section">
         <SupportSection />

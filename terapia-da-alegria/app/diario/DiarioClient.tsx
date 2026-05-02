@@ -185,31 +185,7 @@ export default function DiarioClient() {
         )}
       </div>
 
-      {numPages && (
-        <div className="fixed bottom-0 left-0 right-0 z-30 border-t bg-white/95 backdrop-blur-sm p-3">
-          <div className="max-w-md mx-auto grid grid-cols-2 gap-3">
-            <button
-              type="button"
-              onClick={goToPreviousPage}
-              disabled={pageNumber === 1}
-              className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-gray-100 text-[--terapia-gray] font-medium disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              <ChevronLeft className="w-5 h-5" />
-              Anterior
-            </button>
 
-            <button
-              type="button"
-              onClick={goToNextPage}
-              disabled={pageNumber === numPages}
-              className="flex items-center justify-center gap-2 px-4 py-3 rounded-lg bg-[--terapia-red] text-white font-medium disabled:opacity-40 disabled:cursor-not-allowed"
-            >
-              Próxima
-              <ChevronRight className="w-5 h-5" />
-            </button>
-          </div>
-        </div>
-      )}
     </div>
   )
 }

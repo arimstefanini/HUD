@@ -185,10 +185,10 @@ export function AboutSection() {
         />
       </div>
       <h3 className="text-lg font-bold text-[--terapia-gray] mb-2">
-        Nariz Vermelho
+        NARIZ VERMELHO
       </h3>
       <p className="text-sm text-[--terapia-gray]/80">
-        A menor das máscaras. A verdade sem disfarce.
+        A menor das máscaras. A verdade sem disfarce...
       </p>
     </div>
 
@@ -203,7 +203,7 @@ export function AboutSection() {
         />
       </div>
       <h3 className="text-lg font-bold text-[--terapia-gray] mb-2">
-        Econtros
+        ENCONTROS
       </h3>
       <p className="text-sm text-[--terapia-gray]/80">
         Sem encontro, não há riso!
@@ -221,7 +221,7 @@ export function AboutSection() {
         />
       </div>
       <h3 className="text-lg font-bold text-[--terapia-gray] mb-2">
-        Escuta
+        ESCUTA
       </h3>
       <p className="text-sm text-[--terapia-gray]/80">
         A resposta mora na escuta.

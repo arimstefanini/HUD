@@ -214,7 +214,7 @@ export function DepoimentosSection() {
         <div className="mx-auto max-w-3xl text-center">
 
           <h2 id="depoimentos-title" className="text-3xl font-bold tracking-tight">
-            Depoimentos e Impactos
+            Depoimentos
           </h2>
 
 
@@ -250,9 +250,7 @@ export function DepoimentosSection() {
                         )}
                       >
                         <div className="mb-5 flex items-center justify-between gap-3">
-                          <span className="inline-flex items-center rounded-full border border-white/20 bg-white/12 px-3 py-1 text-xs font-semibold uppercase tracking-[0.24em] text-white/80">
-                            história real
-                          </span>
+                 
                           <Quote className="size-5 text-white/60" aria-hidden="true" />
                         </div>
 

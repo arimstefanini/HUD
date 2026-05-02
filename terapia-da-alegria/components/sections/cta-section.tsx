@@ -124,30 +124,19 @@ export function CTASection() {
         </div>
 
         {/* VÍDEO */}
-        <a
-          href="https://www.youtube.com/watch?v=5hrpIFUuky4&list=PLNRmOenBwX7LiIdutWcuRygDoJXdGmt2g"
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="Assistir visita virtual da Terapia da Alegria no YouTube"
-          title="Clique para assistir a visita virtual"
-          className="group flex flex-col items-center gap-3 focus:outline-none"
-        >
-          {/* TEXTO ACIMA DO VÍDEO, CENTRALIZADO */}
-           <p className="inline-block font-caveat text-black text-2xl md:text-2xl lg:text-3xl underline decoration-[#e44f4a] underline-offset-2">
-            Receba uma visita virtual (clique aqui!)
-          </p>
-
-
-        </a>
-
-      </div>
-
-      {/* DIÁRIO INTERATIVO */}
-      <div className="mt-8 text-center">
         <Link
           href="/diario"
           className="group focus:outline-none"
         >
+          {/* TEXTO ACIMA DO VÍDEO, CENTRALIZADO */}
+          <div className="text-center">
+            <p className="inline-block font-caveat text-black text-2xl md:text-2xl lg:text-3xl underline decoration-[#e44f4a] underline-offset-2">
+              Receba uma visita virtual
+            </p>
+            <p className="mt-2 text-sm text-[--terapia-gray]/70 group-hover:text-[--terapia-gray] transition-colors">
+              Clique para ler nosso diário interativo
+            </p>
+          </div>
           <Image
             src="/images/livro.jpeg"
             alt="Abrir Diário Interativo"
@@ -155,10 +144,10 @@ export function CTASection() {
             height={150}
             className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 mx-auto"
           />
-          <p className="mt-2 text-sm text-[--terapia-gray]/70 group-hover:text-[--terapia-gray] transition-colors">
-            Clique para ler nosso diário interativo
-          </p>
+
+
         </Link>
+
       </div>
 
       {/* CONNECT AREA */}

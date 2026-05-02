@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
-import { MessageCircle, Youtube } from "lucide-react"
+import { Instagram, Youtube } from "lucide-react"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
@@ -117,9 +117,9 @@ export function CoursesSection() {
                 projetos já existentes.
               </p>
 
-              {/* <p className="inline-block font-caveat text-black text-4xl md:text-4xl lg:text-5xl underline decoration-[#e44f4a] underline-offset-4">
-                Em busca do seu Palhaço Perdido.
-              </p> */}
+              <p className="inline-block font-caveat text-black text-4xl md:text-4xl lg:text-5xl underline decoration-[#e44f4a] underline-offset-4">
+                Escola de Palhaço
+              </p>
               <p>
                 É muito mais que uma oficina, é uma vivência na linguagem da palhaçaria, a partir de conteúdo
                 teórico, mas também por meio de exercícios, jogos de improviso, escuta, olhar, presença,
@@ -135,14 +135,14 @@ export function CoursesSection() {
 
             <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:flex-wrap lg:justify-start">
               <a
-                href="https://wa.me/5544999615892"
+                href="https://www.instagram.com/escoladepalhaco?igsh=MWxidmo5NThiOGp0bQ=="
                 target="_blank"
                 rel="noreferrer"
-                className="courses-cta inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#DCF8C6] px-5 py-3 font-semibold text-black transition hover:bg-[#ff8b87] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ff6b66]/60 sm:w-auto"
-                aria-label="Enviar mensagem no WhatsApp para saber mais sobre os cursos"
+                className="courses-cta inline-flex w-full items-center justify-center gap-2 rounded-xl bg-[#ff8b87] px-5 py-3 font-semibold text-black transition hover:bg-[#ff8b87] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[#ff6b66]/60 sm:w-auto"
+                aria-label="Acessar o link do instagram da Escola de Palhaço"
               >
-                <MessageCircle aria-hidden="true" className="h-5 w-5" />
-                Para mais informações. Mande um zap!
+                <Instagram aria-hidden="true" className="h-5 w-5" />
+                Mais informações.
               </a>
 
             </div>
