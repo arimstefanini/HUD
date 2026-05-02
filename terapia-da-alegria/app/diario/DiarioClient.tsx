@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useEffect, useRef, type TouchEvent } from 'react'
+import { useState, useCallback, useEffect, useRef, type MouseEvent, type TouchEvent } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { ArrowLeft, ChevronLeft, ChevronRight, Menu } from 'lucide-react'
 import Link from 'next/link'
@@ -67,6 +67,22 @@ export default function DiarioClient() {
     touchStartX.current = null
   }
 
+  const onReaderClick = (event: MouseEvent<HTMLDivElement>) => {
+    const rect = event.currentTarget.getBoundingClientRect()
+    const clickX = event.clientX - rect.left
+    const leftZone = rect.width * 0.35
+    const rightZone = rect.width * 0.65
+
+    if (clickX <= leftZone) {
+      goToPreviousPage()
+      return
+    }
+
+    if (clickX >= rightZone) {
+      goToNextPage()
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-[--terapia-cream] to-white pb-24">
       <div className="sticky top-0 z-20 bg-white/95 backdrop-blur-sm shadow-sm border-b">
@@ -121,8 +137,15 @@ export default function DiarioClient() {
               className="w-full flex flex-col items-center"
               onTouchStart={onTouchStart}
               onTouchEnd={onTouchEnd}
+              onClick={onReaderClick}
             >
-              <div className="shadow-2xl rounded-xl overflow-hidden bg-white border">
+              <div className="relative shadow-2xl rounded-xl overflow-hidden bg-white border cursor-pointer">
+                <div className="pointer-events-none absolute left-2 top-1/2 -translate-y-1/2 hidden sm:flex items-center justify-center rounded-full bg-white/80 p-1 text-gray-500">
+                  <ChevronLeft className="w-4 h-4" />
+                </div>
+                <div className="pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 hidden sm:flex items-center justify-center rounded-full bg-white/80 p-1 text-gray-500">
+                  <ChevronRight className="w-4 h-4" />
+                </div>
                 <Page
                   key={`page_${pageNumber}`}
                   pageNumber={pageNumber}
@@ -132,7 +155,7 @@ export default function DiarioClient() {
                   className="bg-white"
                 />
               </div>
-              <p className="mt-3 text-sm text-gray-600">Deslize para o lado ou use os botões para trocar de página.</p>
+              <p className="mt-3 text-sm text-gray-600">Deslize, clique no lado esquerdo/direito da página ou use os botões para navegar.</p>
             </div>
           )}
         </Document>
