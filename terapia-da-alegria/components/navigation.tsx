@@ -96,22 +96,36 @@ export function Navigation() {
         {/* CONTENT */}
         <div className="relative z-20 h-full flex flex-col justify-left">
           <div className="container px-20 py-20">
-            <div className="flex flex-col justify-left space-y-2">
-              {/* LINKS */}
-              {navLinks.map((link, index) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="block text-left text-2xl sm:text-3xl font-bold text-white py-2"
-                >
-                  <span className="text-base sm:text-base mr-3">0{index + 1}</span>
-                  {link.label}
-                </button>
-              ))}
+            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
+              <div className="flex flex-col justify-left space-y-2">
+                {/* LINKS */}
+                {navLinks.map((link, index) => (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className="block text-left text-2xl sm:text-3xl font-bold text-white py-2"
+                  >
+                    <span className="text-base sm:text-base mr-3">0{index + 1}</span>
+                    {link.label}
+                  </button>
+                ))}
+              </div>
 
-            
+              <div
+                className={`hidden lg:block transition-all duration-500 ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+              >
+                <Image
+                  src="/images/imagem_navibar.png"
+                  alt="Ilustração do menu Terapia da Alegria"
+                  width={300}
+                  height={420}
+                  className="w-[220px] xl:w-[300px] h-auto object-contain"
+                  priority
+                />
+              </div>
+
           {/* SOCIAL */}
-<div className="absolute bottom-0 left-0 right-0 p-6 z-30 flex flex-col lg:flex-row items-start lg:items-center lg:justify-end gap-4">
+<div className={`absolute bottom-0 left-0 right-0 p-6 z-30 flex flex-col lg:flex-row items-start lg:items-center lg:justify-end gap-4 transition-opacity duration-500 ${isMenuOpen ? "opacity-100" : "opacity-0"}`}>
 
   {/* Redes sociais */}
   <div className="flex gap-4 order-2 lg:order-2">
