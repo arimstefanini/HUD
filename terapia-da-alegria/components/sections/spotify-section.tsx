@@ -191,16 +191,17 @@ export function SpotifySection() {
 
               <div className="spotify-feature flex items-center gap-2 bg-white/20 md:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                 <Music2 className="w-4 h-4 text-white" />
-                <span className="text-sm text-black md:text-white font-semibold" style={{ textShadow: "0 0 1px white, 0 0 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
-                  Músicas autorais
-                </span>
+              <span className="text-sm text-black font-semibold">
+                Músicas autorais
+              </span>
               </div>
 
               <div className="spotify-feature flex items-center gap-2 bg-white/20 md:bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full">
                 <Headphones className="w-4 h-4 text-white" />
-                <span className="text-sm text-black md:text-white font-semibold" style={{ textShadow: "0 0 1px white, 0 0 1px white, -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white" }}>
-                  2 álbuns
-                </span>
+                <span className="text-sm text-black font-semibold">
+   2 álbuns
+</span>
+   
               </div>
 
             </div>

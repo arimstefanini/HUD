@@ -15,9 +15,9 @@ const navLinks = [
   { label: "Quem somos", href: "#about-section" },
   { label: "Nossa história", href: "#since-section" },
   { label: "Impacto", href: "#impact-section" },
+  { label: "Depoimentos", href: "#depoimentos-section" },
   { label: "Música", href: "#spotify-section" },
   { label: "Cursos", href: "#courses-section" },
-  { label: "Depoimentos", href: "#depoimentos-section" },
   { label: "Apoie", href: "#support-section" },
   { label: "Contato", href: "#contact-section" },
 ]
