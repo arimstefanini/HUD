@@ -96,8 +96,8 @@ export function Navigation() {
         {/* CONTENT */}
         <div className="relative z-20 h-full flex flex-col justify-left">
           <div className="container px-20 py-20">
-            <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-8">
-              <div className="flex flex-col justify-left space-y-2">
+                       <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-0">
+              <div className="flex flex-col justify-left space-y-2 lg:flex-1 lg:pr-10">
                 {/* LINKS */}
                 {navLinks.map((link, index) => (
                   <button
@@ -112,21 +112,20 @@ export function Navigation() {
               </div>
 
               <div
-                className={`hidden lg:block transition-all duration-500 ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+                className={`hidden lg:flex lg:flex-1 lg:justify-center lg:px-10 transition-all duration-500 ${isMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
               >
                 <Image
                   src="/images/navBranco.jpg"
                   alt="Ilustração do menu Terapia da Alegria"
                   width={300}
                   height={420}
-                  className="w-[220px] xl:w-[300px] h-auto object-contain"
+                  className="w-[220px] xl:w-[300px] h-auto object-cover rounded-3xl overflow-hidden"
                   priority
                 />
               </div>
 
           {/* SOCIAL */}
 <div className={`absolute bottom-0 left-0 right-0 p-6 z-30 flex flex-col lg:flex-row items-start lg:items-center lg:justify-end gap-4 transition-opacity duration-500 ${isMenuOpen ? "opacity-100" : "opacity-0"}`}>
-
   {/* Redes sociais */}
   <div className="flex gap-4 order-2 lg:order-2">
     <a href="https://wa.me/5544999615892" target="_blank" className="flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
