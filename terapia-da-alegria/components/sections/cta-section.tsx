@@ -1,10 +1,12 @@
 "use client"
 
 import { useEffect, useRef } from "react"
+import Image from "next/image"
 import gsap from "gsap"
 import { ScrollTrigger } from "gsap/ScrollTrigger"
 import { SiInstagram, SiYoutube, SiSpotify, SiWhatsapp } from "react-icons/si"
-import {  Play } from "lucide-react"
+import { Play } from "lucide-react"
+import Link from "next/link"
 
 if (typeof window !== "undefined") {
   gsap.registerPlugin(ScrollTrigger)
@@ -131,29 +133,32 @@ export function CTASection() {
           className="group flex flex-col items-center gap-3 focus:outline-none"
         >
           {/* TEXTO ACIMA DO VÍDEO, CENTRALIZADO */}
-          <p className="text-base font-semibold text-[--terapia-gray] text-center">
+           <p className="inline-block font-caveat text-black text-2xl md:text-2xl lg:text-3xl underline decoration-[#e44f4a] underline-offset-2">
             Receba uma visita virtual (clique aqui!)
           </p>
 
-          {/* VÍDEO LIMPO */}
-          <div className="relative w-full max-w-[320px] sm:max-w-[360px] aspect-square overflow-hidden rounded-2xl shadow-lg transition-all duration-300 group-hover:scale-[1.03]">
-            <video
-              src="/images/agorasimm.mp4"
-              className="w-full h-full object-cover"
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-hidden="true"
-            />
 
-            {/* BOTÃO PLAY DISCRETO */}
-            <div className="absolute bottom-3 right-3 bg-white/90 rounded-full p-2 shadow-md group-hover:scale-110 transition">
-              <Play className="size-5 text-black" aria-hidden="true" />
-            </div>
-          </div>
         </a>
 
+      </div>
+
+      {/* DIÁRIO INTERATIVO */}
+      <div className="mt-8 text-center">
+        <Link
+          href="/diario"
+          className="group focus:outline-none"
+        >
+          <Image
+            src="/images/livro.jpeg"
+            alt="Abrir Diário Interativo"
+            width={200}
+            height={150}
+            className="rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 mx-auto"
+          />
+          <p className="mt-2 text-sm text-[--terapia-gray]/70 group-hover:text-[--terapia-gray] transition-colors">
+            Clique para ler nosso diário interativo
+          </p>
+        </Link>
       </div>
 
       {/* CONNECT AREA */}

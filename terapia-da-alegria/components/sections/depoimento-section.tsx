@@ -216,9 +216,7 @@ export function DepoimentosSection() {
           <h2 id="depoimentos-title" className="text-3xl font-bold tracking-tight">
             Depoimentos e Impactos
           </h2>
-          <p>
-            O que o Nariz Vermelho Revela
-          </p>
+
 
         </div>
 

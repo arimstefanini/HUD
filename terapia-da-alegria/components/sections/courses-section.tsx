@@ -117,9 +117,9 @@ export function CoursesSection() {
                 projetos já existentes.
               </p>
 
-              <p className="inline-block font-caveat text-black text-4xl md:text-4xl lg:text-5xl underline decoration-[#e44f4a] underline-offset-4">
+              {/* <p className="inline-block font-caveat text-black text-4xl md:text-4xl lg:text-5xl underline decoration-[#e44f4a] underline-offset-4">
                 Em busca do seu Palhaço Perdido.
-              </p>
+              </p> */}
               <p>
                 É muito mais que uma oficina, é uma vivência na linguagem da palhaçaria, a partir de conteúdo
                 teórico, mas também por meio de exercícios, jogos de improviso, escuta, olhar, presença,

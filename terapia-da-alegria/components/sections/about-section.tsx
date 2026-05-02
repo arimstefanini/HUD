@@ -188,7 +188,7 @@ export function AboutSection() {
         Nariz Vermelho
       </h3>
       <p className="text-sm text-[--terapia-gray]/80">
-        O ingrediente final de uma receita sem contraindicação.
+        A menor das máscaras. A verdade sem disfarce.
       </p>
     </div>
 
@@ -203,10 +203,10 @@ export function AboutSection() {
         />
       </div>
       <h3 className="text-lg font-bold text-[--terapia-gray] mb-2">
-        Amor & Cuidado
+        Econtros
       </h3>
       <p className="text-sm text-[--terapia-gray]/80">
-        Transformando o ambiente hospitalar.
+        Sem encontro, não há riso!
       </p>
     </div>
 
@@ -221,10 +221,10 @@ export function AboutSection() {
         />
       </div>
       <h3 className="text-lg font-bold text-[--terapia-gray] mb-2">
-        Arte & Encontros
+        Escuta
       </h3>
       <p className="text-sm text-[--terapia-gray]/80">
-        Usando a linguagem universal do palhaço.
+        A resposta mora na escuta.
       </p>
     </div>
 

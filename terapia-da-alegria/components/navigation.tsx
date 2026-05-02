@@ -22,16 +22,6 @@ const navLinks = [
   { label: "Contato", href: "#contact-section" },
 ]
 
-const menuImages = [
-  { src: "/images/cover_page.jpg", className: "card-menu-1" },
-  { src: "/images/since2003.jpg", className: "card-menu-2" },
-  { src: "/images/more_than_10k.jpg", className: "card-menu-3" },
-  { src: "/images/spotify.jpg", className: "card-menu-4" },
-  { src: "/images/cover_page.jpg", className: "card-menu-5" },
-  { src: "/images/s_logo.png", className: "card-menu-6" },
-  { src: "/images/support.jpg", className: "card-menu-7" },
-  { src: "/images/esc_spotify.png", className: "card-menu-8" },
-]
 
 export function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
@@ -39,136 +29,22 @@ export function Navigation() {
 
   const menuRef = useRef<HTMLDivElement>(null)
   const menuBgRef = useRef<HTMLDivElement>(null)
-  const imagesRef = useRef<HTMLDivElement>(null)
   const tlRef = useRef<gsap.core.Timeline | null>(null)
-  const floatingTweensRef = useRef<gsap.core.Tween[]>([])
-  const isClosingRef = useRef(false)
 
-  // === GSAP inicialização do menu ===
-  useEffect(() => {
-    if (!menuRef.current || !menuBgRef.current) return
+  // === GSAP inicialização do menu === (removed for simplicity)
 
-    const ctx = gsap.context(() => {
-      gsap.set(".menu-link", { y: 80, opacity: 0, rotateX: -90 })
-      gsap.set(".card-menu", { scale: 0, opacity: 0 })
-      gsap.set(".social-icon", { y: 20, opacity: 0 })
-
-      tlRef.current = gsap.timeline({ paused: true })
-
-      tlRef.current
-        .to(menuBgRef.current, {
-          clipPath: "circle(150% at 95% 5%)",
-          duration: 0.8,
-          ease: "power4.inOut",
-        })
-        .to(".menu-link", {
-          y: 0,
-          opacity: 1,
-          rotateX: 0,
-          stagger: 0.08,
-          duration: 0.6,
-          ease: "power3.out",
-        }, "-=0.4")
-        .to(".card-menu", {
-          scale: 1,
-          opacity: 1,
-          rotation: () => gsap.utils.random(-30, 30),
-          stagger: { each: 0.1, from: "random" },
-          duration: 0.5,
-          ease: "back.out(1.7)",
-        }, "-=0.5")
-        .to(".social-icon, .social-email",  {
-          y: 0,
-          opacity: 1,
-          stagger: 0.05,
-          duration: 0.3,
-          ease: "power2.out",
-        }, "-=0.3")
-    }, menuRef)
-
-    return () => ctx.revert()
-  }, [])
-
-  // === Imagens flutuantes ===
-  const startFloating = () => {
-    if (!imagesRef.current || !isMenuOpen || isClosingRef.current) return
-    const images = imagesRef.current.querySelectorAll(".card-menu")
-    const animations: gsap.core.Tween[] = []
-
-    images.forEach((img, i) => {
-      const depth = i % 2 === 0 ? 1 : 0.5
-      const anim = gsap.to(img, {
-      y: `+=${gsap.utils.random(5, 10) * depth}`,
-      x: `+=${gsap.utils.random(-5, 5) * depth}`,
-      rotation: `+=${gsap.utils.random(-2, 2)}`,
-      duration: gsap.utils.random(3, 5),
-      ease: "sine.inOut",
-      yoyo: true,
-      repeat: -1,
-      delay: i * 0.15,
-    })
-      animations.push(anim)
-    })
-
-    floatingTweensRef.current = animations
-  }
-
-  const stopFloating = () => {
-    floatingTweensRef.current.forEach((tween) => tween.kill())
-    floatingTweensRef.current = []
-  }
-  const resetHoveredImages = () => {
-    if (!imagesRef.current) return
-
-    const images = imagesRef.current.querySelectorAll<HTMLDivElement>(".card-menu")
-
-    images.forEach((img) => {
-      gsap.to(img, {
-        scale: 1,
-        opacity: 1,
-        zIndex: 1,
-        duration: 0.2,
-        ease: "power2.out",
-        overwrite: "auto",
-      })
-    })
-  }
+  // === Imagens flutuantes === (removed)
 
   const closeMenu = (onComplete?: () => void) => {
-    if (!tlRef.current || !isMenuOpen) {
-      onComplete?.()
-      return
-    }
-
-    isClosingRef.current = true
-    stopFloating()
-    resetHoveredImages()
-
-    tlRef.current.eventCallback("onReverseComplete", () => {
-      setIsMenuOpen(false)
-      isClosingRef.current = false
-      tlRef.current?.eventCallback("onReverseComplete", null)
-      onComplete?.()
-    })
-
-    tlRef.current.reverse()
+    setIsMenuOpen(false)
+    onComplete?.()
   }
 
-  useEffect(() => {
-    if (isMenuOpen) startFloating()
-    else stopFloating()
-  }, [isMenuOpen])
+  // Removed floating effect
 
   // === Toggle menu ===
   const toggleMenu = () => {
-    if (!tlRef.current) return
-
-    if (isMenuOpen) {
-      closeMenu()
-    } else {
-      setIsMenuOpen(true)
-      requestAnimationFrame(() => tlRef.current?.play())
-    }
+    setIsMenuOpen(!isMenuOpen)
   }
 
   // === Scroll para seção ===
@@ -179,50 +55,7 @@ export function Navigation() {
     })
   }
 
-  // === Hover nas imagens ===
-  const highlightImage = (index: number | null) => {
-    if (!imagesRef.current || !isMenuOpen || isClosingRef.current) return
-    const images = imagesRef.current.querySelectorAll<HTMLDivElement>(".card-menu")
-    stopFloating()
-
-    images.forEach((img, i) => {
-      if (index === i) {
-        gsap.to(img, {
-          scale: 3,
-          zIndex: 50,
-          duration: 0.5,
-          ease: "power3.out",
-          boxShadow: "0 30px 60px rgba(0,0,0,0.4)",
-          transformOrigin: "center center"
-        })
-      } else {
-        gsap.to(img, {
-          scale: 0.8,
-          opacity: 0.3,
-          duration: 0.5,
-          ease: "power3.out",
-          boxShadow: "0 10px 20px rgba(0,0,0,0.2)",
-          transformOrigin: "center center"
-        })
-      }
-    })
-
-    if (index === null) {
-      images.forEach((img) => {
-        gsap.to(img, {
-          scale: 1,
-          opacity: 1,
-          zIndex: 1,
-          duration: 0.5,
-          ease: "power3.out"
-        })
-      })
-
-      if (isMenuOpen && !isClosingRef.current) {
-        startFloating()
-      }
-    }
-  }
+  // === Hover nas imagens === (removed)
 
   return (
     <>
@@ -256,95 +89,50 @@ export function Navigation() {
       </nav>
       
       {/* MENU FULLSCREEN */}
-      <div ref={menuRef} className={`fixed inset-0 z-40 ${isMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}>
+      <div ref={menuRef} className={`fixed inset-0 z-40 transition-opacity duration-500 ${isMenuOpen ? "opacity-100" : "opacity-0"} ${isMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}>
         {/* BACKGROUND */}
-        <div ref={menuBgRef} className="absolute inset-0 z-0" style={{ clipPath: "circle(0% at 95% 5%)", backgroundColor: "#e44f4a" }} />
+        <div ref={menuBgRef} className="absolute inset-0 z-0" style={{ clipPath: isMenuOpen ? "circle(150% at 95% 5%)" : "circle(0% at 95% 5%)", backgroundColor: "#e44f4a", transition: "clip-path 0.8s ease" }} />
 
         {/* CONTENT */}
-        <div className="relative z-20 h-full flex flex-col justify-center">
-          <div className="container mx-auto px-20 py-20">
-            <div className="grid lg:grid-cols-2 gap-1 items-center">
+        <div className="relative z-20 h-full flex flex-col justify-left">
+          <div className="container px-20 py-20">
+            <div className="flex flex-col justify-left space-y-2">
               {/* LINKS */}
-              <div className="space-y-2">
-                {navLinks.map((link, index) => (
-                  <div key={link.href} className="overflow-hidden">
-                    <button
-                      onClick={() => scrollToSection(link.href)}
-                      onMouseEnter={() => highlightImage(index)}
-                      onMouseLeave={() => highlightImage(null)}
-                      className="menu-link block text-2xl sm:text-3xl font-bold text-white py-2"
-                    >
-                      <span className="text-base sm:text-base mr-3">0{index + 1}</span>
-                      {link.label}
-                    </button>
-                  </div>
-                ))}
-              </div>
+              {navLinks.map((link, index) => (
+                <button
+                  key={link.href}
+                  onClick={() => scrollToSection(link.href)}
+                  className="block text-2xl sm:text-3xl font-bold text-white py-2"
+                >
+                  <span className="text-base sm:text-base mr-3">0{index + 1}</span>
+                  {link.label}
+                </button>
+              ))}
 
-              {/* IMAGENS - apenas no desktop */}
-              <div ref={imagesRef} className="hidden lg:block relative h-[70vh] w-full">
-                {menuImages.map((img, i) => {
-                  const positions = [
-                    { top: "0%", left: "5%" },
-                    { top: "0%", right: "5%" },
-
-                    { top: "25%", left: "15%" },
-                    { top: "25%", right: "18%" },
-
-                    { bottom: "25%", left: "5%" },
-                    { bottom: "25%", right: "5%" },
-
-                    { bottom: "0%", left: "15%" },
-                    { bottom: "0%", right: "18%" },
-                  ]
-                  const pos = positions[i]
-                  return (
-                    <div
-  key={img.className}
-  className={`
-    card-menu absolute rounded-xl overflow-hidden shadow-2xl
-    ${i % 3 === 0 ? "w-40 h-28" : ""}
-    ${i % 3 === 1 ? "w-32 h-24" : ""}
-    ${i % 3 === 2 ? "w-36 h-28" : ""}
-  `}
-  style={pos}
->
-                      <Image
-                        src={img.src}
-                        alt=""
-                        fill
-                        className="object-cover"
-                        quality={100}
-                        sizes="(min-width: 1024px) 600px, 100vw"
-                      />
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </div>
-
+            
           {/* SOCIAL */}
 <div className="absolute bottom-0 left-0 right-0 p-6 z-30 flex flex-col lg:flex-row items-start lg:items-center lg:justify-end gap-4">
 
   {/* Redes sociais */}
   <div className="flex gap-4 order-2 lg:order-2">
-    <a href="https://wa.me/5544999615892" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+    <a href="https://wa.me/5544999615892" target="_blank" className="flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
       <SiWhatsapp size={18} color="#25D366" />
     </a>
-    <a href="https://www.instagram.com/terapiadaalegria/" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+    <a href="https://www.instagram.com/terapiadaalegria/" target="_blank" className="flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
       <SiInstagram size={18} color="#E4405F" />
     </a>
-    <a href="https://www.youtube.com/terapiadaalegria" target="_blank" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+    <a href="https://www.youtube.com/terapiadaalegria" target="_blank" className="flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
       <SiYoutube size={18} color="#FF0000" />
     </a>
-    <a href="https://open.spotify.com/intl-pt/artist/4VMpU6tqRctpeVi3L06lX4" className="social-icon flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
+    <a href="https://open.spotify.com/intl-pt/artist/4VMpU6tqRctpeVi3L06lX4" className="flex items-center justify-center w-10 h-10 rounded-xl bg-white hover:bg-white/90 transition">
       <SiSpotify size={18} color="#1DB954" />
     </a>
   </div>
 </div>
         </div>
       </div>
+    </div>
+  </div>
     </>
   )
 }
