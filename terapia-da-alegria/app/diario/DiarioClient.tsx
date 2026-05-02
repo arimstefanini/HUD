@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback, useEffect } from 'react'
+import { useState, useCallback, useEffect, useRef, type TouchEvent } from 'react'
 import { Document, Page, pdfjs } from 'react-pdf'
 import { ArrowLeft, ChevronLeft, ChevronRight, Menu } from 'lucide-react'
 import Link from 'next/link'
@@ -13,6 +13,7 @@ export default function DiarioClient() {
   const [pageNumber, setPageNumber] = useState(1)
   const [error, setError] = useState<string | null>(null)
   const [pageWidth, setPageWidth] = useState(600)
+  const touchStartX = useRef<number | null>(null)
 
   useEffect(() => {
     const updatePageWidth = () => {
@@ -46,6 +47,25 @@ export default function DiarioClient() {
   }
 
   const readingProgress = numPages ? Math.round((pageNumber / numPages) * 100) : 0
+
+  const onTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = event.changedTouches[0]?.clientX ?? null
+  }
+
+  const onTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    if (touchStartX.current === null) return
+
+    const touchEndX = event.changedTouches[0]?.clientX
+    if (typeof touchEndX !== 'number') return
+
+    const distance = touchEndX - touchStartX.current
+    const minSwipeDistance = 40
+
+    if (distance <= -minSwipeDistance) goToNextPage()
+    if (distance >= minSwipeDistance) goToPreviousPage()
+
+    touchStartX.current = null
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-[--terapia-cream] to-white pb-24">
@@ -97,9 +117,14 @@ export default function DiarioClient() {
           className="flex justify-center"
         >
           {numPages && (
-            <div className="w-full flex flex-col items-center">
+            <div
+              className="w-full flex flex-col items-center"
+              onTouchStart={onTouchStart}
+              onTouchEnd={onTouchEnd}
+            >
               <div className="shadow-2xl rounded-xl overflow-hidden bg-white border">
                 <Page
+                  key={`page_${pageNumber}`}
                   pageNumber={pageNumber}
                   width={pageWidth}
                   renderTextLayer={false}
