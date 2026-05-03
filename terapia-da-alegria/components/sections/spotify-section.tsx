@@ -128,14 +128,13 @@ export function SpotifySection() {
   }, [])
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative min-h-screen overflow-hidden bg-cover"
-      style={{
-        backgroundImage: "url('/images/img_spotify.jpg')",
-        backgroundPosition,
-      }}
-    >
+<section
+  ref={sectionRef}
+  className="relative min-h-screen overflow-hidden bg-no-repeat bg-cover bg-[100%_center] md:bg-center"
+  style={{
+    backgroundImage: "url('/images/img_spotify.jpg')",
+  }}
+>
 
       <div className="absolute" />
 
@@ -170,7 +169,7 @@ export function SpotifySection() {
                 Em 2022, a trupe se arriscou nos estúdios e lançou seu
               </p>
               <p className="text-base md:text-lg text-black font-semibold" >
-                <strong> primeiro álbum musical</strong>.
+                 primeiro álbum musical.
               </p>
 
               <p className="text-base md:text-lg text-black font-semibold" >
